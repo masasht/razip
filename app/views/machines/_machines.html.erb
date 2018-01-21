@@ -1,0 +1,23 @@
+<ul class="media-list">
+  <% machines.each do |machine| %>
+    <% user = machine.user %>
+    <% @machine = machine %>
+    <li class="media">
+      <div class="media-left">
+        <% if machine.image == nil %>
+          <%= machine.image = "https://s3-ap-northeast-1.amazonaws.com/rc-car-clip/uploads/no_image/thumb_noimage.png" %>        
+        <% end %>        
+        <img class="media-object img-rounded" <%= image_tag machine.image_url(:thumb) %>
+      </div>
+      <div class="media-body">
+        <div>
+          <%= machine.machine_name + machine.kit.name %> <%= link_to '詳細', machine_path(machine), class: 'btn btn-primary btn-sm' %>
+        </div>
+        <div>
+          <%= link_to user.name, user_path(user) %> <span class="text-muted"><%= machine.updated_at %></span>
+          <p><%= machine.fastened.count %>クリップ</p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,11 @@
+<% if current_user.fastening?(machine) %>
+  <%= form_for(current_user.clips.find_by(machine_id: machine.id), html: { method: :delete }) do |f| %>
+    <%= hidden_field_tag :machine_id, machine.id %>
+    <%= f.submit 'クリップを外す', class: 'btn btn-danger' %>
+  <% end %>
+<% else %>
+  <%= form_for(current_user.clips.build) do |f| %>
+    <%= hidden_field_tag :machine_id, machine.id %>
+    <%= f.submit 'クリップ！', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

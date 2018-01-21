@@ -1,0 +1,5 @@
+<ul>
+  <% motors.each do |motor| %>
+    <li><img class="media-object img-rounded" <%= image_tag motor.image_url(:thumb) %><%= motor.name %><%= link_to '詳細', motor_path(motor) %><%= link_to '編集', edit_motor_path(motor) %></li>
+  <% end %>    
+</ul>

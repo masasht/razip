@@ -1,0 +1,10 @@
+<div class="panel-body">
+  <img class="media-object img-rounded" <%= image_tag @kit.image_url %>
+  <p>キット名：<%= @kit.name %></p>
+  <p>メーカー：<%= @kit.maker.maker_name %></p>
+  <p><%= link_to 'メーカーサイト', @kit.maker_url %></p>
+  <p>定価：<%= @kit.list_price %></p>
+  <p>カテゴリー<%= @kit.category %></p>
+  <p>駆動形式：<%= @kit.drive_system %></p>
+  <p>その他情報<%= @kit.information %></p>
+</div>

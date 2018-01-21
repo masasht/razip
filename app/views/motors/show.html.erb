@@ -1,0 +1,15 @@
+<div class="panel-body">
+  <img class="media-object img-rounded" <%= image_tag @motor.image_url %>
+  <p>モーター名：<%= @motor.name %></p>
+  <p>メーカー：<%= @motor.maker.maker_name %></p>
+  <p><%= link_to 'メーカーサイト', @motor.maker_url %></p>
+  <p>定価：<%= @motor.list_price %></p>
+  <p>モータータイプ<%= @motor.brush %></p>
+  <p>センサー有無：<%= @motor.sencor %></p>
+  <p>ターン数<%= @motor.turn %>ターン</p>
+  <p>kv値(rpm/V)：<%= @motor.kv %></p>
+  <p>トルク<%= @motor.torque %></p>
+  <p>動作電圧：<%= @motor.voltage %></p>
+  <p>最大電流：<%= @motor.ampere %></p>
+  <p>その他情報<%= @motor.information %></p>
+</div>

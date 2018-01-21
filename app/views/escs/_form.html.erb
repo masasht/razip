@@ -1,0 +1,20 @@
+<%= form_for(@esc) do |f| %>
+  <div class="panel-body">
+    <p>ESC名：<%= f.text_field :name, class: 'form-control' %></p>
+    <p>メーカー：<%= f.collection_select :maker_id, Maker.all, :id, :maker_name, {}, {class: 'form-control'} %></p>
+    <p>メーカーサイト：<%= f.text_field :maker_url, class: 'form-control' %></p>
+    <p>定価：<%= f.text_field :list_price, class: 'form-control' %></p>
+    <p>モータータイプ<%= f.collection_select :motor_type, BrushSelection.all, :id, :motor_type, {}, {class: 'form-control'} %></p>
+    <p>センサー有無：<%= f.collection_select :sencor , SencorSelection.all, :id, :sensor, {}, {class: 'form-control'} %></p>
+    <p>対応ターン数：<%= f.text_field :turn, class: 'form-control' %>以上</p>
+    <p>入力電圧：<%= f.text_field :input_current, class: 'form-control' %></p>
+    <p>瞬間最大電流：<%= f.text_field :output_current_max, class: 'form-control' %>A</p>
+    <p>連続最大電流：<%= f.text_field :output_current, class: 'form-control' %></p>
+    <p>抵抗値<%= f.text_field :ohm, class: 'form-control' %></p>
+    <p>BEC(-A/-V)：<%= f.text_field :bec, class: 'form-control' %></p>
+    <p>対応バッテリー：<%= f.collection_check_boxes :battery_type, BatterySelection.all, :battery_type , :battery_type, {multiple: true, include_hidden: false, class: 'form-control'} %></p>
+    <p>その他情報<%= f.text_area :information, class: 'form-control', rows: 5 %></p>
+    <%= f.file_field :image %>
+  </div>
+  <%= f.submit '確定', class: 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,17 @@
+<%= form_for(@servo) do |f| %>
+  <div class="panel-body">
+    <p>サーボ名：<%= f.text_field :name, class: 'form-control' %></p>
+    <p>メーカー：<%= f.collection_select :maker_id, Maker.all, :id, :maker_name, {}, {class: 'form-control'} %></p>
+    <p>メーカーサイト：<%= f.text_field :maker_url, class: 'form-control' %></p>
+    <p>定価：<%= f.text_field :list_price, class: 'form-control' %></p>
+    <p>サーボタイプ<%= f.collection_select :servo_type, ServoSelection.all, :servo_type, :servo_type, {}, {class: 'form-control'} %></p>
+    <p>形状：<%= f.collection_select :profile , ProfileSelection.all, :profile_type, :profile_type, {}, {class: 'form-control'} %></p>
+    <p>スピード：<%= f.text_field :speed, class: 'form-control' %></p>
+    <p>トルク：<%= f.text_field :torque, class: 'form-control' %></p>
+    <p>サイズ：<%= f.text_field :dimensions, class: 'form-control' %></p>
+    <p>重量：<%= f.text_field :weight, class: 'form-control' %></p>
+    <p>その他情報<%= f.text_area :information, class: 'form-control', rows: 5 %></p>
+    <%= f.file_field :image %>
+  </div>
+  <%= f.submit '確定', class: 'btn btn-primary' %>
+<% end %>

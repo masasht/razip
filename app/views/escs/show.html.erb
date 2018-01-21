@@ -1,0 +1,17 @@
+<div class="panel-body">
+  <img class="media-object img-rounded" <%= image_tag @esc.image_url %>
+  <p>モーター名：<%= @esc.name %></p>
+  <p>メーカー：<%= @esc.maker.maker_name %></p>
+  <p><%= link_to 'メーカーサイト', @esc.maker_url %></p>
+  <p>定価：<%= @esc.list_price %></p>
+  <p>モータータイプ<%= @esc.motor_type %></p>
+  <p>センサー有無：<%= @esc.sencor %></p>
+  <p>対応ターン数<%= @esc.turn %>以上</p>
+  <p>入力電圧<%= @esc.input_current %></p>
+  <p>瞬間最大電流<%= @esc.output_current_max %></p>
+  <p>連続最大電流<%= @esc.output_current %></p>
+  <p>抵抗値<%= @esc.ohm %></p>
+  <p>BEC(-A/-V)<%= @esc.bec %></p>
+  <p>対応バッテリー：<%= @esc.battery_type %></p>
+  <p>その他情報：<%= @esc.information %></p>
+</div>

@@ -1,0 +1,14 @@
+<div class="panel-body">
+  <img class="media-object img-rounded" <%= image_tag @servo.image_url %>
+  <p>サーボ名：<%= @servo.name %></p>
+  <p>メーカー：<%= @servo.maker.maker_name %></p>
+  <p><%= link_to 'メーカーサイト', @servo.maker_url %></p>
+  <p>定価：<%= @servo.list_price %></p>
+  <p>サーボタイプ<%= @servo.servo_type %></p>
+  <p>形状：<%= @servo.profile %></p>
+  <p>speed<%= @servo.speed %>ターン</p>
+  <p>トルクkv値(rpm/V)：<%= @servo.torque %></p>
+  <p>寸法<%= @servo.dimensions %></p>
+  <p>重量：<%= @servo.weight %></p>
+  <p>その他情報<%= @servo.information %></p>
+</div>

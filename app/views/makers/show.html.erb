@@ -1,0 +1,4 @@
+<h2>メーカー名：<%= @maker.maker_name %></h2>
+<p class="text-muted">更新日 <%= @maker.updated_at %></p>
+<p>メーカーサイト：<%= link_to @maker.official_url, @maker.official_url %> </p>
+<%= link_to '編集', edit_maker_path, class: 'btn btn-lg ' %>

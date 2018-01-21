@@ -1,0 +1,4 @@
+<% if current_user.id == machine.user_id %>
+  <%= link_to 'マシン編集', edit_machine_path, class: 'btn btn-primary' %>
+
+<% end %>

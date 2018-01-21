@@ -1,0 +1,18 @@
+<h1><%= @machine.machine_name %> の詳細ページ</h1>
+
+<p>画像：<%= image_tag @machine.image_url %></p>
+<p>キット：<%= @machine.kit.name %></p>
+<p>モーター：<%= @machine.motor.name %></p>
+<p>ESC：<%= @machine.esc.name %></p>
+<p>サーボ：<%= @machine.servo.name %></p>
+<p>受信機：<%= @machine.recevier.name %></p>
+<p>クラス：<%= @machine.regulation %></p>
+<p>その他仕様：<%= @machine.other %></p>
+<p>オーナーコメント：<%= @machine.information %></p>
+
+
+<%= render 'clips/clip_button', machine: @machine %>
+<p>クリップしたユーザ数： <%= @count_fastened %></p>
+<%= render 'machines/edit_button', machine: @machine %>
+
+

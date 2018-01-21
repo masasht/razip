@@ -1,0 +1,2 @@
+class BatterySelection < ApplicationRecord
+end

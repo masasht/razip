@@ -1,0 +1,2 @@
+class BrushSelection < ApplicationRecord
+end

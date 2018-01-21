@@ -1,0 +1,10 @@
+<%= link_to '新規メーカー登録', new_maker_path %>
+
+<h2>メーカー一覧</h2>
+メーカー名クリックで表示
+<ul>
+  <% @makers.each do |maker| %>
+    <li><%= link_to maker.maker_name, maker_path(maker) %> <span class="text-muted">更新日 <%= maker.updated_at %></span></li>
+  
+  <% end %>
+</ul>
