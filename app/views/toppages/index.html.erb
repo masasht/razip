@@ -1,5 +1,13 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <p>つぶやきコメント</p>
+  <%= form_for(@micropost) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, class: 'form-control', rows: 3 %>
+    </div>
+    <%= f.submit 'つぶやく', class: 'btn btn-primary' %>
+  <% end %>
+  <%= render 'microposts/microposts', microposts: @microposts %>
+  
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">

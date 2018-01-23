@@ -1,20 +1,20 @@
 class Micropost < ApplicationRecord
   belongs_to :user
-  belongs_to :machine
-  belongs_to :kit
-  belongs_to :motor
-  belongs_to :esc
-  belongs_to :servo
-  belongs_to :recevier
+  belongs_to :machine, optional: true
+  belongs_to :kit, optional: true
+  belongs_to :motor, optional: true
+  belongs_to :esc, optional: true
+  belongs_to :servo, optional: true
+  belongs_to :recevier, optional: true
   
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 255 }
   
-  validates :machine, :allow_blank => true
-  validates :kit, :allow_blank => true
-  validates :motor, :allow_blank => true
-  validates :esc, :allow_blank => true
-  validates :servo, :allow_blank => true
-  validates :recevier, :allow_blank => true
+#  validates :machine, required: false
+#  validates :kit, required: false
+#  validates :motor, required: false
+#  validates :esc, required: false
+#  validates :servo, required: false
+#  validates :recevier, required: false
   
 end

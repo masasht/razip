@@ -18,5 +18,11 @@ class ToppagesController < ApplicationController
     @new_receviers = Recevier.order(created_at: "DESC").last(6)
     @receiver_link = "receviers"
     
+    if logged_in?
+      @user = current_user
+      @micropost = current_user.microposts.build  #投稿フォーム用
+      @microposts = current_user.feed_microposts.order('created_at DESC').page(params[:page])
+    end
   end
+  
 end

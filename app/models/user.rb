@@ -52,4 +52,8 @@ class User < ApplicationRecord
   def fastening?(machine)
     self.fastenings.include?(machine)
   end
+  
+  def feed_microposts
+    Micropost.where(user_id: self.following_ids + [self.id])
+  end
 end

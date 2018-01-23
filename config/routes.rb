@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   resources :escs
   resources :servos
   resources :receviers
+  resources :microposts, only: [:create, :destroy]
 end
