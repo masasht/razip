@@ -8,3 +8,8 @@
   <p>駆動形式：<%= @kit.drive_system %></p>
   <p>その他情報<%= @kit.information %></p>
 </div>
+
+<div>
+  <h3><%= @kit.name %>使用マシン</h3>
+    <%= render 'machines/machines', machines: @machines %>
+</div>

@@ -8,4 +8,5 @@ class Servo < ApplicationRecord
   mount_uploader :image, ImageUploader
   
   has_many :machines
+  has_many :microposts
 end

@@ -1,0 +1,14 @@
+<%= form_for(@recevier) do |f| %>
+  <div class="panel-body">
+    <p>レシーバー名：<%= f.text_field :name, class: 'form-control' %></p>
+    <p>メーカー：<%= f.collection_select :maker_id, Maker.all, :id, :maker_name, {}, {class: 'form-control'} %></p>
+    <p>メーカーサイト：<%= f.text_field :maker_url, class: 'form-control' %></p>
+    <p>定価：<%= f.text_field :list_price, class: 'form-control' %></p>
+    <p>通信方式<%= f.collection_select :frequency, FrequencySelection.all, :frequency_type, :frequency_type, {}, {class: 'form-control'} %></p>
+    <p>サイズ：<%= f.text_field :dimensions, class: 'form-control' %></p>
+    <p>重量：<%= f.text_field :weight, class: 'form-control' %></p>
+    <p>その他情報<%= f.text_area :information, class: 'form-control', rows: 5 %></p>
+    <%= f.file_field :image %>
+  </div>
+  <%= f.submit '確定', class: 'btn btn-primary' %>
+<% end %>

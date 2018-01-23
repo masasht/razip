@@ -1,0 +1,16 @@
+<h2>マシン検索</h2>
+<%= search_form_for @search do |f| %>
+  <div class="form-group">
+    <%= f.label :machine_name_cont, "マシン名で検索" %>
+    <%= f.text_field :machine_name_cont, class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label :kit_id_eq, "キットで検索" %>
+    <%= f.collection_select :kit_id_eq, Kit.all, :id, :name, {}, {class: 'form-control'} %>
+  </div>
+  <%= f.submit "Search", class: 'btn btn-primary'%>
+<% end %>
+
+
+<h3>検索結果</h3>
+<%= render 'machines', machines: @machines %>

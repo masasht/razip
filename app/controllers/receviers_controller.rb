@@ -1,10 +1,11 @@
 class ReceviersController < ApplicationController
- def index
+  def index
     @receviers = Recevier.all
   end
 
   def show
     @recevier = Recevier.find(params[:id])
+    @machines = @recevier.machines
   end
 
   def new
@@ -17,10 +18,10 @@ class ReceviersController < ApplicationController
 
 #    @recevier = current_user.receviers.build(params[:id])
     if @recevier.save
-      flash[:success] = 'サーボを登録しました。'
+      flash[:success] = 'レシーバーを登録しました。'
       redirect_to receviers_url
     else
-      flash.now[:danger] = 'サーボの登録に失敗しました。'
+      flash.now[:danger] = 'レシーバーの登録に失敗しました。'
       render :new
     end
   end
@@ -33,10 +34,10 @@ class ReceviersController < ApplicationController
     @recevier = Recevier.find(params[:id])
     
     if @recevier.update(recevier_params)
-      flash[:success] = 'サーボは更新されました'
+      flash[:success] = 'レシーバーは更新されました'
       redirect_to receviers_url
     else
-      flash.now[:danger] = 'サーボは更新されませんでした'
+      flash.now[:danger] = 'レシーバーは更新されませんでした'
       render :edit
     end
   end

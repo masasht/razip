@@ -1,4 +1,6 @@
 class Motor < ApplicationRecord
+  
+
   belongs_to :maker
   belongs_to :user
   
@@ -9,5 +11,6 @@ class Motor < ApplicationRecord
   mount_uploader :image, ImageUploader
   
   has_many :machines
+  has_many :microposts
   
 end

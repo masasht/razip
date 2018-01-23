@@ -1,6 +1,12 @@
 class MachinesController < ApplicationController
   before_action :require_user_logged_in, only: [:new, :create, :edit, :destroy]
 
+  def index
+    @search = Machine.search(params[:q])
+    @machines = @search.result
+  end
+
+
   def new
     @machine = current_user.machines.build
   end
@@ -54,7 +60,12 @@ class MachinesController < ApplicationController
     @fastened = @machine.fastened(params[:page])
     
   end
-
+  
+#  def search
+#    @search = Machine.search(params[:q])
+#    @machines = @search.result
+#  end
+  
   private
 
   def machine_params

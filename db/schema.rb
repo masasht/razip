@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121030004) do
+ActiveRecord::Schema.define(version: 20180123035135) do
 
   create_table "battery_selections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "battery_type"
@@ -120,6 +120,26 @@ ActiveRecord::Schema.define(version: 20180121030004) do
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_makers_on_user_id", using: :btree
+  end
+
+  create_table "microposts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "machine_id"
+    t.integer  "kit_id"
+    t.integer  "motor_id"
+    t.integer  "esc_id"
+    t.integer  "servo_id"
+    t.integer  "recevier_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["esc_id"], name: "index_microposts_on_esc_id", using: :btree
+    t.index ["kit_id"], name: "index_microposts_on_kit_id", using: :btree
+    t.index ["machine_id"], name: "index_microposts_on_machine_id", using: :btree
+    t.index ["motor_id"], name: "index_microposts_on_motor_id", using: :btree
+    t.index ["recevier_id"], name: "index_microposts_on_recevier_id", using: :btree
+    t.index ["servo_id"], name: "index_microposts_on_servo_id", using: :btree
+    t.index ["user_id"], name: "index_microposts_on_user_id", using: :btree
   end
 
   create_table "motors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -232,6 +252,13 @@ ActiveRecord::Schema.define(version: 20180121030004) do
   add_foreign_key "machines", "servos"
   add_foreign_key "machines", "users"
   add_foreign_key "makers", "users"
+  add_foreign_key "microposts", "escs"
+  add_foreign_key "microposts", "kits"
+  add_foreign_key "microposts", "machines"
+  add_foreign_key "microposts", "motors"
+  add_foreign_key "microposts", "receviers"
+  add_foreign_key "microposts", "servos"
+  add_foreign_key "microposts", "users"
   add_foreign_key "motors", "makers"
   add_foreign_key "motors", "users"
   add_foreign_key "receviers", "makers"

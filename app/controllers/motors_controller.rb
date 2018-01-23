@@ -6,6 +6,7 @@ class MotorsController < ApplicationController
 
   def show
     @motor = Motor.find(params[:id])
+    @machines = @motor.machines
   end
 
   def new

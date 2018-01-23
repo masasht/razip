@@ -1,0 +1,16 @@
+<div class="panel-body">
+  <img class="media-object img-rounded" <%= image_tag @recevier.image_url %>
+  <p>レシーバー名：<%= @recevier.name %></p>
+  <p>メーカー：<%= @recevier.maker.maker_name %></p>
+  <p><%= link_to 'メーカーサイト', @recevier.maker_url %></p>
+  <p>定価：<%= @recevier.list_price %></p>
+  <p>通信方式：<%= @recevier.frequency %></p>
+  <p>寸法：<%= @recevier.dimensions %></p>
+  <p>重量：<%= @recevier.weight %></p>
+  <p>その他情報：<%= @recevier.information %></p>
+</div>
+
+<div>
+  <h3><%= @recevier.name %>搭載マシン</h3>
+    <%= render 'machines/machines', machines: @machines %>
+</div>

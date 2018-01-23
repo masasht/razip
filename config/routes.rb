@@ -31,5 +31,5 @@ Rails.application.routes.draw do
   resources :motors
   resources :escs
   resources :servos
-  
+  resources :receviers
 end

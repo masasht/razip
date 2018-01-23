@@ -1,0 +1,10 @@
+<% lastest_item = items.first %>
+<% if lastest_item.image == nil %>
+  <%= lastest_item.image = "https://s3-ap-northeast-1.amazonaws.com/rc-car-clip/uploads/no_image/thumb_noimage.png" %>        
+<% end %>        
+<img class="media-object img-rounded" <%= image_tag lastest_item.image_url(:thumb) %>
+<ul>
+<% items.each do |item| %>
+  <li><%= item.maker.maker_name %> : <%= link_to item.name, "/#{goto}/#{item.id}" %>　　<%= item.created_at.to_s(:db) %></li>
+<% end %>
+</ul>

@@ -1,10 +1,11 @@
 class ServosController < ApplicationController
- def index
+  def index
     @servos = Servo.all
   end
 
   def show
     @servo = Servo.find(params[:id])
+    @machines = @servo.machines
   end
 
   def new

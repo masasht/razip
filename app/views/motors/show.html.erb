@@ -13,3 +13,8 @@
   <p>最大電流：<%= @motor.ampere %></p>
   <p>その他情報<%= @motor.information %></p>
 </div>
+
+<div>
+  <h3><%= @motor.name %>搭載マシン</h3>
+    <%= render 'machines/machines', machines: @machines %>
+</div>

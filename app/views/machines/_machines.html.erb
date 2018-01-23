@@ -14,7 +14,7 @@
           <%= machine.machine_name + machine.kit.name %> <%= link_to '詳細', machine_path(machine), class: 'btn btn-primary btn-sm' %>
         </div>
         <div>
-          <%= link_to user.name, user_path(user) %> <span class="text-muted"><%= machine.updated_at %></span>
+          <%= link_to user.name, user_path(user) %> <span class="text-muted"><%= machine.updated_at.to_s(:db) %></span>
           <p><%= machine.fastened.count %>クリップ</p>
         </div>
       </div>

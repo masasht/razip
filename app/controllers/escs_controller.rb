@@ -5,6 +5,7 @@ class EscsController < ApplicationController
 
   def show
     @esc = Esc.find(params[:id])
+    @machines = @esc.machines
   end
 
   def new

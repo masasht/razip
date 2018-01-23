@@ -1,11 +1,11 @@
 <h1><%= @machine.machine_name %> の詳細ページ</h1>
 
 <p>画像：<%= image_tag @machine.image_url %></p>
-<p>キット：<%= @machine.kit.name %></p>
-<p>モーター：<%= @machine.motor.name %></p>
-<p>ESC：<%= @machine.esc.name %></p>
-<p>サーボ：<%= @machine.servo.name %></p>
-<p>受信機：<%= @machine.recevier.name %></p>
+<p>キット：<%= link_to @machine.kit.name, kit_path(@machine.kit_id) %></p>
+<p>モーター：<%= link_to @machine.motor.name, motor_path(@machine.motor_id) %></p>
+<p>ESC：<%= link_to @machine.esc.name, esc_path(@machine.esc_id) %></p>
+<p>サーボ：<%= link_to @machine.servo.name, servo_path(@machine.servo_id) %></p>
+<p>受信機：<%= link_to @machine.recevier.name, recevier_path(@machine.recevier_id) %></p>
 <p>クラス：<%= @machine.regulation %></p>
 <p>その他仕様：<%= @machine.other %></p>
 <p>オーナーコメント：<%= @machine.information %></p>

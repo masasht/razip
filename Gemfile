@@ -56,9 +56,16 @@ gem 'kaminari'
 
 # for image uploader with AWS S3
 
-
 gem 'carrierwave'
 gem 'fog'
 gem 'rmagick'
 
 gem 'dotenv-rails'
+
+
+# エラー画面をわかりやすく整形してくれる
+gem 'better_errors'
+# better_errorsの画面上にirb/pry(PERL)を表示する
+gem 'binding_of_caller'
+
+gem 'ransack'

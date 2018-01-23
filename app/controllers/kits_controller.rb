@@ -6,6 +6,7 @@ class KitsController < ApplicationController
 
   def show
     @kit = Kit.find(params[:id])
+    @machines = @kit.machines
   end
 
   def new

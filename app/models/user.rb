@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :motors
   has_many :escs
   has_many :servos
+  has_many :receviers
+  has_many :microposts
   
 
   def follow(other_user)

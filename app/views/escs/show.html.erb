@@ -15,3 +15,8 @@
   <p>対応バッテリー：<%= @esc.battery_type %></p>
   <p>その他情報：<%= @esc.information %></p>
 </div>
+
+<div>
+  <h3><%= @esc.name %>搭載マシン</h3>
+    <%= render 'machines/machines', machines: @machines %>
+</div>

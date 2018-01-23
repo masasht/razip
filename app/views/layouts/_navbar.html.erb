@@ -12,9 +12,9 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li>マシン検索</li>
+          <li><%= link_to 'マシン検索', machines_path %></li>
           <% if logged_in? %>
-            <li><%= link_to 'ユーザ一覧', users_path %></li>
+            <li><%= link_to 'ユーザ検索', users_path %></li>
             <li><%= link_to 'マイページ', user_path(current_user) %></li>
             <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
             <li>Logout</li>

@@ -2,8 +2,12 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :edit, :destroy, :followings, :followers, :fastenings]
 
   def index
-    @users = User.all.page(params[:page])
+#    @users = User.all.page(params[:page])
+    @search = User.search(params[:q])
+    @users = @search.result
   end
+
+
 
   def show
     @user = User.find(params[:id])

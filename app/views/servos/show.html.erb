@@ -12,3 +12,8 @@
   <p>重量：<%= @servo.weight %></p>
   <p>その他情報<%= @servo.information %></p>
 </div>
+
+<div>
+  <h3><%= @servo.name %>搭載マシン</h3>
+    <%= render 'machines/machines', machines: @machines %>
+</div>

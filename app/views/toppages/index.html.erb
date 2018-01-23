@@ -7,4 +7,23 @@
       <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
-<% end %>
+<% end %>  
+  <div>
+    <h2>新着マシン</h2>
+    <%= render 'machines/machines', machines: @new_machines %>
+  </div>
+  
+  <div>
+    <h2>新着アイテム</h2>
+    <h3>新着キット</h3>
+    <%= render 'items', { items: @new_kits, goto: @kit_link } %>
+    <h3>新着モーター</h3>
+    <%= render 'items', { items: @new_motors, goto: @motor_link } %>
+    <h3>新着ESC</h3>
+    <%= render 'items', { items: @new_escs, goto: @esc_link } %>
+    <h3>新着サーボ</h3>
+    <%= render 'items', { items: @new_servos, goto: @servo_link } %>
+    <h3>新着レシーバー</h3>
+    <%= render 'items', { items: @new_receviers, goto: @receiver_link } %>
+  </div>
+  

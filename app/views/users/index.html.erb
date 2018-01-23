@@ -1,3 +1,18 @@
-<h1>Users#index</h1>
+<h1>ユーザ検索</h1>
 
-<%= render 'users', users: @users %>
+<h2>名前で検索</h2>
+<%= search_form_for @search do |f| %>
+  <div class="form-group">
+    <%= f.label :name_cont, "なまえ" %>
+    <%= f.text_field :name_cont, class: "form-control" %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
+
+<% @users.each do |user| %>
+ <p><%=link_to user.name, user_path(user.id) %><%= truncate(user.user_introduction) %>
+<% end %>
+
+
+
