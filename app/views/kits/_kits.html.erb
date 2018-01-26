@@ -1,5 +1,0 @@
-<ul>
-  <% kits.each do |kit| %>
-    <li><img class="media-object img-rounded" <%= image_tag kit.image_url(:thumb) %><%= kit.name %><%= link_to '詳細', kit_path(kit) %><%= link_to '編集', edit_kit_path(kit) %></li>
-  <% end %>    
-</ul>

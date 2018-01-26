@@ -1,37 +1,57 @@
-<% if logged_in? %>
-  <p>つぶやきコメント</p>
-  <%= form_for(@micropost) do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, class: 'form-control', rows: 3 %>
-    </div>
-    <%= f.submit 'つぶやく', class: 'btn btn-primary' %>
-  <% end %>
+<div class = "row">
+  <% if logged_in? %>
+    <p>つぶやきコメント</p>
+    <%= form_for(@micropost) do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, class: 'form-control', rows: 3 %>
+      </div>
+      <%= f.submit 'つぶやく', class: 'btn btn-primary' %>
+    <% end %>
+
   <%= render 'microposts/microposts', microposts: @microposts %>
-  
-<% else %>
-  <div class="center jumbotron">
-    <div class="text-center">
-      <h1>Welcome to the Microposts</h1>
-      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    
+  <% else %>
+    ログインしてください
+  <% end %>  
+</div>
+
+<section class = "top-section">
+  <h2 class = "text-center">新着マシン</h2>
+  <%= render 'machines/machines', machines: @new_machines %>
+</section>
+
+<section class = "top-section">
+  <h2 class = "text-center">新着アイテム</h2>
+<div class = "row flex panel-wrap">
+
+  <div class = "col-md-6">
+    <div class = "panel">
+      <h3>新着キット</h3>
+      <%= render 'items', { items: @new_kits, goto: @kit_link } %>
+    </div>
+  </div>  
+  <div class = "col-md-6">
+    <div class = "panel">
+      <h3>新着モーター</h3>
+      <%= render 'items', { items: @new_motors, goto: @motor_link } %>
     </div>
   </div>
-<% end %>  
-  <div>
-    <h2>新着マシン</h2>
-    <%= render 'machines/machines', machines: @new_machines %>
+  <div class = "col-md-6">
+    <div class = "panel">
+      <h3>新着ESC</h3>
+      <%= render 'items', { items: @new_escs, goto: @esc_link } %>
+    </div>
   </div>
-  
-  <div>
-    <h2>新着アイテム</h2>
-    <h3>新着キット</h3>
-    <%= render 'items', { items: @new_kits, goto: @kit_link } %>
-    <h3>新着モーター</h3>
-    <%= render 'items', { items: @new_motors, goto: @motor_link } %>
-    <h3>新着ESC</h3>
-    <%= render 'items', { items: @new_escs, goto: @esc_link } %>
-    <h3>新着サーボ</h3>
-    <%= render 'items', { items: @new_servos, goto: @servo_link } %>
-    <h3>新着レシーバー</h3>
-    <%= render 'items', { items: @new_receviers, goto: @receiver_link } %>
+  <div class = "col-md-6">
+    <div class = "panel">
+      <h3>新着サーボ</h3>
+      <%= render 'items', { items: @new_servos, goto: @servo_link } %>
+    </div>
   </div>
-  
+  <div class = "col-md-6">
+    <div class = "panel">
+      <h3>新着レシーバー</h3>
+      <%= render 'items', { items: @new_receviers, goto: @receiver_link } %>
+    </div>
+  </div>
+</div>

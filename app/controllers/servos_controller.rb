@@ -6,6 +6,11 @@ class ServosController < ApplicationController
   def show
     @servo = Servo.find(params[:id])
     @machines = @servo.machines
+    if logged_in?
+      @user = current_user
+      @micropost = @user.microposts.build(params[:servo_id])  #投稿フォーム用
+      @microposts = @servo.microposts.order('created_at DESC').page(params[:page]).per(20)
+    end
   end
 
   def new

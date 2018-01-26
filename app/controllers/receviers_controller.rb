@@ -6,6 +6,12 @@ class ReceviersController < ApplicationController
   def show
     @recevier = Recevier.find(params[:id])
     @machines = @recevier.machines
+
+    if logged_in?
+      @user = current_user
+      @micropost = @user.microposts.build(params[:recevier_id])  #投稿フォーム用
+      @microposts = @recevier.microposts.order('created_at DESC').page(params[:page]).per(20)
+    end    
   end
 
   def new

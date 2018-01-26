@@ -4,8 +4,10 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
+
     if @micropost.save
       flash[:success] = 'コメントを投稿しました。'
+      #redirect_back(fallback_location: root_path)
       redirect_to root_url
     else
       @microposts = current_user.microposts.order('created_at DESC').page(params[:page])

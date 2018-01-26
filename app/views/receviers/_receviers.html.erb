@@ -1,5 +1,0 @@
-<ul>
-  <% receviers.each do |recevier| %>
-    <li><img class="media-object img-rounded" <%= image_tag recevier.image_url(:thumb) %><%= recevier.name %><%= link_to '詳細', recevier_path(recevier) %><%= link_to '編集', edit_recevier_path(recevier) %></li>
-  <% end %>    
-</ul>

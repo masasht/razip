@@ -6,6 +6,17 @@ class EscsController < ApplicationController
   def show
     @esc = Esc.find(params[:id])
     @machines = @esc.machines
+    
+    #　↓ここがきれいじゃない
+    esc_post = @esc.class.name.downcase
+    @post_item = esc_post + "_id"
+    
+    
+    if logged_in?
+      @user = current_user
+      @micropost = @user.microposts.build(params[:esc_id])  #投稿フォーム用
+      @microposts = @esc.microposts.order('created_at DESC').page(params[:page]).per(20)
+    end
   end
 
   def new

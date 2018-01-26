@@ -17,20 +17,21 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :relationships, only: [:create, :destroy]
-  
   resources :machines do
     member do
       get :fastened
     end
   end
   
-  resources :clips, only: [:create, :destroy]
   resources :kits
+  resources :relationships, only: [:create, :destroy]
+  resources :clips, only: [:create, :destroy]
+  resources :microposts, only: [:create, :destroy]
+  
   resources :makers
   resources :motors
   resources :escs
   resources :servos
   resources :receviers
-  resources :microposts, only: [:create, :destroy]
+  
 end

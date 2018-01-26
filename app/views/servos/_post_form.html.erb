@@ -1,0 +1,7 @@
+<%= form_for(@micropost) do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, class: 'form-control', rows: 3 %>
+    <%= f.hidden_field :servo_id, :value => servo.id %>
+  </div>
+  <%= f.submit 'コメントする', class: 'btn btn-primary' %>
+<% end %>

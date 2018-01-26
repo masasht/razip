@@ -1,5 +1,0 @@
-<ul>
-  <% servos.each do |servo| %>
-    <li><img class="media-object img-rounded" <%= image_tag servo.image_url(:thumb) %><%= servo.name %><%= link_to '詳細', servo_path(servo) %><%= link_to '編集', edit_servo_path(servo) %></li>
-  <% end %>    
-</ul>

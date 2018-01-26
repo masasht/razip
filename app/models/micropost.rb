@@ -17,4 +17,6 @@ class Micropost < ApplicationRecord
 #  validates :servo, required: false
 #  validates :recevier, required: false
   
+
+
 end

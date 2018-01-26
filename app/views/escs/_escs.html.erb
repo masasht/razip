@@ -1,5 +1,0 @@
-<ul>
-  <% escs.each do |esc| %>
-    <li><img class="media-object img-rounded" <%= image_tag esc.image_url(:thumb) %><%= esc.name %><%= link_to '詳細', esc_path(esc) %><%= link_to '編集', edit_esc_path(esc) %></li>
-  <% end %>    
-</ul>

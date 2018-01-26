@@ -11,6 +11,13 @@
 </div>
 
 <div>
+  <h3><%= @recevier.name %>へのコメント</h3>
+    <%= render 'microposts/microposts', microposts: @microposts %>
+    <p>コメント投稿</p>
+    <%= render 'post_form', {micropost: @recevier, recevier: @recevier} %>
+</div>
+
+<div>
   <h3><%= @recevier.name %>搭載マシン</h3>
     <%= render 'machines/machines', machines: @machines %>
 </div>

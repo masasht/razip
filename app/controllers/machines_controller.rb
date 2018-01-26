@@ -15,11 +15,25 @@ class MachinesController < ApplicationController
     @machine = Machine.find(params[:id])
     @user = @machine.fastened
     counts_clip(@machine)
-
+    
+    unless @machine.machine_name.present?
+      @machine.machine_name = @machine.user.name + "さんの" + @machine.kit.name
+    end
+    
+    if logged_in?
+      @user = current_user
+      @micropost = @user.microposts.build(params[:machine_id])  #投稿フォーム用
+      @microposts = @machine.microposts.order('created_at DESC').page(params[:page]).per(20)
+    end
   end
 
   def create
     @machine = current_user.machines.build(machine_params)
+    
+    unless @machine.machine_name.present?
+      @machine.machine_name = @machine.user.name + "さんの" + @machine.kit.name
+    end
+    
     if @machine.save
       flash[:success] = 'マシンを登録しました。'
       redirect_to @machine

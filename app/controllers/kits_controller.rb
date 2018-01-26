@@ -1,5 +1,6 @@
 class KitsController < ApplicationController
   
+    
   def index
     @kits = Kit.all
   end
@@ -7,6 +8,12 @@ class KitsController < ApplicationController
   def show
     @kit = Kit.find(params[:id])
     @machines = @kit.machines
+    
+    if logged_in?
+      @user = current_user
+      @micropost = @user.microposts.build(params[:kit_id])  #投稿フォーム用
+      @microposts = @kit.microposts.order('created_at DESC').page(params[:page]).per(20)
+    end
   end
 
   def new
@@ -43,6 +50,7 @@ class KitsController < ApplicationController
   def destroy
   end
   
+
   private
 
   def kit_params

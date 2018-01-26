@@ -1,4 +1,4 @@
-<h1><%= @machine.machine_name %> の詳細ページ</h1>
+<h2><%= @machine.machine_name %></h2>
 
 <p>画像：<%= image_tag @machine.image_url %></p>
 <p>キット：<%= link_to @machine.kit.name, kit_path(@machine.kit_id) %></p>
@@ -15,4 +15,9 @@
 <p>クリップしたユーザ数： <%= @count_fastened %></p>
 <%= render 'machines/edit_button', machine: @machine %>
 
-
+<div>
+  <h3><%= @machine.machine_name %>へのコメント</h3>
+    <%= render 'microposts/microposts', microposts: @microposts %>
+    <p>コメント投稿</p>
+    <%= render 'post_form', {micropost: @micropost, machine: @machine} %>
+</div>
