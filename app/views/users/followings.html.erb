@@ -1,18 +1,6 @@
 <div class="row">
   <aside class="col-sm-4 col-xs-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h2 class="panel-title"><%= @user.name %>さん</h2>
-      </div>
-      <div class="panel-body">
-        <h3>自己紹介</h3>
-        <div><%= simple_format(@user.user_introduction) %></div>
-        <h3>ブログ・ホームページ</h3>
-        <%= link_to @user.user_url, @user.user_url %>
-
-        <%= render 'relationships/follow_button', user: @user %>
-      </div>
-    </div>
+    <%= render 'information', user: @user %>
   </aside>
   <div class="col-sm-8 col-xs-12">
     <ul class="nav nav-tabs nav-justified">

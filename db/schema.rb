@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180123035135) do
+ActiveRecord::Schema.define(version: 20180128143542) do
 
   create_table "battery_selections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "battery_type"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20180123035135) do
     t.string   "sencor"
     t.string   "battery_type"
     t.string   "input_current"
-    t.string   "output_current_max"
-    t.string   "output_current"
+    t.integer  "output_current_max"
+    t.integer  "output_current"
     t.string   "bec"
     t.text     "information",        limit: 65535
     t.datetime "created_at",                       null: false
@@ -151,11 +151,11 @@ ActiveRecord::Schema.define(version: 20180123035135) do
     t.string   "brush"
     t.string   "sencor"
     t.float    "turn",        limit: 24
-    t.string   "kv"
+    t.integer  "kv"
     t.string   "rpm"
     t.string   "torque"
     t.string   "voltage"
-    t.string   "ampere"
+    t.integer  "ampere"
     t.text     "information", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -217,14 +217,18 @@ ActiveRecord::Schema.define(version: 20180123035135) do
     t.integer  "list_price"
     t.string   "servo_type"
     t.string   "profile"
-    t.string   "speed"
-    t.string   "torque"
+    t.float    "speed_74",    limit: 24
+    t.float    "torque_74",   limit: 24
     t.string   "dimensions"
     t.string   "weight"
     t.text     "information", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "user_id"
+    t.float    "speed_60",    limit: 24
+    t.float    "speed_48",    limit: 24
+    t.float    "torque_60",   limit: 24
+    t.float    "torque_48",   limit: 24
     t.index ["maker_id"], name: "index_servos_on_maker_id", using: :btree
     t.index ["user_id"], name: "index_servos_on_user_id", using: :btree
   end
@@ -237,6 +241,7 @@ ActiveRecord::Schema.define(version: 20180123035135) do
     t.text     "user_introduction", limit: 65535
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.string   "site_name"
   end
 
   add_foreign_key "clips", "machines"

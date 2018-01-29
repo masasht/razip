@@ -22,7 +22,7 @@
                 <%= "つぶやき" %>
               <% end %>
             </span>
-            <%= micropost.content %>
+            <%= micropost.content.truncate(64) %>
           </div>
           <div class ="text-right"><span class="text-muted"><%= micropost.created_at.in_time_zone('Tokyo') %> <span class="glyphicon glyphicon-user" aria-hidden="true"></span></span><%= link_to user.name, user_path(user) %> 
            <% if current_user == micropost.user %>

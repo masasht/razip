@@ -14,6 +14,7 @@ class Machine < ApplicationRecord
   has_many :fastened, through: :clips, source: :user
   has_many :microposts
 
+
 # ↓ここが怪しい。
 #  def clipped(user)
 #  end

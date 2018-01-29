@@ -7,6 +7,10 @@ class ReceviersController < ApplicationController
     @recevier = Recevier.find(params[:id])
     @machines = @recevier.machines
 
+    #　↓ここがきれいじゃない
+    recevier_post = @recevier.class.name.downcase
+    @post_item = recevier_post + "_id"
+
     if logged_in?
       @user = current_user
       @micropost = @user.microposts.build(params[:recevier_id])  #投稿フォーム用

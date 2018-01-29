@@ -19,6 +19,7 @@ class MachinesController < ApplicationController
     unless @machine.machine_name.present?
       @machine.machine_name = @machine.user.name + "さんの" + @machine.kit.name
     end
+
     
     if logged_in?
       @user = current_user

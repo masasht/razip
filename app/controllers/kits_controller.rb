@@ -9,6 +9,10 @@ class KitsController < ApplicationController
     @kit = Kit.find(params[:id])
     @machines = @kit.machines
     
+    #　↓ここがきれいじゃない
+    kit_post = @kit.class.name.downcase
+    @post_item = kit_post + "_id"
+    
     if logged_in?
       @user = current_user
       @micropost = @user.microposts.build(params[:kit_id])  #投稿フォーム用

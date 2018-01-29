@@ -8,11 +8,11 @@ class MicropostsController < ApplicationController
     if @micropost.save
       flash[:success] = 'コメントを投稿しました。'
       #redirect_back(fallback_location: root_path)
-      redirect_to root_url
+      redirect_back(fallback_location: root_path)
     else
       @microposts = current_user.microposts.order('created_at DESC').page(params[:page])
       flash.now[:danger] = 'コメントの投稿に失敗しました。'
-      render 'toppages/index'
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -35,6 +35,5 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     end
   end
-  
-  
+
 end

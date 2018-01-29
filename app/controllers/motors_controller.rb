@@ -7,6 +7,10 @@ class MotorsController < ApplicationController
   def show
     @motor = Motor.find(params[:id])
     @machines = @motor.machines
+    
+    motor_post = @motor.class.name.downcase
+    @post_item = motor_post + "_id"
+    
     if logged_in?
       @user = current_user
       @micropost = @user.microposts.build(params[:motor_id])  #投稿フォーム用

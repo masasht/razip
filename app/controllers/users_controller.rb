@@ -7,15 +7,12 @@ class UsersController < ApplicationController
     @users = @search.result
   end
 
-
-
   def show
     @user = User.find(params[:id])
 #    @machine = @
 #    @machine = current_user.machines.build  # form_for 用
     @machines = @user.machines.order('created_at DESC').page(params[:page])
     counts(@user)
-
   end
 
   def new
@@ -72,11 +69,9 @@ class UsersController < ApplicationController
     counts(@user)
   end
 
-
   private
 
-
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_introduction, :user_url)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_introduction, :user_url, :site_name)
   end
 end

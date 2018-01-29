@@ -18,6 +18,34 @@ body {
     background-color: #fdfdfd;
 }
 
+h2{
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 5px;
+	font-size:20px;
+}
+h2::before,
+h2::after{
+	content: "";
+	position: absolute;
+	bottom: 0;
+}
+h2:before{
+	border-bottom: 3px solid #325A8C;
+	width: 100%;
+}
+h2:after{
+	border-bottom: 3px solid #D8D8D8;
+	width: 100%;
+}
+
+.navbar-inverse .navbar-brand{
+    font-size: 26px;
+    color: #df0131;
+    font-weight: bold;
+}
+
+
 .box {
     padding: 8px;
 }
@@ -32,10 +60,6 @@ body {
     padding: 8px;
 }
 
-.panel {
-    padding: 8px;
-}
-
 .panel-wrap .panel a img{
     width: 100%;
 }
@@ -47,6 +71,7 @@ body {
 .flex {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .item-panel {
@@ -59,4 +84,47 @@ body {
 
 .item-panel .item-panel-inner.right{
    padding: 0 8px 8px 8px;
+}
+
+.text-white a{
+    color: #fff;
+}
+
+.post-label{
+    margin-right: 8px;
+}
+
+.top-wrap{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.top-image-box{
+    background-image: url("https://s3-ap-northeast-1.amazonaws.com/rc-car-clip/uploads/images/top.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom; 
+    background-color: dimgrey;
+    padding: 64px 36px;
+    color: #fff;
+}
+
+.top-right-box{
+    border: solid 1px #ccc;
+    background-color: #fcfcfc;
+    padding-top: 8px;
+}
+
+.img-100{
+    width: 100%;
+}
+
+.clip_counts{
+    padding: 6px;
 }

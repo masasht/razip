@@ -9,14 +9,16 @@
   <p>重量：<%= @recevier.weight %></p>
   <p>その他情報：<%= @recevier.information %></p>
 </div>
-
-<div>
-  <h3><%= @recevier.name %>へのコメント</h3>
-    <%= render 'microposts/microposts', microposts: @microposts %>
-    <p>コメント投稿</p>
-    <%= render 'post_form', {micropost: @recevier, recevier: @recevier} %>
-</div>
-
+<% if logged_in? %>
+  <div>
+    <h3><%= @recevier.name %>へのコメント</h3>
+      <%= render 'microposts/microposts', microposts: @microposts %>
+      <p>コメント投稿</p>
+      <%= render 'layouts/post_form', {micropost: @micropost, item: @recevier, post_item: @post_item} %>
+  </div>
+<% else %>
+  ログインしてください
+<% end %> 
 <div>
   <h3><%= @recevier.name %>搭載マシン</h3>
     <%= render 'machines/machines', machines: @machines %>

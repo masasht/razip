@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :fastenings, through: :clips, source: :machine
 
   has_many :makers
-  has_many :kits
+  has_many :kits ,through: :machines #ユーザのもっているキットを検索
   has_many :motors
   has_many :escs
   has_many :servos

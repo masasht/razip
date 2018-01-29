@@ -31,7 +31,12 @@ Rails.application.routes.draw do
   resources :makers
   resources :motors
   resources :escs
-  resources :servos
+  resources :servos do
+    collection do
+      get :search
+    end
+  end
+  
   resources :receviers
   
 end

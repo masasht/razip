@@ -13,7 +13,7 @@
         <h4><%= link_to machine.machine_name, machine_path(machine) %><small>－<%= machine.kit.name %></small></h4>
         <p class = "text-right">
         <span class="text-muted"><%= machine.updated_at.to_s(:db) %>：</span><%= link_to user.name, user_path(user) %></p>
-        <p class = "text-center">クリップ<span class ="badge"><%= machine.fastened.count %></span></p>
+        <%= render 'clips/clip_counts', machine: machine %>
         </div>
       </div>
     </div>

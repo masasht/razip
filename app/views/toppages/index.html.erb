@@ -1,27 +1,50 @@
-<div class = "row">
-  <% if logged_in? %>
-    <p>つぶやきコメント</p>
-    <%= form_for(@micropost) do |f| %>
-      <div class="form-group">
-        <%= f.text_area :content, class: 'form-control', rows: 3 %>
-      </div>
-      <%= f.submit 'つぶやく', class: 'btn btn-primary' %>
-    <% end %>
+<div class = "row top-wrap">
+  
+  <div class="col-md-6 top-image-box ">
+    <h3 class = "text-center">RC CAR CLIPへようこそ</h3>
+    <p>RC CAR CRIPはEPラジコンカーを楽しむ人のためのサイトです。</p>
+    <p>こんなことができます。</p>
+    <ul>
+      <li>自慢の愛車を公開！</li>
+      <li>他のユーザの愛車をクリップ！</li>
+      <li>キットやパーツのデータベース閲覧（どんどん増やしていきたいです）</li>
+      <li>キットやパーツのデータを登録する（ご協力いただければ嬉しいです）</li>
+      <li>キットやパーツにコメントをつける</li>
+    </ul>
+    <p>まだまだコンテンツ不足ですが、徐々に内容を充実させていきますのでよろしくお願いします</p>
+      
+  </div>
+  <div class="col-md-6 top-right-box">
+    <% if logged_in? %>
+    <div>呟いてみる？</div>
+      <%= form_for(@micropost) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, class: 'form-control', rows: 2 %>
+        </div>
+        <%= f.submit '呟く', class: 'btn btn-primary' %>
+      <% end %>
+      <h2>新着コメント＆呟き</h2>
+      <%= render 'microposts/top_microposts', microposts: @microposts %>
+    <% else %>
+      ログインすると愛車の公開やコメント投稿、閲覧ができるようになります。
+      <p>
+        <%= link_to "ユーザ登録はこちら", new_user_path, class: 'btn btn-primary' %>
+      </p>
+      <p>
+        <%= link_to "ログインはこちら", login_path, class: 'btn btn-primary' %>
+      </p>
 
-  <%= render 'microposts/microposts', microposts: @microposts %>
-    
-  <% else %>
-    ログインしてください
-  <% end %>  
+    <% end %> 
+  </div>  
 </div>
 
 <section class = "top-section">
-  <h2 class = "text-center">新着マシン</h2>
+  <h2>新着マシン</h2>
   <%= render 'machines/machines', machines: @new_machines %>
 </section>
 
 <section class = "top-section">
-  <h2 class = "text-center">新着アイテム</h2>
+  <h2>新着アイテム</h2>
 <div class = "row flex panel-wrap">
 
   <div class = "col-md-6">

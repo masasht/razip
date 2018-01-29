@@ -13,13 +13,16 @@
   <p>最大電流：<%= @motor.ampere %></p>
   <p>その他情報<%= @motor.information %></p>
 </div>
-
-<div>
-  <h3><%= @motor.name %>へのコメント</h3>
-    <%= render 'microposts/microposts', microposts: @microposts %>
-    <p>コメント投稿</p>
-    <%= render 'post_form', {micropost: @micropost, motor: @motor} %>
-</div>
+<% if logged_in? %>
+  <div>
+    <h3><%= @motor.name %>へのコメント</h3>
+      <%= render 'microposts/microposts', microposts: @microposts %>
+      <p>コメント投稿</p>
+      <%= render 'layouts/post_form', {micropost: @micropost, item: @motor, post_item: @post_item} %>
+  </div>
+<% else %>
+    ログインするとユーザのコメントが表示されます
+<% end %> 
 
 <div>
   <h3><%= @motor.name %>搭載マシン</h3>

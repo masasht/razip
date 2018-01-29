@@ -1,11 +1,21 @@
 class ServosController < ApplicationController
   def index
-    @servos = Servo.all
+    @q = Servo.ransack(params[:q])
+    @servos = @q.result(distinct: true)
+  end
+
+  def search
+    @q = Servo.search(search_params)
+    @servos = @q.result(distinct: true)
   end
 
   def show
     @servo = Servo.find(params[:id])
     @machines = @servo.machines
+    
+    servo_post = @servo.class.name.downcase
+    @post_item = servo_post + "_id"
+    
     if logged_in?
       @user = current_user
       @micropost = @user.microposts.build(params[:servo_id])  #投稿フォーム用
@@ -49,12 +59,16 @@ class ServosController < ApplicationController
   
   def destroy
   end
-  
+
   private
+
+  def search_params
+    params.require(:q).permit!
+  end
 
   def servo_params
     params.require(:servo).permit(:name, :image, :maker_id, :maker_url, :list_price, :servo_type, :profile,
-    :speed, :torque, :dimensions, :weight, :information, :user_id)
+    :speed_74, :torque_74, :dimensions, :weight, :information, :user_id, :speed_60, :speed_48, :torque_60, :torque_48)
   end
   
 end

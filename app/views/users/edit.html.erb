@@ -21,9 +21,15 @@
         <%= f.label :user_introduction, '自己紹介' %>
         <%= f.text_area :user_introduction, class: 'form-control' %>
       </div>
+      
+      <div class="form-group">
+        <%= f.label :site_name, 'ホームページ・ブログ名' %>
+        <%= f.url_field :site_name, class: 'form-control' %>
+      </div>
+      
 
       <div class="form-group">
-        <%= f.label :user_url, 'URL' %>
+        <%= f.label :user_url, 'ホームページ・ブログのURL' %>
         <%= f.url_field :user_url, class: 'form-control' %>
       </div>
       
