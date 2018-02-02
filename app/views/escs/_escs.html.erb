@@ -1,0 +1,19 @@
+<div class = "row flex">
+   <% escs.each do |esc| %>
+    <div class = "col-sm-4 item-list center-block">
+      <div>
+        <div><%= link_to image_tag(esc.image_url(:thumb).to_s), esc %></div>
+        <h4 class = "item-list"><%= link_to esc.name, esc %></h4>
+        <div>メーカー：<%= esc.maker.maker_name %></div>
+        <div>定価：<%= esc.list_price %>円</div>
+        <div>対応モーター：<%= esc.motor_type %></div>
+        <div>対応ターン数：<%= esc.turn %> 以上</div>
+        <div>連続最大電流：<%= esc.output_current %> A</div>
+        <div>リポ対応：<%= esc.lipo %></div>
+      </div>
+    </div>
+  <% end %> 
+</div>
+<div>
+  <%= paginate escs %>
+</div>

@@ -1,23 +1,35 @@
-<div class="panel-body">
-  <img class="media-object img-rounded" <%= image_tag @servo.image_url %>
-  <p>サーボ名：<%= @servo.name %></p>
-  <p>メーカー：<%= @servo.maker.maker_name %></p>
-  <p><%= link_to 'メーカーサイト', @servo.maker_url %></p>
-  <p>定価：<%= @servo.list_price %></p>
-  <p>サーボタイプ<%= @servo.servo_type %></p>
-  <p>形状：<%= @servo.profile %></p>
-  <p>speed<%= @servo.speed_74 %></p>
-  <p>トルクkv値(rpm/V)：<%= @servo.torque_74 %></p>
-  <p>寸法<%= @servo.dimensions %></p>
-  <p>重量：<%= @servo.weight %></p>
-  <p>その他情報<%= @servo.information %></p>
+<div class="row">
+  <h2 class = "text-center"><%= @servo.name %></h2>
+  <div class = "col-sm-6">
+    <%= image_tag @servo.image_url, class: 'img-100' %> 
+     <cite class = "text-muted small text-right">画像引用：<%= link_to "＜#{@servo.maker.maker_name}website＞#{@servo.name}", @servo.maker_url %></p></cite>
+  </div>
+  <div class = "col-sm-6">
+    <blockquote>
+      <p>メーカー：<%= @servo.maker.maker_name %></p>
+      <p>定価：<%= @servo.list_price %> 円</p>
+      <p>サーボタイプ<%= @servo.servo_type %></p>
+      <p>形状：<%= @servo.profile %></p>
+      <p>スピード(-sec/60°)<br>　7.4V：<%= @servo.speed_74 %> 6.0V：<%= @servo.speed_60 %> 4.8V：<%= @servo.speed_48 %>
+      <p>トルク(kg・cm)<br>　7.4V：<%= @servo.torque_74 %> 6.0V：<%= @servo.torque_60 %> 4.8V：<%= @servo.torque_48 %></p>
+      <p>寸法：<%= @servo.dimensions %> mm</p>
+      <p>重量：<%= @servo.weight %> g</p>
+      <cite class = "text-muted small text-right">スペック引用：<%= link_to "＜#{@servo.maker.maker_name}website＞#{@servo.name}", @servo.maker_url %></p></cite>
+    </blockquote>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Information</div>
+  <div class="panel-body">
+      <%= simple_format(@servo.information) %>
+  </div>
 </div>
 <% if logged_in? %>
   <div>
     <h3><%= @servo.name %>へのコメント</h3>
       <%= render 'microposts/microposts', microposts: @microposts %>
       <p>コメント投稿</p>
-      <%= render 'layouts/post_form', {micropost: @micropost, item: @servo, post_item: @post_item} %>
+      <%= render 'microposts/post_form', {micropost: @micropost, item: @servo, post_item: @post_item} %>
   </div>
 <% else %>
   ログインしてください

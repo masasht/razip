@@ -1,20 +1,18 @@
-<div class = "row flex panel-wrap">
+<div class = "row flex card-wrap ">
+
   <% machines.each do |machine| %>
     <% user = machine.user %>
     <% @machine = machine %>
     <% if machine.image == nil %>
       <%= machine.image = "https://s3-ap-northeast-1.amazonaws.com/rc-car-clip/uploads/no_image/thumb_noimage.png" %>
     <% end %>
-    <div class = "col-sm-6 col-md-4 center-block">
-      <div class = "panel">
-        <div class = "panel-body">
-          <%= link_to image_tag(machine.image_url(:thumb).to_s), machine_path(machine), class: "center-block" %>
-  
-        <h4><%= link_to machine.machine_name, machine_path(machine) %><small>－<%= machine.kit.name %></small></h4>
+    <div class = "col-sm-6 col-md-4 center-block card">
+      <div  class = "card-inner">
+        <%= link_to image_tag(machine.image_url(:thumb).to_s), machine_path(machine), class: "center-block" %>
+        <h4><%= link_to machine.machine_name.truncate(18), machine_path(machine) %></h4>
         <p class = "text-right">
         <span class="text-muted"><%= machine.updated_at.to_s(:db) %>：</span><%= link_to user.name, user_path(user) %></p>
         <%= render 'clips/clip_counts', machine: machine %>
-        </div>
       </div>
     </div>
   <% end %>

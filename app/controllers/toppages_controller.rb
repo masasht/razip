@@ -23,8 +23,12 @@ class ToppagesController < ApplicationController
     if logged_in?
       @user = current_user
       @micropost = current_user.microposts.build  #投稿フォーム用
-      @microposts = current_user.feed_microposts.order('created_at DESC').page(params[:page]).per(5)
+      @microposts = current_user.feed_microposts.order('created_at DESC').page(params[:page]).per(6)
     end
   end
+  
+  
+  
+  
   
 end

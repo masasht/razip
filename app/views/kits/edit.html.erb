@@ -6,7 +6,7 @@
           <h2 class="panel-title"><%= @kit.name %> の編集</h2>
         </div>
        
-        <%= render 'form' %>
+        <%= render 'form',{kit: @kit, makers: @makers} %>
 
       </div>
       <%= link_to 'このキットを削除する', @kit, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

@@ -1,0 +1,17 @@
+<div class = "row flex">
+    <% servos.each do |servo| %>
+      <div class = "col-sm-4 item-list center-block">
+        <div>
+          <div><%= link_to image_tag(servo.image_url(:thumb).to_s), servo %></div>
+          <h4 class = "item-list"><%= link_to servo.name, servo %></h4>
+          <div>メーカー：<%= servo.maker.maker_name %></div>
+          <div>定価：<%= servo.list_price %> 円</div>
+          <div>タイプ：<%= servo.servo_type %></div>
+          <div>形状：<%= servo.profile %> t</div>
+          <div>KV値：<%= servo.speed_60 %> sec/60°</div>
+          <div>KV値：<%= servo.torque_60 %> kg・cm</div>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate servos %>
+</div>

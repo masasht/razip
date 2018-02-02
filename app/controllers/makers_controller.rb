@@ -46,7 +46,7 @@ class MakersController < ApplicationController
   private
 
   def maker_params
-    params.require(:maker).permit(:maker_name, :official_url, :user_id)
+    params.require(:maker).permit(:maker_name, :official_url, :user_id, :supply_kit, :supply_motor, :supply_esc, :supply_servos, :supply_recevier)
   end
 
 end

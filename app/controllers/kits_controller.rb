@@ -2,8 +2,19 @@ class KitsController < ApplicationController
   
     
   def index
-    @kits = Kit.all
+#    @kits = Kit.all
+    @search = Kit.ransack(params[:q])
+    @kits = @search.result.reverse_order.page(params[:page]).per(9)
+    @makers = Maker.where(supply_kit: true)
+    
   end
+
+  def search
+    @makers = Maker.where(supply_kit: true)
+    @search = Kit.search(params[:q])
+    @kits = @search.result.page(params[:page]).per(9)
+  end
+
 
   def show
     @kit = Kit.find(params[:id])
@@ -22,13 +33,16 @@ class KitsController < ApplicationController
 
   def new
     @kit = current_user.kits.build
+    @makers = Maker.where(supply_kit: true)
   end
   
   def create
+    @makers = Maker.where(supply_kit: true)
     @kit = current_user.kits.build(kit_params)
+
     if @kit.save
       flash[:success] = 'キットを登録しました。'
-      redirect_to kits_url
+      redirect_to kit_url(@kit.id)
     else
       flash.now[:danger] = 'キットの登録に失敗しました。'
       render :new
@@ -37,14 +51,17 @@ class KitsController < ApplicationController
   
   def edit
     @kit = Kit.find(params[:id])
+    @makers = Maker.where(supply_kit: true)
+    
   end
   
   def update
     @kit = Kit.find(params[:id])
+    @makers = Maker.where(supply_kit: true)
     
     if @kit.update(kit_params)
       flash[:success] = 'キットは更新されました'
-      redirect_to kits_url
+      redirect_to kit_url(@kit.id)
     else
       flash.now[:danger] = 'キットは更新されませんでした'
       render :edit
@@ -54,11 +71,11 @@ class KitsController < ApplicationController
   def destroy
   end
   
-
   private
 
   def kit_params
-    params.require(:kit).permit(:name, :image, :maker_id, :maker_url, :list_price, :category, :drive_system, :information, :user_id)
+    params.require(:kit).permit(:name, :maker_id, :maker_url, :list_price, :category, :drive_system, :information, :user_id, :image,)
+#    params.require(:kit).permit!
   end
-  
+
 end

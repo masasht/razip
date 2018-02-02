@@ -14,35 +14,47 @@
  *= require_self
  */
  
-body { 
-    background-color: #fdfdfd;
+body {
+    font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    background-color: #fefefe;
 }
 
-h2{
-	position: relative;
-	overflow: hidden;
-	padding-bottom: 5px;
-	font-size:20px;
+img {
+    width: 100%;
 }
-h2::before,
-h2::after{
-	content: "";
-	position: absolute;
-	bottom: 0;
+.navbar-inverse{
+    background-color: #181210;
 }
-h2:before{
-	border-bottom: 3px solid #325A8C;
-	width: 100%;
-}
-h2:after{
-	border-bottom: 3px solid #D8D8D8;
-	width: 100%;
-}
-
+    
 .navbar-inverse .navbar-brand{
     font-size: 26px;
-    color: #df0131;
+    color: #E71A18;
     font-weight: bold;
+}
+
+.navbar{
+    margin-bottom: 0;
+    border-bottom: solid 3px #e71a18;
+}
+
+.navbar-toggle {
+    padding-left: 68px;
+}
+
+button.navbar-toggle.collapsed::before {
+    content: "MENU";
+    color: #fff;
+    position: absolute;
+    top: 6px;
+    left: 14px;
+}
+
+button.navbar-toggle::before {
+    content: "CLOSE";
+    color: #999;
+    position: absolute;
+    top: 6px;
+    left: 14px;
 }
 
 
@@ -50,22 +62,29 @@ h2:after{
     padding: 8px;
 }
 
-.top-section {
-    background-color: #f9f9f9;
-    padding-top: 12px;
-    margin-bottom: 24px;
+.top-new-machine-h2{
+    background-color: #eee;
+    margin: 0 -15px 0 -15px;
+    padding-top: 24px;
+    padding-left: 20px;
+}
+.card-wrap {
+    background-color: #eee;
+    padding: 8px 2px;
 }
 
-.panel-wrap {
-    padding: 8px;
+.card{
+    padding : 8px;
+    background-color: #FFF;
+    border: solid #eee;
 }
 
-.panel-wrap .panel a img{
+.card-inner{
+    background-color: #fff;
+    padding :8px;
+}
+.card a img{
     width: 100%;
-}
-
-.bg-fc {
-    background-color: #f9f9f9;
 }
 
 .flex {
@@ -74,16 +93,30 @@ h2:after{
     justify-content: space-around;
 }
 
-.item-panel {
-    display: flex;
+.flex-item {
+    flex-grow: 1;
 }
 
-.item-panel .item-panel-inner{
-   width: 50%;
+.top-item-h3 {
+    display: inline-block;
+    margin: 4px 4px 8px 4px;
+}
+.item-card-wrap {
+    
 }
 
-.item-panel .item-panel-inner.right{
-   padding: 0 8px 8px 8px;
+.item-card{
+    padding: 8px 8px 8px 8px;
+    margin-bottom: 16px;
+    max-width: 420px
+}
+.item-card-inner{
+
+}
+
+.item-card-ul{
+    list-style: none;
+    padding-left: 4px;
 }
 
 .text-white a{
@@ -102,7 +135,6 @@ h2:after{
     -ms-flex-wrap: wrap;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-bottom: 32px;
 }
 
 .top-image-box{
@@ -116,8 +148,7 @@ h2:after{
 }
 
 .top-right-box{
-    border: solid 1px #ccc;
-    background-color: #fcfcfc;
+    background-color: #C8C7CD;
     padding-top: 8px;
 }
 
@@ -127,4 +158,26 @@ h2:after{
 
 .clip_counts{
     padding: 6px;
+}
+
+.machine_clips{
+    padding-top: 12px;
+}
+
+.item_info {
+    padding: 6px 12px;
+}
+
+.item-list {
+    margin-bottom: 24px;
+    max-width: 330px;
+}
+
+h4.item-list  {
+    margin-bottom: 4px;
+}
+
+.search-toggle {
+    margin: 24px auto;
+    width: 80%;
 }

@@ -13,13 +13,12 @@ RC CAR CLIP</a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'データ一覧',items_path %></li>
           <li><%= link_to 'マシン検索', machines_path %></li>
-          <li><%= link_to 'データ一覧',root_path %></li>
           <% if logged_in? %>
             <li><%= link_to 'ユーザ検索', users_path %></li>
             <li><%= link_to 'マイページ', user_path(current_user) %></li>
             <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
-            <li>Logout</li>
           <% else %>
             <li><%= link_to 'ユーザ登録', signup_path %></li>
             <li><%= link_to 'ログイン', login_path %></li>

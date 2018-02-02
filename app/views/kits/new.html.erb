@@ -6,12 +6,10 @@
           <h2 class="panel-title">キット登録</h2>
         </div>
         
-        <%= form_for(@kit) do |f| %>
         <div class="panel-body">
-          <%= render 'form' %>
+          <%= render 'form',{kit: @kit, makers: @makers} %>
         </div>
 
-        <% end %>
       </div>
     </aside>
   </div>

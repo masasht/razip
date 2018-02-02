@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180128143542) do
+ActiveRecord::Schema.define(version: 20180202074719) do
 
   create_table "battery_selections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "battery_type"
@@ -54,7 +54,10 @@ ActiveRecord::Schema.define(version: 20180128143542) do
     t.integer  "list_price"
     t.string   "motor_type"
     t.string   "sencor"
-    t.string   "battery_type"
+    t.string   "lipo"
+    t.string   "life"
+    t.string   "nimh"
+    t.string   "nicd"
     t.string   "input_current"
     t.integer  "output_current_max"
     t.integer  "output_current"
@@ -116,9 +119,14 @@ ActiveRecord::Schema.define(version: 20180128143542) do
   create_table "makers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "maker_name"
     t.string   "official_url"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "user_id"
+    t.boolean  "supply_kit",      default: false, null: false
+    t.boolean  "supply_motor",    default: false, null: false
+    t.boolean  "supply_esc",      default: false, null: false
+    t.boolean  "supply_servo",    default: false, null: false
+    t.boolean  "supply_recevier", default: false, null: false
     t.index ["user_id"], name: "index_makers_on_user_id", using: :btree
   end
 
@@ -177,6 +185,7 @@ ActiveRecord::Schema.define(version: 20180128143542) do
     t.string   "maker_url"
     t.integer  "list_price"
     t.string   "frequency"
+    t.integer  "channel"
     t.string   "dimensions"
     t.string   "weight"
     t.text     "information", limit: 65535

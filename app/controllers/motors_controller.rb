@@ -1,13 +1,23 @@
 class MotorsController < ApplicationController
   
   def index
-    @motors = Motor.all
+    #@motors = Motor.all
+    @search = Motor.ransack(params[:q])
+    @motors = @search.result.reverse_order.page(params[:page]).per(9)
+    @makers = Maker.where(supply_motor: true)
+  end
+  
+  def search
+    @search = Motor.search(params[:q])
+    @motors = @search.result.page(params[:page]).per(9)
+    @makers = Maker.where(supply_motor: true)
   end
 
   def show
     @motor = Motor.find(params[:id])
     @machines = @motor.machines
     
+    #　↓ここがきれいじゃない
     motor_post = @motor.class.name.downcase
     @post_item = motor_post + "_id"
     

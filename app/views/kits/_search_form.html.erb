@@ -1,0 +1,28 @@
+<div class = "search-area">
+  <a class="search-toggle btn btn-default btn-block" data-toggle="collapse" href="#collapseExample">
+  	検索メニュー表示
+  </a>
+  <div class="collapse" id="collapseExample">
+  	<div class="well">
+  						<%= search_form_for(@search, url:search_kits_path) do |f| %>
+              <p>
+              <%= f.label :name_cont, 'キット名' %>
+              <%= f.search_field :name_cont, {class: 'form-control'} %>
+              </p>
+              <p>
+              <%= f.label :maker_id_eq, 'メーカー' %>
+              <%= f.collection_select :maker_id_eq, @makers, :id, :maker_name, {include_blank: true}, {class: 'form-control'} %>
+              </p>
+              <p>
+              <%= f.label :category_cont, 'カテゴリー' %>
+              <%= f.collection_select :category_cont, CategorySelection.all, :category, :category, {include_blank: true}, {class: 'form-control'} %>
+              </p>
+              <p>
+              <%= f.label :drive_system_cont, '駆動方式' %>
+              <%= f.select :drive_system_cont, ['4WD', '2WD', 'その他'], {include_blank: true}, {class: 'form-control'} %>
+              </p>
+            <%= f.submit '検索', class: 'btn btn-primary' %>
+          <% end %>
+  	</div>
+  </div>
+</div>

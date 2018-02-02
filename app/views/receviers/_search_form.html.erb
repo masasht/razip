@@ -1,0 +1,24 @@
+<div class = "search-area">
+  <a class="search-toggle btn btn-default btn-block" data-toggle="collapse" href="#collapseExample">
+  	検索メニュー表示
+  </a>
+  <div class="collapse" id="collapseExample">
+  	<div class="well">
+  		<%= search_form_for(@search, url:search_receviers_path) do |f| %>
+      <p>
+        <%= f.label :name, 'レシーバー名' %>
+        <%= f.search_field :name_cont, {class: 'form-control'} %>
+      </p>
+      <p>
+        <%= f.label :maker, 'メーカー' %>
+        <%= f.collection_select :maker_id_eq, @makers, :id, :maker_name, {include_blank: true}, {class: 'form-control'} %>
+      </p>
+      <p>
+        <%= f.label :channel, 'チャンネル数' %>
+        <%= f.number_field :channel_gteq, {class: 'form-control'} %>以上
+      </p>
+        <%= f.submit '検索', class: 'btn btn-primary' %>
+        <% end %>
+  	</div>
+  </div>
+</div>

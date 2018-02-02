@@ -1,0 +1,32 @@
+<div class = "search-area">
+  <a class="search-toggle btn btn-default btn-block" data-toggle="collapse" href="#collapseExample">
+  	検索メニュー表示
+  </a>
+  <div class="collapse" id="collapseExample">
+  	<div class="well">
+  						<%= search_form_for(@search, url:search_escs_path) do |f| %>
+              <p>
+              <%= f.label :name_cont, 'キット名' %>
+              <%= f.search_field :name_cont, {class: 'form-control'} %>
+              </p>
+              <p>
+              <%= f.label :maker_id_eq, 'メーカー' %>
+              <%= f.collection_select :maker_id_eq, @makers, :id, :maker_name, {include_blank: true}, {class: 'form-control'} %>
+              </p>
+              <p>
+              <%= f.label :motor_type, '対応モータータイプ' %>
+              <%= f.collection_select :motor_type_eq, BrushSelection.all, :motor_type, :motor_type, {include_blank: true}, {class: 'form-control'} %>
+              </p>
+              <p>
+              <%= f.label :turn, '対応ターン数' %>
+              <%= f.text_field :turn_lteq, {class: 'form-control'} %>以下のモーターに対応
+              </p>
+              <p>
+              <%= f.label :output_current, '連続最大電流' %>
+              <%= f.text_field :output_current_gteq, {class: 'form-control'} %>A以上
+              </p>
+            <%= f.submit '検索', class: 'btn btn-primary' %>
+          <% end %>
+  	</div>
+  </div>
+</div>

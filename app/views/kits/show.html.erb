@@ -1,19 +1,28 @@
 <div class="row">
-  <h2><%= @kit.name %>　　<small><%= @kit.maker.maker_name %></small></h2>
-  <div class = "col-md-6">
+  <h2 class = "text-center"><%= @kit.name %></h2>
+  <div class = "col-sm-6">
 
     <%= image_tag @kit.image_url, class: 'img-100' %> 
     <cite class = "text-muted small text-right">画像引用：<%= link_to "＜#{@kit.maker.maker_name}website＞#{@kit.name}", @kit.maker_url %></p></cite>
 
   </div>
-  <div class = "col-md-6">
+  <div class = "col-sm-6">
     <blockquote>
-    <p><%= simple_format(@kit.information) %></p>
-    <cite class = "text-muted small text-right">スペック引用：<%= link_to "＜#{@kit.maker.maker_name}website＞#{@kit.name}", @kit.maker_url %></p></cite>
+      <P>メーカー：<%= @kit.maker.maker_name %></P>
+      <p>定価：<%= @kit.list_price %>円</p>
+      <p>カテゴリー：<%= @kit.category %></p>
+      <p>駆動形式：<%= @kit.drive_system %></p>
+      <cite class = "text-muted small text-right">スペック引用：<%= link_to "＜#{@kit.maker.maker_name}website＞#{@kit.name}", @kit.maker_url %></p></cite>
     </blockquote>
-    <p>定価：<%= @kit.list_price %></p>
-    <p>カテゴリー<%= @kit.category %></p>
-    <p>駆動形式：<%= @kit.drive_system %></p>
+ 
+  </div>
+</div>
+<div class="row item_info">
+  <div class="panel panel-default">
+    <div class="panel-heading">Information</div>
+    <div class="panel-body">
+      <%= simple_format(@kit.information) %>
+    </div>
   </div>
 </div>
 <% if logged_in? %>
@@ -21,7 +30,7 @@
     <h3><%= @kit.name %>へのコメント</h3>
       <%= render 'microposts/microposts', microposts: @microposts %>
       <p>コメント投稿</p>
-      <%= render 'layouts/post_form', {micropost: @micropost, item: @kit, post_item: @post_item} %>
+      <%= render 'microposts/post_form', {micropost: @micropost, item: @kit, post_item: @post_item} %>
   </div>
 <% else %>
     ログインしてください

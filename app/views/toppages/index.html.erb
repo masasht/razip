@@ -1,5 +1,4 @@
 <div class = "row top-wrap">
-  
   <div class="col-md-6 top-image-box ">
     <h3 class = "text-center">RC CAR CLIPへようこそ</h3>
     <p>RC CAR CRIPはEPラジコンカーを楽しむ人のためのサイトです。</p>
@@ -16,64 +15,51 @@
   </div>
   <div class="col-md-6 top-right-box">
     <% if logged_in? %>
-    <div>呟いてみる？</div>
-      <%= form_for(@micropost) do |f| %>
-        <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', rows: 2 %>
-        </div>
-        <%= f.submit '呟く', class: 'btn btn-primary' %>
-      <% end %>
-      <h2>新着コメント＆呟き</h2>
+      <h2>新着コメント</h2>
       <%= render 'microposts/top_microposts', microposts: @microposts %>
     <% else %>
       ログインすると愛車の公開やコメント投稿、閲覧ができるようになります。
       <p>
-        <%= link_to "ユーザ登録はこちら", new_user_path, class: 'btn btn-primary' %>
+        <%= render 'sessions/form' %>
       </p>
-      <p>
-        <%= link_to "ログインはこちら", login_path, class: 'btn btn-primary' %>
-      </p>
-
     <% end %> 
   </div>  
 </div>
 
-<section class = "top-section">
-  <h2>新着マシン</h2>
-  <%= render 'machines/machines', machines: @new_machines %>
-</section>
+<h2 class = "top-new-machine-h2">新着マシン</h2>
+<%= render 'machines/machines', machines: @new_machines %>
 
 <section class = "top-section">
   <h2>新着アイテム</h2>
-<div class = "row flex panel-wrap">
+<div class = "row flex">
 
-  <div class = "col-md-6">
-    <div class = "panel">
-      <h3>新着キット</h3>
+  <div class = "col-sm-6 center-block item-card-wrap">
+    <div class = "item-card">
+      <h3 class = "top-item-h3">新着キット</h3> <%= link_to '一覧へ', kits_path, class: 'small' %>
       <%= render 'items', { items: @new_kits, goto: @kit_link } %>
     </div>
   </div>  
-  <div class = "col-md-6">
-    <div class = "panel">
-      <h3>新着モーター</h3>
+  <div class = "col-sm-6 center-block item-card-wrap">
+    <div class = "item-card">
+      <h3 class = "top-item-h3">新着モーター</h3> <%= link_to '一覧へ', motors_path, class: 'small' %>
       <%= render 'items', { items: @new_motors, goto: @motor_link } %>
     </div>
   </div>
-  <div class = "col-md-6">
-    <div class = "panel">
-      <h3>新着ESC</h3>
+  <div class = "col-sm-6 center-block item-card-wrap">
+    <div class = "item-card">
+      <h3 class = "top-item-h3">新着ESC</h3> <%= link_to '一覧へ', escs_path, class: 'small' %>
       <%= render 'items', { items: @new_escs, goto: @esc_link } %>
     </div>
   </div>
-  <div class = "col-md-6">
-    <div class = "panel">
-      <h3>新着サーボ</h3>
+  <div class = "col-sm-6 center-block item-card-wrap">
+    <div class = "item-card">
+      <h3 class = "top-item-h3">新着サーボ</h3> <%= link_to '一覧へ', servos_path, class: 'small' %>
       <%= render 'items', { items: @new_servos, goto: @servo_link } %>
     </div>
   </div>
-  <div class = "col-md-6">
-    <div class = "panel">
-      <h3>新着レシーバー</h3>
+  <div class = "col-sm-6 center-block item-card-wrap">
+    <div class = "item-card">
+      <h3 class = "top-item-h3">新着レシーバー</h3> <%= link_to '一覧へ', receviers_path, class: 'small' %>
       <%= render 'items', { items: @new_receviers, goto: @receiver_link } %>
     </div>
   </div>

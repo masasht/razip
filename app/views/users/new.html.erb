@@ -8,13 +8,15 @@
     <%= form_for(@user) do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       <div class="form-group">
-        <%= f.label :name, '表示名' %>
+        <%= f.label :name, 'ユーザ名（表示名・20文字以内）' %>
         <%= f.text_field :name, class: 'form-control' %>
+        <p class="help-block">※ハンドルネーム・ニックネームを推奨</p>
       </div>
 
       <div class="form-group">
         <%= f.label :email, 'メールアドレス' %>
         <%= f.email_field :email, class: 'form-control' %>
+        <p class="help-block">※他ユーザには非公開です。ログイン時に使用します。</p>
       </div>
 
       <div class="form-group">
@@ -27,7 +29,7 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
       
-      <%= f.submit 'Sign up', class: 'btn btn-primary btn-block' %>
+      <%= f.submit 'ユーザ登録！', class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>
 </div>

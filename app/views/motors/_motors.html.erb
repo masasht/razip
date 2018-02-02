@@ -1,0 +1,16 @@
+<div class = "row flex">
+    <% motors.each do |motor| %>
+      <div class = "col-sm-4 item-list center-block">
+        <div>
+          <div><%= link_to image_tag(motor.image_url(:thumb).to_s), motor %></div>
+          <h4 class = "item-list"><%= link_to motor.name, motor %></h4>
+          <div>メーカー：<%= motor.maker.maker_name %></div>
+          <div>定価：<%= motor.list_price %> 円</div>
+          <div>タイプ：<%= motor.brush %></div>
+          <div>ターン数：<%= motor.turn %> t</div>
+          <div>KV値：<%= motor.kv %> rpm/V</div>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate motors %>
+</div>

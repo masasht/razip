@@ -1,3 +1,4 @@
-<%= link_to '新規キット登録', new_maker_path %>
-<h2>キット一覧</h2>
-<%= render 'layouts/items', items: @kits %>
+<h2>モーター</h2>
+<%= render 'search_form' %>
+<h2>キット一覧　<small>新着順</small></h2>
+<%= render 'kits/kits', kits: @kits %>

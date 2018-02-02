@@ -1,12 +1,14 @@
 class ServosController < ApplicationController
   def index
-    @q = Servo.ransack(params[:q])
-    @servos = @q.result(distinct: true)
+    @search = Servo.ransack(params[:q])
+    @servos = @search.result.reverse_order.page(params[:page]).per(9)
+    @makers = Maker.where(supply_servo: true)
   end
 
   def search
-    @q = Servo.search(search_params)
-    @servos = @q.result(distinct: true)
+    @search = Servo.search(params[:q])
+    @servos = @search.result.page(params[:page]).per(9)
+    @makers = Maker.where(supply_servo: true)
   end
 
   def show
@@ -25,11 +27,12 @@ class ServosController < ApplicationController
 
   def new
     @servo = current_user.servos.build
+    @makers = Maker.where(supply_servo: true)
   end
   
   def create
-
     @servo = current_user.servos.build(servo_params)
+    @makers = Maker.where(supply_servo: true)
 
 #    @servo = current_user.servos.build(params[:id])
     if @servo.save
@@ -43,10 +46,12 @@ class ServosController < ApplicationController
   
   def edit
     @servo = Servo.find(params[:id])
+    @makers = Maker.where(supply_servo: true)
   end
   
   def update
     @servo = Servo.find(params[:id])
+    @makers = Maker.where(supply_servo: true)
     
     if @servo.update(servo_params)
       flash[:success] = 'サーボは更新されました'

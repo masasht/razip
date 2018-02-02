@@ -1,27 +1,40 @@
-<div class="panel-body">
-  <img class="media-object img-rounded" <%= image_tag @esc.image_url %>
-  <p>モーター名：<%= @esc.name %></p>
-  <p>メーカー：<%= @esc.maker.maker_name %></p>
-  <p><%= link_to 'メーカーサイト', @esc.maker_url %></p>
-  <p>定価：<%= @esc.list_price %></p>
-  <p>モータータイプ<%= @esc.motor_type %></p>
-  <p>センサー有無：<%= @esc.sencor %></p>
-  <p>対応ターン数<%= @esc.turn %>以上</p>
-  <p>入力電圧<%= @esc.input_current %></p>
-  <p>瞬間最大電流<%= @esc.output_current_max %></p>
-  <p>連続最大電流<%= @esc.output_current %></p>
-  <p>抵抗値<%= @esc.ohm %></p>
-  <p>BEC(-A/-V)<%= @esc.bec %></p>
-  <p>対応バッテリー：<%= @esc.battery_type %></p>
-  <p>その他情報：<%= @esc.information %></p>
+<div class="row">
+  <h2 class = "text-center"><%= @esc.name %></h2>
+  <div class = "col-sm-6">
+    <%= image_tag @esc.image_url, class: 'img-100' %> 
+     <cite class = "text-muted small text-right">画像引用：<%= link_to "＜#{@esc.maker.maker_name}website＞#{@esc.name}", @esc.maker_url %></p></cite>
+  </div>
+  <div class = "col-sm-6">
+    <blockquote>
+      <p>メーカー：<%= @esc.maker.maker_name %></p>
+      <p>定価：<%= @esc.list_price %> 円</p>
+      <p>モータータイプ<%= @esc.motor_type %></p>
+      <p>センサー有無：<%= @esc.sencor %></p>
+      <p>対応ターン数：<%= @esc.turn %>以上</p>
+      <p>入力電圧：<%= @esc.input_current %></p>
+      <p>瞬間最大電流：<%= @esc.output_current_max %></p>
+      <p>連続最大電流：<%= @esc.output_current %></p>
+      <p>抵抗値：<%= @esc.ohm %></p>
+      <p>BEC(-A/-V)：<%= @esc.bec %></p>
+      <p>対応バッテリー：<%= battery_type(@esc) %></p>
+      <cite class = "text-muted small text-right">スペック引用：<%= link_to "＜#{@esc.maker.maker_name}website＞#{@esc.name}", @esc.maker_url %></p></cite>
+    </blockquote>
+  </div>
 </div>
-
+<div class="row item_info">
+  <div class="panel panel-default">
+    <div class="panel-heading">Information</div>
+    <div class="panel-body">
+        <%= simple_format(@esc.information) %>
+    </div>
+  </div>
+</div>
 <% if logged_in? %>
   <div>
     <h3><%= @esc.name %>へのコメント</h3>
       <%= render 'microposts/microposts', microposts: @microposts %>
       <p>コメント投稿</p>
-      <%= render 'layouts/post_form', {micropost: @micropost, item: @esc, post_item: @post_item} %>
+      <%= render 'microposts/post_form', {micropost: @micropost, item: @esc, post_item: @post_item} %>
   </div>
 <% else %>
     ログインしてください

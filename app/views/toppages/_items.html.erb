@@ -3,20 +3,16 @@
   <%= lastest_item.image = "https://s3-ap-northeast-1.amazonaws.com/rc-car-clip/uploads/no_image/thumb_noimage.png" %>        
 <% end %>
 
-<% #↓きっと綺麗な書き方があるはず %>
-<% class_downcase = lastest_item.class %>
-<% class_downcase = class_downcase.to_s %>
-<% class_downcase = class_downcase.downcase %>
-
-<div class = "item-panel">
-  <div class = "item-panel-inner">
-    <%=  link_to image_tag(lastest_item.image_url(:thumb).to_s), "/#{class_downcase}s/" %>
-    <%= link_to '一覧へ', "/#{class_downcase}s/" %>
+<div class = "row item-card-inner">
+  <div class = "col-xs-6">
+    <%= link_to image_tag(lastest_item.image_url(:thumb).to_s), lastest_item %>
   </div>
   
-  <div class = "item-panel-inner right">
-    <% items.each do |item| %>
-      <p><%= link_to item.name, "/#{goto}/#{item.id}" %>　　<%= item.created_at.to_s(:db) %></p>
-    <% end %>
+  <div class = "col-xs-6">
+    <ul class="item-card-ul">
+      <% items.each do |item| %>
+        <li class="item-card-li"><%= link_to item.name, item %></li>
+      <% end %>
+    </ul>
   </div>    
 </div>

@@ -1,9 +1,9 @@
 <%= form_for(@kit) do |f| %>
   <div class="panel-body">
     <p>キット名：<%= f.text_field :name, class: 'form-control' %></p>
-    <p>メーカー：<%= f.collection_select :maker_id, Maker.all, :id, :maker_name, {}, {class: 'form-control'} %></p>
+    <p>メーカー：<%= f.collection_select :maker_id, @makers, :id, :maker_name, {}, {class: 'form-control'} %></p>
     <p>メーカーサイト：<%= f.text_field :maker_url, class: 'form-control' %></p>
-    <p>定価：<%= f.text_field :list_price, class: 'form-control' %></p>
+    <p>定価：<%= f.number_field :list_price, class: 'form-control' %></p>
     <p>カテゴリー<%= f.collection_select :category, CategorySelection.all, :category, :category, {}, {class: 'form-control'} %></p>
     <p>駆動形式：<%= f.collection_select :drive_system, DriveSelection.all, :drive_system, :drive_system, {}, {class: 'form-control'} %></p>
     <p>その他情報<%= f.text_area :information, class: 'form-control', rows: 5 %></p>

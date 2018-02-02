@@ -23,20 +23,38 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :kits
   resources :relationships, only: [:create, :destroy]
   resources :clips, only: [:create, :destroy]
   resources :microposts, only: [:create, :destroy]
   
   resources :makers
-  resources :motors
-  resources :escs
-  resources :servos do
+  
+  resources :kits do
     collection do
       get :search
     end
   end
   
-  resources :receviers
+  resources :motors do
+    collection do
+      get :search
+    end
+  end
+  resources :escs do
+    collection do
+      get :search
+    end
+  end
+  resources :servos do
+    collection do
+      get :search
+    end
+  end
+  resources :receviers do
+    collection do
+      get :search
+    end
+  end
+  resources :items, only: [:index]
   
 end

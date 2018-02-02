@@ -2,6 +2,13 @@
   <div>
     <p><%= f.text_field :maker_name, class: 'form-control' %></p>
     <p><%= f.text_field :official_url, class: 'form-control' %></p>
+    <p>商品<br>
+    　<%= f.radio_button :supply_kit, :true %>キット
+    　<%= f.radio_button :supply_motor, :true %>モーター
+    　<%= f.radio_button :supply_esc, :true %>ESC
+    　<%= f.radio_button :supply_servos, :true %>サーボ
+    　<%= f.radio_button :supply_recevier, :true %>レシーバー
+    </p>
   </div>
 <%= f.submit '確定', class: 'btn btn-primary btn-block' %>
 <% end %>   

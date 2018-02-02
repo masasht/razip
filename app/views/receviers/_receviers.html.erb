@@ -1,0 +1,16 @@
+<div class = "row flex">
+    <% receviers.each do |recevier| %>
+      <div class = "col-sm-4 item-list center-block">
+        <div>
+          <div><%= link_to image_tag(recevier.image_url(:thumb).to_s), recevier %></div>
+          <h4 class = "item-list"><%= link_to recevier.name, recevier %></h4>
+          <div>メーカー：<%= recevier.maker.maker_name %></div>
+          <div>定価：<%= recevier.list_price %> 円</div>
+          <div>通信方式：<%= recevier.frequency %></div>
+          <div>チャンネル数：<%= recevier.channel %></div>
+          <div>重さ：<%= recevier.weight %> g</div>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate receviers %>
+</div>

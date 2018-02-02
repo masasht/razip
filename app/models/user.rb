@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
+  attr_accessor :remember_token
+  
+  validates :name, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
@@ -17,7 +19,8 @@ class User < ApplicationRecord
   has_many :fastenings, through: :clips, source: :machine
 
   has_many :makers
-  has_many :kits ,through: :machines #ユーザのもっているキットを検索
+  has_many :kits
+#  has_many :kits ,through: :machines #ユーザのもっているキットを検索
   has_many :motors
   has_many :escs
   has_many :servos
@@ -56,4 +59,5 @@ class User < ApplicationRecord
   def feed_microposts
     Micropost.where(user_id: self.following_ids + [self.id])
   end
+  
 end

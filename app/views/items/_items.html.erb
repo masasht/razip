@@ -1,0 +1,11 @@
+<div class = "row flex card-wrap ">
+  <% items.each do |item| %>
+    <div class = "col-sm-6 col-md-4 center-block card">
+      <div  class = "card-inner">
+        <%= link_to image_tag(item.image_url(:thumb).to_s), item %>
+        <h4 class = "item-list"><%= link_to item.name, item %></h4>
+        <%= item.information %>
+      </div>
+    </div>
+  <% end %>
+</div>
