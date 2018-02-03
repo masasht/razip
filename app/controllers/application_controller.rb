@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
     @count_fastened = machine.fastened.count
   end
 
+  def admin_user
+    unless current_user.admin?
+      redirect_to root_url
+    end
+  end
 end

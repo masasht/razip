@@ -1,3 +1,7 @@
+<% if current_user.admin? %>
+  <%= link_to 'アイテム編集', edit_motor_path(@motor) %>
+<% end %>
+
 <div class="row">
   <h2 class = "text-center"><%= @motor.name %></h2>
   <div class = "col-sm-6">

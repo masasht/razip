@@ -1,3 +1,7 @@
+<% if current_user.admin? %>
+  <%= link_to 'アイテム編集', edit_esc_path(@esc) %>
+<% end %>
+
 <div class="row">
   <h2 class = "text-center"><%= @esc.name %></h2>
   <div class = "col-sm-6">

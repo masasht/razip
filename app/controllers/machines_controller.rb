@@ -1,5 +1,6 @@
 class MachinesController < ApplicationController
   before_action :require_user_logged_in, only: [:new, :create, :edit, :destroy]
+  before_action :correct_user_machine, only: [:edit, :update, :destroy]
 
   def index
     @search = Machine.search(params[:q])
@@ -86,4 +87,14 @@ class MachinesController < ApplicationController
   def machine_params
     params.require(:machine).permit(:machine_name, :image, :kit_id, :motor_id, :esc_id, :servo_id, :recevier_id, :regulation, :other, :information)
   end
+  
+  def correct_user_machine
+    @machine = current_user.machines.find_by(id: params[:id])
+    unless @machine
+      redirect_to root_url
+    end
+  end
+  
+  
+  
 end

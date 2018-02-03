@@ -1,3 +1,7 @@
+<% if current_user.admin? %>
+  <%= link_to 'アイテム編集', edit_servo_path(@servo) %>
+<% end %>
+
 <div class="row">
   <h2 class = "text-center"><%= @servo.name %></h2>
   <div class = "col-sm-6">

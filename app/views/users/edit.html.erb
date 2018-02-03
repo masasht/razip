@@ -18,6 +18,20 @@
       </div>
 
       <div class="form-group">
+        ユーザ属性
+        <%= f.radio_button :user_class, "ワークス" %> 
+        <%= f.label :ワークス %>
+        <%= f.radio_button :user_class, "カツカツ" %>
+        <%= f.label :カツカツ %>
+        <%= f.radio_button :user_class, "そこそこ" %> 
+        <%= f.label :そこそこ %>
+        <%= f.radio_button :user_class, "まったり" %> 
+        <%= f.label :まったり %>
+        <%= f.radio_button :user_class, "初心者" %> 
+        <%= f.label :初心者 %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :user_introduction, '自己紹介' %>
         <%= f.text_area :user_introduction, class: 'form-control' %>
       </div>
@@ -27,7 +41,6 @@
         <%= f.url_field :site_name, class: 'form-control' %>
       </div>
       
-
       <div class="form-group">
         <%= f.label :user_url, 'ホームページ・ブログのURL' %>
         <%= f.url_field :user_url, class: 'form-control' %>

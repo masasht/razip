@@ -1,4 +1,6 @@
-<h2>モーター</h2>
+<% if current_user.admin? %>
+  <%= link_to '新規キット登録', new_kit_path %>
+<% end %>
 <%= render 'search_form' %>
 <h2>キット一覧　<small>新着順</small></h2>
 <%= render 'kits/kits', kits: @kits %>

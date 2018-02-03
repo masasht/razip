@@ -1,3 +1,7 @@
+<% if current_user.admin? %>
+  <%= link_to '新規ESC登録', new_esc_path %>
+<% end %>
+
 <%= render 'search_form' %>
 
 <h2>ESC一覧</h2>

@@ -1,4 +1,6 @@
 class ReceviersController < ApplicationController
+  before_action :admin_user, only: [:new, :edit, :destroy]
+  
   def index
     @search = Recevier.ransack(params[:q])
     @receviers = @search.result.reverse_order.page(params[:page]).per(9)

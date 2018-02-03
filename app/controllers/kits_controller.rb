@@ -1,6 +1,6 @@
 class KitsController < ApplicationController
-  
-    
+  before_action :admin_user, only: [:new, :edit, :destroy]
+
   def index
 #    @kits = Kit.all
     @search = Kit.ransack(params[:q])

@@ -27,8 +27,7 @@ class ToppagesController < ApplicationController
     end
   end
   
-  
-  
-  
-  
+  def contact
+  end
+
 end

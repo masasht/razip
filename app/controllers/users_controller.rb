@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :edit, :destroy, :followings, :followers, :fastenings]
+  before_action :correct_user_user, only: [:edit, :update, :destroy]
 
   def index
 #    @users = User.all.page(params[:page])
@@ -48,6 +49,9 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    @user.destroy
+    flash[:success] = 'ユーザを削除しました。'
+    redirect_to root_url
   end
 
   def followings
@@ -72,6 +76,14 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_introduction, :user_url, :site_name)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_introduction, :user_url, :site_name, :user_class)
   end
+  
+  def correct_user_user
+    @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to @user
+    end
+  end
+
 end

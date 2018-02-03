@@ -1,4 +1,5 @@
 class MotorsController < ApplicationController
+  before_action :admin_user, only: [:new, :edit, :destroy]
   
   def index
     #@motors = Motor.all

@@ -1,4 +1,6 @@
 class EscsController < ApplicationController
+  before_action :admin_user, only: [:new, :edit, :destroy]
+  
   def index
 #    @escs = Esc.all
     @search = Esc.ransack(params[:q])

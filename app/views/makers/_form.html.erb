@@ -1,13 +1,18 @@
 <%= form_for(@maker) do |f| %>
   <div>
-    <p><%= f.text_field :maker_name, class: 'form-control' %></p>
-    <p><%= f.text_field :official_url, class: 'form-control' %></p>
+    <p>メーカー名：<%= f.text_field :maker_name, class: 'form-control' %></p>
+    <p>URL：<%= f.text_field :official_url, class: 'form-control' %></p>
     <p>商品<br>
-    　<%= f.radio_button :supply_kit, :true %>キット
-    　<%= f.radio_button :supply_motor, :true %>モーター
-    　<%= f.radio_button :supply_esc, :true %>ESC
-    　<%= f.radio_button :supply_servos, :true %>サーボ
-    　<%= f.radio_button :supply_recevier, :true %>レシーバー
+    　<%= f.check_box :supply_kit %>
+    　<%= f.label :supply_kit, 'キット' %>
+    　<%= f.check_box :supply_motor %>
+    　<%= f.label :supply_motor, 'モーター' %>
+    　<%= f.check_box :supply_esc %>
+    　<%= f.label :supply_esc, 'ESC' %>
+    　<%= f.check_box :supply_servo %>
+    　<%= f.label :supply_servo, 'サーボ' %>
+    　<%= f.check_box :supply_recevier %>
+    　<%= f.label :supply_recevier, 'レシーバー' %>
     </p>
   </div>
 <%= f.submit '確定', class: 'btn btn-primary btn-block' %>

@@ -1,3 +1,7 @@
+<% if current_user.admin? %>
+  <%= link_to '新規レシーバー登録', new_recevier_path %>
+<% end %>
+
 <%= render 'search_form' %>
 <h2>レシーバー一覧　<small>新着順</small></h2>
 <%= render 'receviers', receviers: @receviers %>

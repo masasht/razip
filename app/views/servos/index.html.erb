@@ -1,3 +1,6 @@
+<% if current_user.admin? %>
+  <%= link_to '新規サーボ登録', new_servo_path %>
+<% end %>
 <%= render 'search_form' %>
 <h2>サーボ一覧　<small>新着順</small></h2>
 <%= render 'servos', servos: @servos %>

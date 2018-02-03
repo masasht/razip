@@ -1,4 +1,6 @@
 class ServosController < ApplicationController
+  before_action :admin_user, only: [:new, :edit, :destroy]
+  
   def index
     @search = Servo.ransack(params[:q])
     @servos = @search.result.reverse_order.page(params[:page]).per(9)
