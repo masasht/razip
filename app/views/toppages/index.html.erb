@@ -37,6 +37,7 @@
   <div class = "col-xs-12 col-sm-6 center-block item-card-wrap">
     <div class = "item-card">
       <h3 class = "top-item-h3">新着キット</h3> <%= link_to '一覧へ', kits_path, class: 'small' %>
+      <% = 
       <%= render 'items', { items: @new_kits, goto: @kit_link } %>
     </div>
   </div>  

@@ -1,5 +1,6 @@
-<% if items == "後で修正" %>
-
+<% if items.empty? %>
+  まだデータがありません
+<% else %>
   <% lastest_item = items.first %>
   <% if lastest_item && lastest_item.image == nil %>
     <%= lastest_item.image = "https://s3-ap-northeast-1.amazonaws.com/rc-car-clip/uploads/no_image/thumb_noimage.png" %>        
