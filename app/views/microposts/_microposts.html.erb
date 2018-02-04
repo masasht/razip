@@ -5,23 +5,7 @@
         
         <li class="list-group-item">
           <div>
-            <span class="label label-default text-white post-label">
-              <% if micropost.machine_id != nil %>
-                <%= link_to micropost.machine.machine_name, machine_path(micropost.machine.id) %>
-              <% elsif micropost.kit_id != nil%>
-                <%= link_to micropost.kit.name, kit_path(micropost.kit.id) %>
-              <% elsif micropost.motor_id != nil%>
-                <%= link_to micropost.motor.name, motor_path(micropost.motor.id) %>
-              <% elsif micropost.esc_id != nil%>
-                <%= link_to micropost.esc.name, esc_path(micropost.esc.id) %>
-              <% elsif micropost.recevier_id != nil%>
-                <%= link_to micropost.recevier.name, recevier_path(micropost.recevier.id) %>
-              <% elsif micropost.servo_id != nil%>
-                <%= link_to micropost.servo.name, servo_path(micropost.servo.id) %>
-              <% else %>
-                <%= "つぶやき" %>
-              <% end %>
-            </span>
+
             <%= micropost.content %>
           </div>
           <div class ="text-right"><span class="text-muted"><%= micropost.created_at.in_time_zone('Tokyo') %> <span class="glyphicon glyphicon-user <%= user_icon(user) %>" aria-hidden="true"></span></span><%= link_to user.name, user_path(user) %> 
@@ -34,5 +18,18 @@
     <% else %>
       <p>まだコメントはありません。最初のコメントを投稿してみませんか？</p>
     <% end %>
-    <p class = "text-center"><%= paginate microposts %> </p>
+    <div class = "paginate-center"><%= paginate microposts %></div>
+    <div class = "text-right">
+      <a class="btn btn-info" data-toggle="collapse" href="#collapseExample"><small><span class="glyphicon glyphicon-user" aria-hidden="true"></span>アイコンの見方</small></a>
+      <div class="collapse" id="collapseExample">
+    	<div class="well icon-info-wrap">
+    		<div class = "icon-info"><span class="glyphicon glyphicon-user works" aria-hidden="true"></span><small>ワークス</small></div>
+    		<div class = "icon-info"><span class="glyphicon glyphicon-user katsu2" aria-hidden="true"></span><small>カツカツ</small></div>
+    		<div class = "icon-info"><span class="glyphicon glyphicon-user soko2" aria-hidden="true"></span><small>そこそこ</small></div>
+    		<div class = "icon-info"><span class="glyphicon glyphicon-user mattari" aria-hidden="true"></span><small>まったり</small></div>
+    		<div class = "icon-info"><span class="glyphicon glyphicon-user begginer" aria-hidden="true"></span><small>初心者</small></div>
+    		<div class = "icon-info"><span class="glyphicon glyphicon-user misettei" aria-hidden="true"></span><small>未設定</small></div>
+    	</div>
+</div>
+    </div>
   </ul>

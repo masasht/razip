@@ -1,4 +1,4 @@
-<% if current_user.admin? %>
+<% if logged_in? && current_user.admin? %>
   <%= link_to '新規メーカー登録', new_maker_path %>
 <% end %>
 

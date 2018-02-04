@@ -8,8 +8,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-RC CAR CLIP</a>
+        <a class="navbar-brand" href="/">RaZIP</a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
@@ -21,7 +20,7 @@ RC CAR CLIP</a>
                 <li><%= link_to 'ESC',escs_path %></li>
                 <li><%= link_to 'サーボ',servos_path %></li>
                 <li><%= link_to 'レシーバー',receviers_path %></li>
-                <% if current_user.admin? %>
+                <% if logged_in? && current_user.admin? %>
                   <li><%= link_to 'メーカー',makers_path %></li>
                 <% end %>
               </ul>

@@ -2,11 +2,11 @@ class Machine < ApplicationRecord
   
 
   belongs_to :user
-  belongs_to :kit
-  belongs_to :motor
-  belongs_to :esc
-  belongs_to :servo
-  belongs_to :recevier
+  belongs_to :kit, optional: true
+  belongs_to :motor, optional: true
+  belongs_to :esc, optional: true
+  belongs_to :servo, optional: true
+  belongs_to :recevier, optional: true
   
   mount_uploader :image, ImageUploader
 

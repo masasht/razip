@@ -1,4 +1,4 @@
-<% if current_user.admin? %>
+<% if logged_in? && current_user.admin? %>
   <%= link_to 'アイテム編集', edit_recevier_path(@recevier) %>
 <% end %>
 

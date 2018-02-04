@@ -1,27 +1,11 @@
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-sm-8 col-xs-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h2 class="panel-title">新規マシン登録</h2>
-        </div>
-        
-        <%= form_for(@machine) do |f| %>
-        <div class="panel-body">
-          <p><%= f.text_field :machine_name, class: 'form-control' %></p>
-          <p><%= f.collection_select :kit_id, Kit.all, :id, :name, {}, {class: 'form-control'} %></p>
-          <p><%= f.collection_select :motor_id, Motor.all, :id, :name, {}, {class: 'form-control'} %></p>
-          <p><%= f.collection_select :esc_id, Esc.all, :id, :name, {}, {class: 'form-control'} %></p>
-          <p><%= f.collection_select :servo_id, Servo.all, :id, :name, {}, {class: 'form-control'} %></p>
-          <p><%= f.collection_select :recevier_id, Recevier.all, :id, :name, {}, {class: 'form-control'} %></p>
-          <p><%= f.text_field :regulation, class: 'form-control' %></p>
-          <p><%= f.text_area :other, class: 'form-control', rows: 5 %></p>
-          <p><%= f.text_area :information, class: 'form-control', rows: 5 %></p>
-          <%= f.file_field :image %>
-        </div>
-        <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
-        <% end %>
-    </div>
+    <aside class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <h2>新規マシン登録</h2>
+      <%= render 'form' %>
+
+    </aside>
+
   </div>
   
 <% end %>

@@ -23,14 +23,16 @@
         <li class="list-group-item">サーボ：<%= link_to @machine.servo.name, servo_path(@machine.servo_id) %></li>
         <li class="list-group-item">受信機：<%= link_to @machine.recevier.name, recevier_path(@machine.recevier_id) %></li>
         <li class="list-group-item">クラス：<%= @machine.regulation %></li>
-        <li class="list-group-item">＜その他仕様＞</li>
-        <li class="list-group-item"><%= simple_format(@machine.other) %></li>
-        <li class="list-group-item">＜ユーザコメント＞</li>
-        <li class="list-group-item"><%= simple_format(@machine.information) %></li>
+        <li class="list-group-item">その他仕様：<br><%= simple_format(@machine.other) %></li>
       </ul>
     </div>
     <% if logged_in? %>
       <%= render 'machines/edit_button', machine: @machine %>
-    <% end %> 
+    <% end %>
+  </div>
+  <div class = "col-sm-10 col-sm-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">オーナーのコメント</div>
+      <div class="panel-body"><%= simple_format(@machine.information) %></div>
   </div>
 </div>

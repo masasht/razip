@@ -3,12 +3,13 @@
         <h3 class="panel-title"><%= user.name %>さん</h3>
       </div>
       <div class="panel-body">
-        <h4>ユーザ属性</h4>
-        <div><span class="glyphicon glyphicon-user <%= user_icon(user) %>" aria-hidden="true"></span><%= user.user_class %></div>
-        <h4>自己紹介</h4>
+        <h6 class= "text-muted">ユーザ属性 ―</h6>
+        <div class = "lead"><span class="glyphicon glyphicon-user <%= user_icon(user) %>" aria-hidden="true"></span><%= user.user_class %></div>
+        <hr>
+        <h6 class= "text-muted">自己紹介 ―</h6>
         <div><%= simple_format(user.user_introduction) %></div>
         <hr>
-        <h4>ブログ・ホームページ</h4>
+        <h6 class= "text-muted">ブログ・ホームページ ―</h6>
         
         <%= link_to user.site_name, user.user_url %>
       </div>

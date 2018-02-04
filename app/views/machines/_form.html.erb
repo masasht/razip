@@ -1,0 +1,47 @@
+<%= form_for(@machine) do |f| %>
+  <div class="panel-body">
+    <p>
+      <%= f.label :machine_name, 'マシン名' %><small class = "text-muted">　愛車に名前を付けている場合入力。例：「RaZIP１号」など</small>
+      <%= f.text_field :machine_name, class: 'form-control' %>
+    </p>
+    <p>
+      <%= f.label :kit_id, 'キット名' %><small class = "text-muted">　使用しているキット（シャーシ）を選択。リストにない場合は「その他」</small>
+      <%= f.collection_select :kit_id, Kit.all, :id, :name, {}, {class: 'form-control'} %>
+    </p>
+    <p>
+      <%= f.label :motor_id, 'モーター' %><small class = "text-muted">　リストにない場合は「その他」</small>
+      <%= f.collection_select :motor_id, Motor.all, :id, :name, {}, {class: 'form-control'} %>
+    </p>
+    <p>
+      <%= f.label :esc_id, 'ESC（アンプ）' %><small class = "text-muted">　リストにない場合は「その他」</small>
+      <%= f.collection_select :esc_id, Esc.all, :id, :name, {}, {class: 'form-control'} %>
+    </p>
+    <p>
+      <%= f.label :servo_id, 'ステアリングサーボ' %><small class = "text-muted">　リストにない場合は「その他」</small>
+      <%= f.collection_select :servo_id, Servo.all, :id, :name, {}, {class: 'form-control'} %>
+      </p>
+    <p>
+      <%= f.label :recevier_id, 'レシーバー（受信機）' %><small class = "text-muted">　リストにない場合は「その他」</small>
+      <%= f.collection_select :recevier_id, Recevier.all, :id, :name, {}, {class: 'form-control'} %>
+    </p>
+    <p>
+      <%= f.label :regulation, 'レギュレーション' %><small class = "text-muted">　「谷田部アリーナ17.5ツーリング」や「公園」など</small>
+      <%= f.text_field :regulation, class: 'form-control' %>
+    </p>
+    <p>
+      <%= f.label :other, 'その他仕様' %><small class = "text-muted">　使用しているカスタムパーツなど</small>
+      <%= f.text_area :other, class: 'form-control', rows: 3 %>
+    </p>
+    <p>
+      <%= f.label :information, 'オーナーコメント' %><small class = "text-muted">　愛車についてご自由にご記入ください</small>
+      <%= f.text_area :information, class: 'form-control', rows: 5 %>
+    </p>
+    <p>
+      <%= f.label :image, '画像アップロード' %>
+      <%= f.file_field :image %>
+    </p>
+  </div>
+  <div class = "text-center">
+    <%= f.submit '登録', class: 'btn btn-primary btn-lg' %>
+  </div>
+<% end %>

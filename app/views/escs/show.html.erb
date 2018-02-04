@@ -1,4 +1,4 @@
-<% if current_user.admin? %>
+<% if logged_in? && current_user.admin? %>
   <%= link_to 'アイテム編集', edit_esc_path(@esc) %>
 <% end %>
 
@@ -33,16 +33,20 @@
     </div>
   </div>
 </div>
-<% if logged_in? %>
-  <div>
-    <h3><%= @esc.name %>へのコメント</h3>
-      <%= render 'microposts/microposts', microposts: @microposts %>
-      <p>コメント投稿</p>
-      <%= render 'microposts/post_form', {micropost: @micropost, item: @esc, post_item: @post_item} %>
-  </div>
-<% else %>
-    ログインしてください
-<% end %> 
+<h3><%= @esc.name %>へのコメント</h3>
+<div class = "row">
+  <% if logged_in? %>
+    <%= render 'microposts/microposts', microposts: @microposts %>
+    <p>コメント投稿</p>
+    <%= render 'microposts/post_form', {micropost: @micropost, item: @esc, post_item: @post_item} %>
+  <% else %>
+    <div class = "well col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <p class = "text-warning">ログインするとコメントの閲覧と投稿ができます</p>
+      <%= render 'sessions/form' %>
+    </div>
+  <% end %> 
+</div>
+
 <div>
   <h3><%= @esc.name %>搭載マシン</h3>
     <%= render 'machines/machines', machines: @machines %>

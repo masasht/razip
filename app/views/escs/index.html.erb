@@ -1,4 +1,4 @@
-<% if current_user.admin? %>
+<% if logged_in? && current_user.admin? %>
   <%= link_to '新規ESC登録', new_esc_path %>
 <% end %>
 
