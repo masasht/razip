@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
-  validates :user_url, format: /\A#{URI::regexp(%w(http https))}\z/, :allow_blank => true
+  validates :site_url, format: /\A#{URI::regexp(%w(http https))}\z/, :allow_blank => true
   has_secure_password
   
   has_many :machines
