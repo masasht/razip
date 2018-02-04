@@ -25,4 +25,3 @@ module RcCarClip
     config.time_zone = 'Tokyo'
   end
 end
-
