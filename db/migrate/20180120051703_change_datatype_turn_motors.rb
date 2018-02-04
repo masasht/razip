@@ -1,6 +1,5 @@
 class ChangeDatatypeTurnMotors < ActiveRecord::Migration[5.0]
   def change
-    
     # 変更内容
     def up
       change_column :motors, :turn, :float 
