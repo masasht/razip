@@ -69,10 +69,6 @@ ul.nav.navbar-nav.navbar-center {
     margin-left: 1.5%;
     padding-left: 24px;
     background: #222222;
-    background: -moz-linear-gradient(left, #222222 0%, #333333 50%, #222222 100%);
-    background: -webkit-linear-gradient(left, #222222 0%,#333333 50%,#222222 100%);
-    background: linear-gradient(to right, #222222 0%,#333333 50%,#222222 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#222222',GradientType=1 );
 }
 
 .navbar-inverse .navbar-nav li a {
@@ -89,7 +85,7 @@ ul.nav.navbar-nav.navbar-center {
 }
 
 .navbar-toggle {
-    background-color: #222;
+    background: #222222;
     border-color: #333;
     margin-top: 0;
     margin-bottom: 0;
@@ -169,10 +165,7 @@ button.navbar-toggle::before {
 
 #new-machines-area {
     background: #222222;
-    background: -moz-linear-gradient(left, #222222 0%, #333333 50%, #222222 100%);
-    background: -webkit-linear-gradient(left, #222222 0%,#333333 50%,#222222 100%);
-    background: linear-gradient(to right, #222222 0%,#333333 50%,#222222 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#222222',GradientType=1 );
+    padding-bottom: 24px;
 }
 
 .row.new-machines-wrap {
@@ -367,10 +360,6 @@ h2.machine-name::before {
     position: relative;
     padding: 15px;
     background: #222222;
-    background: -moz-linear-gradient(left, #222222 0%, #333333 50%, #222222 100%);
-    background: -webkit-linear-gradient(left, #222222 0%,#333333 50%,#222222 100%);
-    background: linear-gradient(to right, #222222 0%,#333333 50%,#222222 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#222222',GradientType=1 );
 }
 
 .machine-image .machine-show-counts {

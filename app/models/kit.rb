@@ -8,8 +8,6 @@ class Kit < ApplicationRecord
   validates :drive_system, presence: true, length: { maximum: 50 }
   validates :user_id, presence: true
   
-  mount_uploader :image, ImageUploader
-
   has_many :machines
   has_many :users
   #has_many :users, through: :machines

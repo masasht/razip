@@ -8,8 +8,6 @@ class Motor < ApplicationRecord
   validates :maker_url, format: /\A#{URI::regexp(%w(http https))}\z/, :allow_blank => true
   validates :brush, presence: true
   
-  mount_uploader :image, ImageUploader
-  
   has_many :machines
   has_many :microposts
   
