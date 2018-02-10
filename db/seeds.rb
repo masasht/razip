@@ -37,14 +37,14 @@ require "csv"
 #  FrequencySelection.create!(frequency_type: row[0])
 #end
 
-CSV.foreach('db/profile_selections.csv') do |row|
-  ProfileSelection.create!(profile_type: row[0])
-end
+#CSV.foreach('db/profile_selections.csv') do |row|
+#  ProfileSelection.create!(profile_type: row[0])
+#end
 
 CSV.foreach('db/sencor_selections.csv') do |row|
-  SencorSelections.create!(sensor: row[0])
+  SencorSelection.create!(sensor: row[0])
 end
 
 CSV.foreach('db/servo_selections.csv') do |row|
-  ServoSelections.create!(servo_type: row[0])
+  ServoSelection.create!(servo_type: row[0])
 end
