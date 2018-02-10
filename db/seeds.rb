@@ -18,27 +18,27 @@ require "csv"
 
 
 CSV.foreach('db/battery_selections.csv') do |row|
-  BatterySelections.create!(battery_type: row[0])
+  BatterySelection.create!(battery_type: row[0])
 end
 
 CSV.foreach('db/brush_selections.csv') do |row|
-  BrushSelections.create!(motor_type: row[0])
+  BrushSelection.create!(motor_type: row[0])
 end
 
 CSV.foreach('db/category_selections.csv') do |row|
-  CategorySelections.create!(category: row[0])
+  CategorySelection.create!(category: row[0])
 end
 
 CSV.foreach('db/drive_selections.csv') do |row|
-  DriveSelections.create!(drive_system: row[0])
+  DriveSelection.create!(drive_system: row[0])
 end
 
 CSV.foreach('db/frequency_selections.csv') do |row|
-  FrequencySelections.create!(frequency_type: row[0])
+  FrequencySelection.create!(frequency_type: row[0])
 end
 
 CSV.foreach('db/profile_selections.csv') do |row|
-  ProfileSelections.create!(profile_type: row[0])
+  ProfileSelection.create!(profile_type: row[0])
 end
 
 CSV.foreach('db/sencor_selections.csv') do |row|
