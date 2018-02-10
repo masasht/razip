@@ -14,7 +14,7 @@ class ReceviersController < ApplicationController
   end
   def show
     @recevier = Recevier.find(params[:id])
-    @machines = @recevier.machines
+    @machines = @recevier.machines.order(created_at: "DESC").page(params[:machine_page]).per(8)
 
     #　↓ここがきれいじゃない
     recevier_post = @recevier.class.name.downcase

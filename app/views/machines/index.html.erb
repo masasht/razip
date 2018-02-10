@@ -6,7 +6,7 @@
   </div>
   <div>
     <%= f.label :kit_id_eq, "キットで検索" %>
-    <%= f.collection_select :kit_id_eq, Kit.all, :id, :name, {}, {class: 'form-control'} %>
+    <%= f.collection_select :kit_id_eq, Kit.all, :id, :name, {include_blank: true}, {class: 'form-control'} %>
   </div>
   <%= f.submit "Search", class: 'btn btn-primary'%>
 <% end %>

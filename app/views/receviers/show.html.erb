@@ -1,44 +1,79 @@
-<% if logged_in? && current_user.admin? %>
-  <%= link_to 'アイテム編集', edit_recevier_path(@recevier) %>
-<% end %>
+<div class="row page-title">
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10">
+    <h2 class = "on-white"><%= @recevier.name %></h2>
+  </div>
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
 
-<div class="row">
-  <h2 class = "text-center"><%= @recevier.name %></h2>
-  <div class = "col-sm-6">
-    <%= image_tag @recevier.image_url, class: 'img-100' %> 
-     <cite class = "text-muted small text-right">画像引用：<%= link_to "＜#{@recevier.maker.maker_name}website＞#{@recevier.name}", @recevier.maker_url %></p></cite>
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-5 com-md-5 col-lg-5">
+    in preparation
   </div>
-  <div class = "col-sm-6">
-    <blockquote>
-      <p>メーカー：<%= @recevier.maker.maker_name %></p>
-      <p>定価：<%= @recevier.list_price %> 円</p>
-      <p>通信方式：<%= @recevier.frequency %></p>
-      <p>チャンネル数：<%= @recevier.channel %></p>
-      <p>寸法：<%= @recevier.dimensions %> mm</p>
-      <p>重量：<%= @recevier.weight %> g</p>
-      <cite class = "text-muted small text-right">スペック引用：<%= link_to "＜#{@recevier.maker.maker_name}website＞#{@recevier.name}", @recevier.maker_url %></p></cite>
-    </blockquote>
+  <div class = "col-xs-12 col-sm-5 com-md-5 col-lg-5">
+    <% if logged_in? && current_user.admin? %>
+      <%= link_to 'アイテム編集', edit_recevier_path(@recevier) %>
+    <% end %>
+    <div class = "item-specs">
+      <blockquote>
+        <dl>
+          <dt>メーカー</dt>
+          <dd><%= @recevier.maker.maker_name %></dd>
+          <dt>定価</dt>
+          <dd><%= @recevier.list_price %><span> 円</span></dd>
+          <dt>通信方式</dt>
+          <dd><%= @recevier.frequency %></dd>
+          <dt>チャンネル数</dt>
+          <dd><%= @recevier.channel %></dd>
+          <dt>寸法</dt>
+          <dd><%= @recevier.dimensions %><span> mm</span></dd>
+          <dt>重量</dt>
+          <dd><%= @recevier.weight %><span> g</span></dd>
+        </dl>
+        <cite class = "text-muted small text-right">スペック引用<br><%= link_to "＜#{@recevier.maker.maker_name}website＞#{@recevier.name}", @recevier.maker_url %></p></cite>
+      </blockquote>
+    </div>
   </div>
-</div>
-<div class="row item_info">
-  <div class="panel panel-default">
-    <div class="panel-heading">Information</div>
-    <div class="panel-body">
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10 item-info-area">
+    <div class = "col-xs-12 col-sm-4"><h3 class = "text-center">INFORMATION</h3></div>
+    <div class= "col-xs-12 col-sm-8">
         <%= simple_format(@recevier.information) %>
     </div>
   </div>
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
 </div>
-<% if logged_in? %>
-  <div>
-    <h3><%= @recevier.name %>へのコメント</h3>
-      <%= render 'microposts/microposts', microposts: @microposts %>
+
+<div class="row item-comments">
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10">
+    <h2><small>Comment on</small> <%= @recevier.name %></h2>
+    <% if logged_in? %>
       <p>コメント投稿</p>
       <%= render 'microposts/post_form', {micropost: @micropost, item: @recevier, post_item: @post_item} %>
+      <%= render 'microposts/microposts', microposts: @microposts %>
+
+    <% else %>
+      <div class = "well col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <p class = "text-warning">ログインするとコメントの閲覧と投稿ができます</p>
+        <%= render 'sessions/form' %>
+      </div>
+    <% end %> 
+
   </div>
-<% else %>
-  ログインしてください
-<% end %> 
-<div>
-  <h3><%= @recevier.name %>搭載マシン</h3>
-    <%= render 'machines/machines', machines: @machines %>
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+</div>
+  
+<div class="row equipped">
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10 blank-area1">
+    <h2 class = "on-black">EQUIPPED MACHINES</h2>
+    <% if @machines.empty? %>
+      <p class = "unregistered">まだ登録されていません</p>
+    <% else %>
+      <%= render 'machines/machines', machines: @machines %>
+    <% end %>
+  </div>
+
 </div>

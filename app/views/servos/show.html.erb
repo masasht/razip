@@ -1,44 +1,91 @@
-<% if logged_in? && current_user.admin? %>
-  <%= link_to 'アイテム編集', edit_servo_path(@servo) %>
-<% end %>
+<div class="row page-title">
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10">
+    <h2 class = "on-white"><%= @servo.name %></h2>
+  </div>
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
 
-<div class="row">
-  <h2 class = "text-center"><%= @servo.name %></h2>
-  <div class = "col-sm-6">
-    <%= image_tag @servo.image_url, class: 'img-100' %> 
-     <cite class = "text-muted small text-right">画像引用：<%= link_to "＜#{@servo.maker.maker_name}website＞#{@servo.name}", @servo.maker_url %></p></cite>
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-5 com-md-5 col-lg-5">
+    in preparation
   </div>
-  <div class = "col-sm-6">
-    <blockquote>
-      <p>メーカー：<%= @servo.maker.maker_name %></p>
-      <p>定価：<%= @servo.list_price %> 円</p>
-      <p>サーボタイプ<%= @servo.servo_type %></p>
-      <p>形状：<%= @servo.profile %></p>
-      <p>スピード(-sec/60°)<br>　7.4V：<%= @servo.speed_74 %> 6.0V：<%= @servo.speed_60 %> 4.8V：<%= @servo.speed_48 %>
-      <p>トルク(kg・cm)<br>　7.4V：<%= @servo.torque_74 %> 6.0V：<%= @servo.torque_60 %> 4.8V：<%= @servo.torque_48 %></p>
-      <p>寸法：<%= @servo.dimensions %> mm</p>
-      <p>重量：<%= @servo.weight %> g</p>
-      <cite class = "text-muted small text-right">スペック引用：<%= link_to "＜#{@servo.maker.maker_name}website＞#{@servo.name}", @servo.maker_url %></p></cite>
-    </blockquote>
+  <div class = "col-xs-12 col-sm-5 com-md-5 col-lg-5">
+    <% if logged_in? && current_user.admin? %>
+      <%= link_to 'アイテム編集', edit_servo_path(@servo) %>
+    <% end %>
+    <div class = "item-specs">
+      <blockquote>
+        <dl>
+          <dt>メーカー</dt>
+          <dd><%= @servo.maker.maker_name %></dd>
+          <dt>定価</dt>
+          <dd><%= @servo.list_price %><span> 円</span></dd>
+          <dt>サーボ種別</dt>
+          <dd><%= @servo.servo_type %></dd>
+          <dt>形状</dt>
+          <dd><%= @servo.profile %></dd>
+          <dt>スピード(7.4V)</dt>
+          <dd><%= @servo.speed_74 %><span> sec/60°</span></dd>
+          <dt>スピード(6.0V)</dt>
+          <dd><%= @servo.speed_60 %><span> sec/60°</span></dd>
+          <dt>スピード(4.8V)</dt>
+          <dd><%= @servo.speed_48 %><span> sec/60°</span></dd>
+          <dt>トルク(7.4V)</dt>
+          <dd><%= @servo.torque_74 %><span> (kg・cm)</span></dd>
+          <dt>トルク(6.0V)</dt>
+          <dd><%= @servo.torque_60 %><span> (kg・cm)</span></dd>
+          <dt>トルク(4.8V)</dt>
+          <dd><%= @servo.torque_48 %><span> (kg・cm)</span></dd>
+          <dt>寸法</dt>
+          <dd><%= @servo.dimensions %><span> mm</span></dd>
+          <dt>重量</dt>
+          <dd><%= @servo.weight %><span>  g</span></dd>
+        </dl>
+        <cite class = "text-muted small text-right">スペック引用<br><%= link_to "＜#{@servo.maker.maker_name}website＞#{@servo.name}", @servo.maker_url %></p></cite>
+      </blockquote>
+    </div>
   </div>
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10 item-info-area">
+    <div class = "col-xs-12 col-sm-4"><h3 class = "text-center">INFORMATION</h3></div>
+    <div class= "col-xs-12 col-sm-8">
+        <%= simple_format(@servo.information) %>
+    </div>
+  </div>
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
 </div>
-<div class="panel panel-default">
-  <div class="panel-heading">Information</div>
-  <div class="panel-body">
-      <%= simple_format(@servo.information) %>
-  </div>
-</div>
-<% if logged_in? %>
-  <div>
-    <h3><%= @servo.name %>へのコメント</h3>
-      <%= render 'microposts/microposts', microposts: @microposts %>
+
+<div class="row item-comments">
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10">
+    <h2><small>Comment on</small> <%= @servo.name %></h2>
+    <% if logged_in? %>
       <p>コメント投稿</p>
       <%= render 'microposts/post_form', {micropost: @micropost, item: @servo, post_item: @post_item} %>
+      <%= render 'microposts/microposts', microposts: @microposts %>
+
+    <% else %>
+      <div class = "well col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <p class = "text-warning">ログインするとコメントの閲覧と投稿ができます</p>
+        <%= render 'sessions/form' %>
+      </div>
+    <% end %> 
+
   </div>
-<% else %>
-  ログインしてください
-<% end %> 
-<div>
-  <h3><%= @servo.name %>搭載マシン</h3>
-    <%= render 'machines/machines', machines: @machines %>
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+</div>
+  
+<div class= "row equipped">
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10 blank-area1">
+    <h2 class = "on-black">EQUIPPED MACHINES</h2>
+    <% if @machines.empty? %>
+      <p class = "unregistered">まだ登録されていません</p>
+    <% else %>
+      <%= render 'machines/machines', machines: @machines %>
+    <% end %>
+  </div>
+
 </div>

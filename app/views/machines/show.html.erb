@@ -1,40 +1,40 @@
-<div class="row">
-  <h2><%= @machine.machine_name %></h2>
-  <div class = "col-sm-8">
-    <div>
-      <%= image_tag @machine.image_url, class: 'img-100' %>
-    </div>
-    <div class = "flex machine_clips">
-      <% if logged_in? %>
-        <%= render 'clips/clip_button', machine: @machine %>
-      <% else %>
-          ログインするとクリップできます。
-      <% end %>
-      <%= render 'clips/clip_counts', machine: @machine %>
-    </div>
-  </div>
-  <div class = "col-sm-4">
-    <div class="panel panel-default">
-
-      <ul class="list-group">
-        <li class="list-group-item">オーナー：<%= link_to @machine.user.name, user_path(@machine.user_id) %></li>
-        <li class="list-group-item">キット：<%= link_to @machine.kit.name, kit_path(@machine.kit_id) %></li>
-        <li class="list-group-item">キット：<%= link_to @machine.kit.name, kit_path(@machine.kit_id) %></li>
-        <li class="list-group-item">モーター：<%= link_to @machine.motor.name, motor_path(@machine.motor_id) %></li>
-        <li class="list-group-item">ESC：<%= link_to @machine.esc.name, esc_path(@machine.esc_id) %></li>
-        <li class="list-group-item">サーボ：<%= link_to @machine.servo.name, servo_path(@machine.servo_id) %></li>
-        <li class="list-group-item">受信機：<%= link_to @machine.recevier.name, recevier_path(@machine.recevier_id) %></li>
-        <li class="list-group-item">クラス：<%= @machine.regulation %></li>
-        <li class="list-group-item">その他仕様：<br><%= simple_format(@machine.other) %></li>
-      </ul>
-    </div>
+<div class = "row machine-show-area">
+  <div class = "blank-area1 hidden-xs hidden-md col-sm-1 col-lg-1"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-8 col-lg-7 machine-image ">
+    <h2 class = "machine-name"><%= @machine.machine_name %></h2>
+    <%= image_tag @machine.image_url, class: 'img-100' %>
+    <span class = "machine-show-counts"><%= render 'clips/clip_counts', machine: @machine %></span>
     <% if logged_in? %>
-      <%= render 'machines/edit_button', machine: @machine %>
+      <div class = "clip-btns-wrap">
+        <div class = "clip-btn"><%= render 'clips/clip_button', machine: @machine %></div>
+        <div class = "edit-btn"><%= render 'machines/edit_button', machine: @machine %></div>
+      </div>
     <% end %>
   </div>
-  <div class = "col-sm-10 col-sm-offset-1">
-    <div class="panel panel-default">
-      <div class="panel-heading">オーナーのコメント</div>
-      <div class="panel-body"><%= simple_format(@machine.information) %></div>
+  <div class = "blank-area2 hidden-xs col-sm-1 hidden-md hidden-lg"></div>
+  <div class = "blank-area2 hidden-xs col-sm-1 hidden-md hidden-lg"></div>
+  <div class = "col-xs-12 col-sm-5 col-md-4">
+    <h3>Machine's data</h3>
+    <dl class = "spec">
+      <dt>Owner</dt><dd><%= link_to @machine.user.name, user_path(@machine.user_id) %></dd>
+      <dt>Kit(Chassis)</dt><dd><%= link_to @machine.kit.name, kit_path(@machine.kit_id) %></dd>
+      <dt>Motor</dt><dd><%= link_to @machine.motor.name, motor_path(@machine.motor_id) %></dd>
+      <dt>Esc</dt><dd><%= link_to @machine.esc.name, esc_path(@machine.esc_id) %></dd>
+      <dt>Servo</dt><dd><%= link_to @machine.servo.name, servo_path(@machine.servo_id) %></dd>
+      <dt>Recevier</dt><dd><%= link_to @machine.recevier.name, recevier_path(@machine.recevier_id) %></dd>
+      <dt>Class</dt><dd><%= @machine.regulation %></dd>
+      <dt>Other</dt><dd><%= simple_format(@machine.other) %></dd>
+    </dl>
+
   </div>
+  <div class = "blank-area2 hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+  <div class = "col-xs-12 col-sm-5 col-md-7">  
+    <div class = "owner-comement-box">
+      <h3>Owner's COMMENT</h3>
+      <div class="panel-body"><%= simple_format(@machine.information) %></div>
+    </div>
+  </div>
+  <div class = "blank-area1 hidden-xs col-sm-1 col-md-4 col-lg-4"></div>
+
 </div>
+

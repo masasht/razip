@@ -4,14 +4,14 @@ class ClipsController < ApplicationController
   def create
     machine = Machine.find(params[:machine_id])
     current_user.fasten(machine)
-    flash[:success] = 'クリップしました。'
+    flash[:success] = 'いいねしました。'
     redirect_to machine
   end
 
   def destroy
     machine = Machine.find(params[:machine_id])
     current_user.unfasten(machine)
-    flash[:success] = 'クリップを解除しました。'
+    flash[:success] = 'いいねを解除しました。'
     redirect_to machine
   end
 end

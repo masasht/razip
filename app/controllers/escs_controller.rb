@@ -17,7 +17,7 @@ class EscsController < ApplicationController
 
   def show
     @esc = Esc.find(params[:id])
-    @machines = @esc.machines
+    @machines = @esc.machines.order(created_at: "DESC").page(params[:machine_page]).per(8)
     
     #　↓ここがきれいじゃない
     esc_post = @esc.class.name.downcase

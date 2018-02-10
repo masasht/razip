@@ -1,50 +1,87 @@
-<% if logged_in? && current_user.admin? %>
-  <%= link_to 'アイテム編集', edit_motor_path(@motor) %>
-<% end %>
+<div class="row page-title">
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10">
+    <h2 class = "on-white"><%= @motor.name %></h2>
+  </div>
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
 
-<div class="row">
-  <h2 class = "text-center"><%= @motor.name %></h2>
-  <div class = "col-sm-6">
-    <%= image_tag @motor.image_url, class: 'img-100' %> 
-     <cite class = "text-muted small text-right">画像引用：<%= link_to "＜#{@motor.maker.maker_name}website＞#{@motor.name}", @motor.maker_url %></p></cite>
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-5 com-md-5 col-lg-5">
+    in preparation
   </div>
-  <div class = "col-sm-6">
-    <blockquote>
-      <p>メーカー：<%= @motor.maker.maker_name %></p>
-      <p>定価：<%= @motor.list_price %> 円</p>
-      <p>モータータイプ<%= @motor.brush %></p>
-      <p>センサー：<%= @motor.sencor %></p>
-      <p>ターン数：<%= @motor.turn %> ターン</p>
-      <p>kv値：<%= @motor.kv %> rpm/V</p>
-      <p>最高回転：<%= @motor.kv %> rpm</p>
-      <p>トルク<%= @motor.torque %> kg・cm</p>
-      <p>動作電圧：<%= @motor.voltage %> V</p>
-      <p>最大電流：<%= @motor.ampere %> A</p>
-      <cite class = "text-muted small text-right">スペック引用：<%= link_to "＜#{@motor.maker.maker_name}website＞#{@motor.name}", @motor.maker_url %></p></cite>
-    </blockquote>
+  <div class = "col-xs-12 col-sm-5 com-md-5 col-lg-5">
+    <% if logged_in? && current_user.admin? %>
+      <%= link_to 'アイテム編集', edit_motor_path(@motor) %>
+    <% end %>
+    <div class = "item-specs">
+      <blockquote>
+        <dl>
+          <dt>メーカー</dt>
+          <dd><%= @motor.maker.maker_name %></dd>
+          <dt>定価</dt>
+          <dd><%= @motor.list_price %><span> 円</span></dd>
+          <dt>モータータイプ</dt>
+          <dd><%= @motor.brush %></dd>
+          <dt>センサー</dt>
+          <dd><%= @motor.sencor %></dd>
+          <dt>ターン数</dt>
+          <dd><%= @motor.turn %><span> T</span></dd>
+          <dt>kv値</dt>
+          <dd><%= @motor.kv %><span> rpm/V</span></dd>
+          <dt>最高回転</dt>
+          <dd><%= @motor.kv %><span> rpm<</span></dd>
+          <dt>トルク</dt>
+          <dd><%= @motor.torque %></dd>
+          <dt>動作電圧</dt>
+          <dd><%= @motor.voltage %><span> V</span></dd>
+          <dt>最大電流</dt>
+          <dd><%= @motor.ampere %><span> A</span></dd>
+        </dl>
+        <cite class = "text-muted small text-right">スペック引用<br><%= link_to "＜#{@motor.maker.maker_name}website＞#{@motor.name}", @motor.maker_url %></p></cite>
+      </blockquote>
+    </div>
   </div>
-</div>
-<div class="row item_info">
-  <div class="panel panel-default">
-    <div class="panel-heading">Information</div>
-    <div class="panel-body">
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10 item-info-area">
+    <div class = "col-xs-12 col-sm-4"><h3 class = "text-center">INFORMATION</h3></div>
+    <div class= "col-xs-12 col-sm-8">
         <%= simple_format(@motor.information) %>
     </div>
   </div>
-</div> 
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+</div>
 
-<% if logged_in? %>
-  <div>
-    <h3><%= @motor.name %>へのコメント</h3>
-      <%= render 'microposts/microposts', microposts: @microposts %>
+<div class="row item-comments">
+  <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10">
+    <h2><small>Comment on</small> <%= @motor.name %></h2>
+    <% if logged_in? %>
       <p>コメント投稿</p>
       <%= render 'microposts/post_form', {micropost: @micropost, item: @motor, post_item: @post_item} %>
-  </div>
-<% else %>
-    ログインするとユーザのコメントが表示されます
-<% end %> 
+      <%= render 'microposts/microposts', microposts: @microposts %>
 
-<div>
-  <h3><%= @motor.name %>搭載マシン</h3>
-    <%= render 'machines/machines', machines: @machines %>
+    <% else %>
+      <div class = "well col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <p class = "text-warning">ログインするとコメントの閲覧と投稿ができます</p>
+        <%= render 'sessions/form' %>
+      </div>
+    <% end %> 
+
+  </div>
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+</div>
+  
+<div class="row equipped">
+  <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10 blank-area1">
+    <h2 class = "on-black">EQUIPPED MACHINES</h2>
+    <% if @machines.empty? %>
+      <p class = "unregistered">まだ登録されていません</p>
+    <% else %>
+      <%= render 'machines/machines', machines: @machines %>
+    <% end %>
+  </div>
+
 </div>

@@ -1,16 +1,31 @@
-<div class = "row flex">
-    <% motors.each do |motor| %>
-      <div class = "col-sm-4 item-list center-block">
-        <div>
-          <div><%= link_to image_tag(motor.image_url(:thumb).to_s), motor %></div>
-          <h4 class = "item-list"><%= link_to motor.name, motor %></h4>
-          <div>メーカー：<%= motor.maker.maker_name %></div>
-          <div>定価：<%= motor.list_price %> 円</div>
-          <div>タイプ：<%= motor.brush %></div>
-          <div>ターン数：<%= motor.turn %> t</div>
-          <div>KV値：<%= motor.kv %> rpm/V</div>
-        </div>
-      </div>
-    <% end %>
-    <%= paginate motors %>
+<div class = "row item-list">
+  <div class="col-xs-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>モーター</th>
+          <th class = "hidden-xs">メーカー</th>
+          <th class = "hidden-xs">定価</th>
+          <th>タイプ</th>
+          <th>ターン数</th>
+          <th>KV値</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% motors.each do |motor| %>
+          <tr>
+            <td><%= link_to motor.name, motor %></td>
+            <td class = "hidden-xs"><%= motor.maker.maker_name %></td>
+            <td class = "hidden-xs"><%= motor.list_price %><span class = "list-specs"> 円</span></td>
+            <td><%= motor.brush %></td>
+            <td><%= motor.turn %><span class = "list-specs"> T</span></td>
+            <td><%= motor.kv %><span class = "list-specs"> rpm/V</span></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class = "paginate-center">
+  <%= paginate motors %>
 </div>

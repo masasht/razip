@@ -18,7 +18,7 @@ class KitsController < ApplicationController
 
   def show
     @kit = Kit.find(params[:id])
-    @machines = @kit.machines
+    @machines = @kit.machines.order(created_at: "DESC").page(params[:machine_page]).per(8)
     
     #　↓ここがきれいじゃない
     kit_post = @kit.class.name.downcase

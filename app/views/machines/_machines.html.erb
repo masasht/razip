@@ -1,4 +1,4 @@
-<div class = "row flex card-wrap ">
+<div class = "row new-machines-wrap" id = "machines-wrap">
 
   <% machines.each do |machine| %>
     <% user = machine.user %>
@@ -6,14 +6,17 @@
     <% if machine.image == nil %>
       <%= machine.image = "https://s3-ap-northeast-1.amazonaws.com/rc-car-clip/uploads/no_image/thumb_noimage.png" %>
     <% end %>
-    <div class = "col-sm-6 col-md-4 center-block card">
-      <div  class = "card-inner">
+    <div class = "col-xs-6 col-sm-6 col-md-3 machine-card">
+      <div>
         <%= link_to image_tag(machine.image_url(:thumb).to_s), machine_path(machine), class: "center-block" %>
-        <h4><%= link_to machine.machine_name.truncate(18), machine_path(machine) %></h4>
-        <p class = "text-right">
-        <span class="text-muted"><%= machine.updated_at.to_s(:db) %>：</span><%= link_to user.name, user_path(user) %></p>
-        <%= render 'clips/clip_counts', machine: machine %>
+        <figure class = "machine-card-name">
+          <span><%= machine.machine_name.truncate(18) %></span>
+        </figure>
+        <figure class = "machine-card-bottom">
+          <span class ="card-bottom">いいね<span class="glyphicon glyphicon-star" aria-hidden="true"></span> <%= machine.fastened.count %></span>
+        </figure>
       </div>
     </div>
   <% end %>
 </div>
+<div class = "text-center"><%= paginate machines, :param_name => 'machine_page', :params => { :anchor => 'machines-wrap' }  %></div>

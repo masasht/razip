@@ -1,34 +1,38 @@
 <div class="text-center">
-  <h1>ユーザ情報編集</h1>
+  <h2 class = "on-white">ユーザ情報編集</h2>
 </div>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="row user-edit-wrap">
+  <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
 
     <%= form_for(@user) do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       <div class="form-group">
-        <%= f.label :name, 'Name' %>
+        <%= f.label :name, 'Name' %>　<small class = "text-muted">表示名</small>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :email, 'Email' %>
+        <%= f.label :email, 'Email' %>　<small class = "text-muted">他ユーザには非公開です</small>
         <%= f.email_field :email, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        ユーザ属性
-        <%= f.radio_button :user_class, "ワークス" %> 
-        <%= f.label :ワークス %>
-        <%= f.radio_button :user_class, "カツカツ" %>
-        <%= f.label :カツカツ %>
-        <%= f.radio_button :user_class, "そこそこ" %> 
-        <%= f.label :そこそこ %>
-        <%= f.radio_button :user_class, "まったり" %> 
-        <%= f.label :まったり %>
-        <%= f.radio_button :user_class, "初心者" %> 
-        <%= f.label :初心者 %>
+        <div><%= f.label :user_class, 'ユーザ属性' %></div>
+        <div class = "user-class-radio"><%= f.radio_button :user_class, "ワークス" %>
+        <span class="glyphicon glyphicon-user works" aria-hidden="true"></spam><%= f.label :ワークス %></div>
+        
+        <div class = "user-class-radio"><%= f.radio_button :user_class, "カツカツ" %>
+        <span class="glyphicon glyphicon-user katsu2" aria-hidden="true"></spam><%= f.label :カツカツ %></div>
+        
+        <div class = "user-class-radio"><%= f.radio_button :user_class, "そこそこ" %> 
+        <span class="glyphicon glyphicon-user soko2" aria-hidden="true"></spam><%= f.label :そこそこ %></div>
+        
+        <div class = "user-class-radio"><%= f.radio_button :user_class, "まったり" %> 
+        <span class="glyphicon glyphicon-user mattari" aria-hidden="true"></spam><%= f.label :まったり %></div>
+        
+        <div class = "user-class-radio"><%= f.radio_button :user_class, "初心者" %> 
+        <span class="glyphicon glyphicon-user begginer" aria-hidden="true"></spam><%= f.label :初心者 %></div>
       </div>
 
       <div class="form-group">
@@ -42,7 +46,7 @@
       </div>
       
       <div class="form-group">
-        <%= f.label :site_url, 'ホームページ・ブログのURL' %>
+        <%= f.label :site_url, 'ホームページ・ブログのURL' %>　<small class = "text-muted">（http://~~~）</small>
         <%= f.url_field :site_url, class: 'form-control' %>
       </div>
       

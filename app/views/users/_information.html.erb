@@ -1,20 +1,18 @@
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= user.name %>さん</h3>
-      </div>
-      <div class="panel-body">
-        <h6 class= "text-muted">ユーザ属性 ―</h6>
-        <div class = "lead"><span class="glyphicon glyphicon-user <%= user_icon(user) %>" aria-hidden="true"></span><%= user.user_class %></div>
-        <hr>
-        <h6 class= "text-muted">自己紹介 ―</h6>
-        <div><%= simple_format(user.user_introduction) %></div>
-        <hr>
-        <h6 class= "text-muted">ブログ・ホームページ ―</h6>
-        
-        <%= link_to user.site_name, user.site_url %>
-      </div>
-    </div>
-    <div class = "flex">
-      <%= render 'relationships/follow_button', user: user %>
-      <%= render 'machines/new_button', user: user %>
-    </div>
+<div class = "row user-information">
+  <div class="col-sm-6">
+    <dl>
+      <dt>ユーザ属性</dt>
+      <dd><span class = "lead"><span class="glyphicon glyphicon-user <%= user_icon(user) %>" aria-hidden="true"></span></span> <%= user.user_class %></dd>
+    </dl>
+    <dl>
+      <dt>ホームページ・ブログ</dt>
+      <dd><%= link_to user.site_name, user.site_url %></dd>
+    </dl>
+  </div>
+  <div class="col-sm-6">
+    <dl>
+      <dt>自己紹介</dt>
+      <dd><%= simple_format(user.user_introduction) %></dd>
+    </dl>
+  </div>
+</div>

@@ -1,26 +1,9 @@
 <% if items.empty? %>
   まだデータがありません
 <% else %>
-  <% lastest_item = items.first %>
-  <% if lastest_item && lastest_item.image == nil %>
-    <%= lastest_item.image = "https://s3-ap-northeast-1.amazonaws.com/rc-car-clip/uploads/no_image/thumb_noimage.png" %>        
-  <% end %>
-
-  <% lastest_item = items.first %>
-  <% if lastest_item && lastest_item.image == nil %>
-    <%= lastest_item.image = "https://s3-ap-northeast-1.amazonaws.com/rc-car-clip/uploads/no_image/thumb_noimage.png" %>        
-  <% end %>
-  
-  <div class = "row item-card-inner">
-    <div class = "col-xs-6">
-      <%= link_to image_tag(lastest_item.image_url(:thumb).to_s), lastest_item %>
+  <% items.each do |item| %>
+    <div class = "item-line">
+      <span class = "label label-item"><%= item.class.name %></span> <%= link_to item.name, item, class: 'item-name' %>
     </div>
-    <div class = "col-xs-6">
-      <ul class="item-card-ul">
-        <% items.each do |item| %>
-          <li class="item-card-li"><%= link_to item.name, item %></li>
-        <% end %>
-      </ul>
-    </div>    
-  </div>
+  <% end %>
 <% end %>

@@ -1,17 +1,33 @@
-<div class = "row flex">
-    <% servos.each do |servo| %>
-      <div class = "col-sm-4 item-list center-block">
-        <div>
-          <div><%= link_to image_tag(servo.image_url(:thumb).to_s), servo %></div>
-          <h4 class = "item-list"><%= link_to servo.name, servo %></h4>
-          <div>メーカー：<%= servo.maker.maker_name %></div>
-          <div>定価：<%= servo.list_price %> 円</div>
-          <div>タイプ：<%= servo.servo_type %></div>
-          <div>形状：<%= servo.profile %> t</div>
-          <div>KV値：<%= servo.speed_60 %> sec/60°</div>
-          <div>KV値：<%= servo.torque_60 %> kg・cm</div>
-        </div>
-      </div>
-    <% end %>
-    <%= paginate servos %>
+<div class = "row item-list">
+  <div class="col-xs-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>サーボ</th>
+          <th class = "hidden-xs">メーカー</th>
+          <th class = "hidden-xs">定価</th>
+          <th>デジアナ</th>
+          <th class = "hidden-xs">>形状</th>
+          <th>スピード(6V)</th>
+          <th>トルク(6V)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% servos.each do |servo| %>
+          <tr>
+            <td><%= link_to servo.name, servo %></td>
+            <td class = "hidden-xs"><%= servo.maker.maker_name %></td>
+            <td class = "hidden-xs"><%= servo.list_price %><span class = "list-specs"> 円</span></td>
+            <td><%= servo.servo_type %></td>
+            <td class = "hidden-xs"><%= servo.profile %></td>
+            <td><%= servo.speed_60 %><span class = "list-specs">sec/60°</span></td>
+            <td><%= servo.torque_60 %><span class = "list-specs">kg・cm</span></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class = "paginate-center">
+  <%= paginate servos %>
 </div>

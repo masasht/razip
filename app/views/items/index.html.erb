@@ -1,23 +1,30 @@
-<h2>データカテゴリー</h2>
-<%= link_to 'キットデータへ', kits_path, class: 'btn btn-default' %>
+<div class = "row page-title">
+  <div class = "blank-area1 col-sm-1 hidden-xs"></div>
+  <div class = "col-xs-12 col-sm-10">
+    <h2 class = "user-name">ITEMS DATA</h2>
+    <div class = "items-data">
+      <%= link_to 'キットデータ', kits_path, class: 'btn btn-primary' %>
+  
+      <%= link_to 'モーターデータ', motors_path, class: 'btn btn-primary' %>
+  
+      <%= link_to 'ESCデータ', escs_path, class: 'btn btn-primary' %>
+  
+      <%= link_to 'サーボデータ', servos_path, class: 'btn btn-primary' %>
+    
+      <%= link_to 'レシーバデータ', receviers_path, class: 'btn btn-primary' %>
+    </div>
+    <div class = "items-data-text">
+      データに誤りがありましたらご連絡いただけると嬉しいです。<br>
+      また、カテゴリーやアイテムの追加のご要望もお待ちしています。<br>
+      こちらへ⇒<%= link_to 'CONTACT', contact_path %></div>
+  </div>
+  <div class = "blank-area2 col-sm-1 hidden-xs"></div>
+</div>
 
 
-<%= link_to 'モーターデータへ', motors_path, class: 'btn btn-default' %>
 
 
-<%= link_to 'ESCデータへ', escs_path, class: 'btn btn-default' %>
 
 
-<%= link_to 'サーボデータへ', servos_path, class: 'btn btn-default' %>
 
-
-<%= link_to 'レシーバデータへ', receviers_path, class: 'btn btn-default' %>
-
-<p>
-  データに誤りがありましたらお手数をおかけしますが、ご連絡ください。
-</p>
-<p>
-  また、カテゴリーやアイテムの追加のご要望も遠慮なくお申し付けください。<br>
-  なるべく早く対応させていただきます。
-</p>
   

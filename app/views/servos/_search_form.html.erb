@@ -1,5 +1,5 @@
 <div class = "search-area">
-  <a class="search-toggle btn btn-default btn-block" data-toggle="collapse" href="#collapseExample">
+  <a class="search-toggle btn btn-primary btn-block" data-toggle="collapse" href="#collapseExample">
   	検索メニュー表示
   </a>
   <div class="collapse" id="collapseExample">
@@ -11,23 +11,23 @@
       </p>
       <p>
         <%= f.label :maker, 'メーカー' %>
-        <%= f.collection_select :maker_id_eq, @makers, :id, :maker_name, {include_blank: true}, {class: 'form-control'} %>
+        <%= f.collection_select :maker_id_eq, @makers, :id, :maker_name, {include_blank: true}, {class: 'form-m form-control'} %>
       </p>
       <p>
         <%= f.label :servo_type, 'デジタルorアナログ' %>
-        <%= f.collection_select :servo_type_eq, ServoSelection.all, :servo_type, :servo_type, {include_blank: true}, {class: 'form-control'} %>
+        <%= f.collection_select :servo_type_eq, ServoSelection.all, :servo_type, :servo_type, {include_blank: true}, {class: 'form-m form-control'} %>
       </p>
       <p>
         <%= f.label :sprofile, '形状' %>
-        <%= f.collection_select :profile_eq , ProfileSelection.all, :profile_type, :profile_type, {include_blank: true}, {class: 'form-control'} %>
+        <%= f.collection_select :profile_eq , ProfileSelection.all, :profile_type, :profile_type, {include_blank: true}, {class: 'form-m form-control'} %>
       </p>
       <p>
         <%= f.label :speed_60, 'スピード(6.0V)' %>
-        <%= f.text_field :speed_60_lteq, {class: 'form-control'} %>sec&#47;60° 以下
+        <%= f.text_field :speed_60_lteq, {class: 'form-s form-control'} %> sec&#47;60° 以下
       </p>
       <p>
         <%= f.label :torque_60, 'トルク(6.0V)' %>
-        <%= f.number_field :torque_60_gteq, {class: 'form-control'} %>kg・cm 以上
+        <%= f.number_field :torque_60_gteq, {class: 'form-s form-control'} %> kg・cm 以上
       </p>
         <%= f.submit '検索', class: 'btn btn-primary' %>
         <% end %>

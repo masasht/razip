@@ -5,14 +5,13 @@ class UsersController < ApplicationController
   def index
 #    @users = User.all.page(params[:page])
     @search = User.search(params[:q])
-    @users = @search.result
+    @users = @search.result.order('created_at DESC').page(params[:page]).per(12)
   end
 
   def show
     @user = User.find(params[:id])
 #    @machine = @
 #    @machine = current_user.machines.build  # form_for 用
-    @machines = @user.machines.order('created_at DESC').page(params[:page])
     counts(@user)
   end
 
@@ -54,6 +53,11 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
+  def mine
+    @user = User.find(params[:id])
+    @machines = @user.machines.order('created_at DESC').page(params[:page]).per(8)
+  end
+  
   def followings
     @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page])
@@ -69,7 +73,7 @@ class UsersController < ApplicationController
   def fastenings
     @user = User.find(params[:id])
     @fastenings = @user.fastenings.page(params[:page])
-    @machines = @user.fastenings
+    @machines = @user.fastenings('created_at DESC').page(params[:page]).per(8)
     counts(@user)
   end
 

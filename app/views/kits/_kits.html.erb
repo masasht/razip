@@ -1,17 +1,29 @@
-<div class = "row flex">
-  <% kits.each do |kit| %>
-    <div class = "col-sm-4 item-list center-block">
-      <div>
-        <div><%= link_to image_tag(kit.image_url(:thumb).to_s), kit %></div>
-        <h4 class = "item-list"><%= link_to kit.name, kit %></h4>
-        <div>メーカー：<%= kit.maker.maker_name %></div>
-        <div>定価：<%= kit.list_price %>円</div>
-        <div>カテゴリー：<%= kit.category %></div>
-        <div>駆動形式：<%= kit.drive_system %></div>
-      </div>
-    </div>
-    <% end %>
+<div class = "row item-list">
+  <div class="col-xs-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>キット</th>
+          <th class = "hidden-xs">メーカー</th>
+          <th class = "hidden-xs">定価</th>
+          <th>カテゴリー</th>
+          <th>駆動形式</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% kits.each do |kit| %>
+          <tr>
+            <td><%= link_to kit.name, kit %></td>
+            <td class = "hidden-xs"><%= kit.maker.maker_name %></td>
+            <td class = "hidden-xs"><%= kit.list_price %><span class = "list-specs"> 円</span></td>
+            <td><%= kit.category %></td>
+            <td><%= kit.drive_system %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-<div>
+<div class = "paginate-center">
   <%= paginate kits %>
 </div>

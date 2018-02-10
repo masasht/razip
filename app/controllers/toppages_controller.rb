@@ -1,7 +1,7 @@
 class ToppagesController < ApplicationController
   
   def index
-    @new_machines = Machine.order(created_at: "DESC").first(6)
+    @new_machines = Machine.order(created_at: "DESC").page(params[:machine_page]).per(8)
     
     @new_kits = Kit.order(created_at: "DESC").first(6)
     @kit_link = "kits"
@@ -18,12 +18,13 @@ class ToppagesController < ApplicationController
     @new_receviers = Recevier.order(created_at: "DESC").first(6)
     @receiver_link = "receviers"
 
-
+    items = Kit.order(created_at: "DESC").first(6) + Motor.order(created_at: "DESC").first(6) + Esc.order(created_at: "DESC").first(6) + Servo.order(created_at: "DESC").first(6) + Recevier.order(created_at: "DESC").first(6)
+    @items = items.first(18)
     
     if logged_in?
       @user = current_user
       @micropost = current_user.microposts.build  #投稿フォーム用
-      @microposts = current_user.feed_microposts.order('created_at DESC').page(params[:page]).per(6)
+      @microposts = current_user.feed_microposts.order('created_at DESC').first(8)
     end
   end
   

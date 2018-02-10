@@ -1,43 +1,29 @@
 <header>
   <nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">RaZIP</a>
+    <div class="container-fluid navbar-container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to image_tag('logo-F44336.png', { :border => '0', :alt => 'ロゴ', class: "logo"}), root_path %>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-center">
+            <li><%= link_to 'マシン検索', machines_path %></li>
+            <li><%= link_to 'アイテム', items_path %></li>
+            <% if logged_in? %>
+              <li><%= link_to 'ユーザ検索', users_path %></li>
+              <li><%= link_to 'マイページ', user_path(current_user) %></li>
+              <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to 'ユーザ登録', signup_path %></li>
+              <li><%= link_to 'ログイン', login_path %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li class = "dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">データ<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><%= link_to 'キット',kits_path %></li>
-                <li><%= link_to 'モーター',motors_path %></li>
-                <li><%= link_to 'ESC',escs_path %></li>
-                <li><%= link_to 'サーボ',servos_path %></li>
-                <li><%= link_to 'レシーバー',receviers_path %></li>
-                <% if logged_in? && current_user.admin? %>
-                  <li><%= link_to 'メーカー',makers_path %></li>
-                <% end %>
-              </ul>
-          </li>
-          
-          <li><%= link_to 'マシン検索', machines_path %></li>
-          <% if logged_in? %>
-            <li><%= link_to 'ユーザ検索', users_path %></li>
-            <li><%= link_to 'マイページ', user_path(current_user) %></li>
-            <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to 'ユーザ登録', signup_path %></li>
-            <li><%= link_to 'ログイン', login_path %></li>
-          <% end %>
-          <li><%= link_to 'お問合せ', contact_path %></li>
-        </ul>
-      </div>
-    </div>
   </nav>
 </header>

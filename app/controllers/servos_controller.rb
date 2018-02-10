@@ -15,7 +15,7 @@ class ServosController < ApplicationController
 
   def show
     @servo = Servo.find(params[:id])
-    @machines = @servo.machines
+    @machines = @servo.machines.order(created_at: "DESC").page(params[:machine_page]).per(8)
     
     servo_post = @servo.class.name.downcase
     @post_item = servo_post + "_id"

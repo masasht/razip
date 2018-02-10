@@ -1,9 +1,8 @@
-<div class = "row top-wrap">
-  <div class="col-sm-12 col-md-6 top-image-box ">
-    <h3 class = "text-center">RC CAR CLIPへようこそ</h3>
+<div class = "row top-image">
+  <div class = "col-md-offset-1 col-md-6 col-sm-8">
+    <h3 class = "text-center">Welcome to RaZIP</h3>
     <div class = "top-text">
-      <p>RC CAR CRIPはEPラジコンカーを楽しむ人のためのサイトです。<br>
-      こんなことができます。
+      <p>EPラジコンカーを愛する人へ<br>
       <ul>
         <li>自慢の愛車を公開！</li>
         <li>他のユーザの愛車をクリップ！</li>
@@ -11,57 +10,48 @@
         <li>キットやパーツのデータを登録する（ご協力いただければ嬉しいです）</li>
         <li>キットやパーツにコメントをつける</li>
       </ul>
-      まだまだコンテンツ不足ですが、徐々に内容を充実させていきますのでよろしくお願いします</p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 top-right-box">
+  <div class = "col-md-4 col-sm-4">
+    <div class = "login-box center-block">
+      <% if logged_in? %>
+        
+        <%= link_to "#{current_user.name}さんの Mypage", user_path(current_user), class: 'btn btn-danger btn-block' %> 
+      <% else %>
+        <%= render 'sessions/form' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class = "row new-area"  id = "machines-wrap">
+  <div class = "blank-area1 col-sm-1 hidden-xs">
+  </div>
+  <div class = "col-sm-10 " id = "new-machines-area">
+    <h2 class = "on-black">New Machines</h2>
+    <%= render 'machines/machines', machines: @new_machines %>
+  </div>
+</div>
+
+<div class = "row new-area posts-items-wrap">
+  <div class = "blank-area2 col-sm-1 hidden-xs">
+  </div>
+  <div class = "col-xs-12 col-sm-10 col-md-5" id = "new-micoroposts-area">
+    <h2 class = "on-white">New Coments</h2>
     <% if logged_in? %>
-      <h3>新着コメント</h3>
       <%= render 'microposts/top_microposts', microposts: @microposts %>
     <% else %>
-      ログインすると愛車の公開やコメント投稿、閲覧ができるようになります。
-      <p>
-        <%= render 'sessions/form' %>
-      </p>
-    <% end %> 
-  </div>  
+      <p>コメントを表示するためには、ログインが必要です。</p>
+      <%= link_to 'ログイン', login_path, class: 'btn btn-primary center-block' %>
+    <% end %>
+  </div>
+  <div class = "blank-area1 col-sm-1 hidden-xs visible-sm hidden-md"></div>
+  <div class = "blank-area1 col-sm-1 hidden-xs visible-sm hidden-md"></div>
+  <div class = "new-items-area col-xs-12 col-sm-10 col-md-5">
+    <h2 class = "on-white">New Items</h2>
+      <%= render 'items', items: @items %>
+  </div>
+  <div class = "blank-area1 col-sm-1 hidden-xs hidden-sm"></div>
 </div>
 
-<h2 class = "top-new-machine-h2">新着マシン</h2>
-<%= render 'machines/machines', machines: @new_machines %>
 
-<section class = "top-section">
-  <h2>新着アイテム</h2>
-<div class = "row flex">
-
-  <div class = "col-xs-12 col-sm-6 center-block item-card-wrap">
-    <div class = "item-card">
-      <h3 class = "top-item-h3">新着キット</h3> <%= link_to '一覧へ', kits_path, class: 'small' %>
-      <%= render 'items', { items: @new_kits, goto: @kit_link } %>
-    </div>
-  </div>  
-  <div class = "col-xs-12 col-sm-6 center-block item-card-wrap">
-    <div class = "item-card">
-      <h3 class = "top-item-h3">新着モーター</h3> <%= link_to '一覧へ', motors_path, class: 'small' %>
-      <%= render 'items', { items: @new_motors, goto: @motor_link } %>
-    </div>
-  </div>
-  <div class = "col-xs-12 col-sm-6 center-block item-card-wrap">
-    <div class = "item-card">
-      <h3 class = "top-item-h3">新着ESC</h3> <%= link_to '一覧へ', escs_path, class: 'small' %>
-      <%= render 'items', { items: @new_escs, goto: @esc_link } %>
-    </div>
-  </div>
-  <div class = "col-xs-12 col-sm-6 center-block item-card-wrap">
-    <div class = "item-card">
-      <h3 class = "top-item-h3">新着サーボ</h3> <%= link_to '一覧へ', servos_path, class: 'small' %>
-      <%= render 'items', { items: @new_servos, goto: @servo_link } %>
-    </div>
-  </div>
-  <div class = "col-xs-12 col-sm-6 center-block item-card-wrap">
-    <div class = "item-card">
-      <h3 class = "top-item-h3">新着レシーバー</h3> <%= link_to '一覧へ', receviers_path, class: 'small' %>
-      <%= render 'items', { items: @new_receviers, goto: @receiver_link } %>
-    </div>
-  </div>
-</div>

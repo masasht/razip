@@ -16,7 +16,7 @@ class MotorsController < ApplicationController
 
   def show
     @motor = Motor.find(params[:id])
-    @machines = @motor.machines
+    @machines = @motor.machines.order(created_at: "DESC").page(params[:machine_page]).per(8)
     
     #　↓ここがきれいじゃない
     motor_post = @motor.class.name.downcase

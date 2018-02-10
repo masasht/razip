@@ -1,12 +1,19 @@
 <% if users.any? %>
-  <ul class="media-list">
+  <div class = "row user-information">
     <% users.each do |user| %>
-      <div>
-        <h4><span class="glyphicon glyphicon-user <%= user_icon(user) %>" aria-hidden="true"></span></span><%= link_to user.name, user_path(user) %></h4>
-        自己紹介：<%= user.user_introduction.truncate(48) %>
-      </div>
-      <hr>
+        <div class = "col-xs-12 col-sm-6 col-md-4 follow">
+          <dl>
+            <dt>
+              <span class="glyphicon glyphicon-user <%= user_icon(user) %>" aria-hidden="true"></span></span><%= link_to user.name, user_path(user) %></dt>
+            </dt>
+            <dd>
+              <% unless  user.user_introduction == nil %>
+                <%= user.user_introduction.truncate(48) %>
+              <% end %>
+            </dd>
+          </dl>
+        </div>
     <% end %>
-  </ul>
-  <%= paginate users %>
+  </div>
+  <div class = "text-center"><%= paginate users %></div>
 <% end %>

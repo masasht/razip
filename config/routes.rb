@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :followings
       get :followers
       get :fastenings
+      get :mine
     end
   end
 

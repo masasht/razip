@@ -4,7 +4,7 @@ class MachinesController < ApplicationController
 
   def index
     @search = Machine.search(params[:q])
-    @machines = @search.result
+    @machines = @search.result.page(params[:machine_page]).per(12)
   end
 
 
