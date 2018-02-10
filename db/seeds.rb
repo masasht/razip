@@ -17,25 +17,25 @@ require "csv"
 #end
 
 
-CSV.foreach('db/battery_selections.csv') do |row|
-  BatterySelection.create!(battery_type: row[0])
-end
+#CSV.foreach('db/battery_selections.csv') do |row|
+#  BatterySelection.create!(battery_type: row[0])
+#end
 
-CSV.foreach('db/brush_selections.csv') do |row|
-  BrushSelection.create!(motor_type: row[0])
-end
+#CSV.foreach('db/brush_selections.csv') do |row|
+#  BrushSelection.create!(motor_type: row[0])
+#end
 
-CSV.foreach('db/category_selections.csv') do |row|
-  CategorySelection.create!(category: row[0])
-end
+#CSV.foreach('db/category_selections.csv') do |row|
+#  CategorySelection.create!(category: row[0])
+#end
 
-CSV.foreach('db/drive_selections.csv') do |row|
-  DriveSelection.create!(drive_system: row[0])
-end
+#CSV.foreach('db/drive_selections.csv') do |row|
+#  DriveSelection.create!(drive_system: row[0])
+#end
 
-CSV.foreach('db/frequency_selections.csv') do |row|
-  FrequencySelection.create!(frequency_type: row[0])
-end
+#CSV.foreach('db/frequency_selections.csv') do |row|
+#  FrequencySelection.create!(frequency_type: row[0])
+#end
 
 CSV.foreach('db/profile_selections.csv') do |row|
   ProfileSelection.create!(profile_type: row[0])
