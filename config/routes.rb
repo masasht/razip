@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'contact', to: 'toppages#contact'
   
   get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
+#  post 'login', to: 'sessions#create'
+  get '/auth/:provider/callback' => 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204121553) do
+ActiveRecord::Schema.define(version: 20180211060249) do
 
   create_table "battery_selections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "battery_type"
@@ -253,6 +253,9 @@ ActiveRecord::Schema.define(version: 20180204121553) do
     t.string   "site_name"
     t.string   "user_class",                      default: "未設定"
     t.boolean  "admin",                           default: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "nickname"
   end
 
   add_foreign_key "clips", "machines"
