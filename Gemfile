@@ -77,3 +77,4 @@ gem 'honoka-rails', '>= 3.3.6.3'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
