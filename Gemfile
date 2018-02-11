@@ -74,3 +74,6 @@ gem 'pry-byebug', group: :development
 
 gem 'sass-rails', '~> 5.0'
 gem 'honoka-rails', '>= 3.3.6.3'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
