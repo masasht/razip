@@ -13,11 +13,6 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :email, 'Email' %>　<small class = "text-muted">他ユーザには非公開です</small>
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
         <div><%= f.label :user_class, 'ユーザ属性' %></div>
         <div class = "user-class-radio"><%= f.radio_button :user_class, "ワークス" %>
         <span class="glyphicon glyphicon-user works" aria-hidden="true"></spam><%= f.label :ワークス %></div>

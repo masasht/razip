@@ -1,17 +1,21 @@
-    <%= form_for(:session, url: login_path) do |f| %>
+<% if logged_in? %>
+    <h2 class = "on-white text-left"><small>ようこそ!</small><br><%= current_user.name %> <small>さん</small></h2>
+  <%= link_to "#{current_user.name}さんの Mypage", user_path(current_user), class: 'btn btn-primary btn-block' %>
 
-      <div class="form-group">
-        <%= f.label :email, 'メールアドレス' %>
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password, 'パスワード' %>
-        <%= f.password_field :password, class: 'form-control' %>
-      </div>
-
-      <%= f.submit 'ログイン', class: 'btn btn-primary' %>
-    <% end %>
-
-    <p class = "text-right">ユーザ登録がまだの方⇒ <%= link_to '新規ユーザ登録', signup_path  %></p>
-    
+<% else %>
+  <h2 class = "on-white text-center">SIGNE UP and LOGIN</h2>
+  
+  <div class = "sns-btn-wrap">
+      <%= link_to '/auth/facebook', class: 'btn btn-primary sns-btn' do %>
+        <i class="fab fa-facebook"></i>Facebookログイン
+      <% end %>
+      <%= link_to '/auth/twitter', class: 'btn btn-primary sns-btn' do %>
+        <i class="fab fa-twitter-square"></i>Twitterログイン
+      <% end %>
+  </div>
+  <div>
+    <small>
+    ユーザ登録とログインにはFacebookまたはTwitterアカウントが必要です
+    </small>
+  </div>
+<% end %>

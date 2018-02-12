@@ -12,17 +12,15 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-center">
-            <li><%= link_to 'マシン検索', machines_path %></li>
-            <li><%= link_to 'アイテム', items_path %></li>
+            <li><%= link_to 'Machines', machines_path %></li>
+            <li><%= link_to 'Items DATA', items_path %></li>
             <% if logged_in? %>
-              <li><%= link_to 'ユーザ検索', users_path %></li>
-              <li><%= link_to 'マイページ', user_path(current_user) %></li>
-              <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+              <li><%= link_to 'users', users_path %></li>
+              <li><%= link_to 'MyPage', user_path(current_user) %></li>
+              <li><%= link_to 'Logout', logout_path, method: :delete %></li>
             <% else %>
-              <li><%= link_to 'ユーザ登録', signup_path %></li>
-              <li><%= link_to 'ログイン', login_path %></li>
-              <li><%= link_to 'Twitterでログイン', '/auth/twitter' %></li>
-              <li><%= link_to 'Twitterでログイン', '/auth/facebook' %></li>
+              <li><%= link_to 'Twitterログイン', '/auth/twitter' %></li>
+              <li><%= link_to 'Facebookログイン', '/auth/facebook' %></li>
             <% end %>
           </ul>
         </div>

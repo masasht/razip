@@ -7,6 +7,37 @@ body {
     color: #333;
 }
 
+.alert.alert-success, .alert.alert-danger, .alert.alert-primary{
+    position: fixed;
+    top: 40%;
+    left: 25%;
+    z-index: 99999;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    box-shadow: 4px 4px 8px #666;
+    background-color: #fff;
+    border: 4px solid #0C7CD5;
+}
+
+.alert-dismissible .close, .alert-dismissable .close {
+    position: static;
+    top: -2px;
+    right: -21px;
+    color: #0C7CD5;
+    background-color: #fff;
+    font-weight: normal;
+    font-size: 1em;
+    padding: 8px;
+    border: 1px solid #0C7CD5;
+    margin-right: auto;
+    margin-left: auto;
+    opacity: 1;
+}
+
+
 img {
     width: 100%;
 }
@@ -72,14 +103,15 @@ ul.nav.navbar-nav.navbar-center {
 }
 
 .navbar-inverse .navbar-nav li a {
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 8px;
     padding-right: 8px;
-    margin-top: 42px;
-    margin-bottom: 0px;
+
     
     @media screen and (min-width: 768px) {
         border-radius: 0;
+        margin-top: 42px;
+        margin-bottom: 0px;
     }
 
 }
@@ -127,23 +159,49 @@ button.navbar-toggle::before {
     background-repeat: no-repeat;
 }
 
+.top-card-area {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 24px;
+    margin-top: 34px;
+}
+
+.top-card-area h3 {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.about-btn {
+    margin: 16px;
+}
+
 .login-box {
     margin-top: 34px;
     margin-bottom: 34px;
-    border: solid 4px #fff;
-    padding: 12px;
+    padding: 24px;
     max-width: 360px;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
-.login-box label{
-    font-weight: normal;
-    color: #333;
-    margin-bottom: 2px;
+.login-box h4 {
+    font-size: 1.25em;
 }
 
-.login-box p {
-    font-size: 0.8em;
-    margin-top: 20px;
+.sns-btn-wrap {
+}
+
+.sns-btn {
+    margin: 6px 0 12px 0;
+    width: 198px;
+    text-align: left;
+}
+.login-box .sns-btn-wrap .sns-btn{
+    
+}
+
+.login-box .sns-btn-wrap .fab {
+    font-size: 36px;
+    color: #fff;
+    margin-right: 8px;
 }
 
 /* トップのnew machinesのエリア */ 

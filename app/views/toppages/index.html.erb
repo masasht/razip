@@ -1,25 +1,24 @@
 <div class = "row top-image">
-  <div class = "col-md-offset-1 col-md-6 col-sm-8">
-    <h3 class = "text-center">Welcome to RaZIP</h3>
-    <div class = "top-text">
-      <p>EPラジコンカーを愛する人へ<br>
-      <ul>
-        <li>自慢の愛車を公開！</li>
-        <li>他のユーザの愛車をクリップ！</li>
-        <li>キットやパーツのデータベース閲覧（どんどん増やしていきたいです）</li>
-        <li>キットやパーツのデータを登録する（ご協力いただければ嬉しいです）</li>
-        <li>キットやパーツにコメントをつける</li>
-      </ul>
+  <div class = "col-md-offset-1 col-md-6 col-sm-offset-1 col-sm-6 col-xs-12">
+    <div class = "top-card-area">
+      <div class = "top-card">
+        <h3 class = "text-center">Welcome to RaZIP</h3>
+        <div>
+          <div>
+            <q>We don’t stop playing because we grow old; we grow old because we stop playing.</q>
+          </div>
+          <div>
+            <small>老いたから遊ばなくなるのではない、遊ばないから老いるのだ</small>
+          </div>          
+          <div class = "text-right"><cite>- George Bernard Shaw</cite></div>
+          <%= link_to 'About RaZIP',about_path, class: 'btn btn-primary center-block about-btn' %>
+        </div>
+      </div>
     </div>
   </div>
-  <div class = "col-md-4 col-sm-4">
+  <div class = "col-md-4 col-sm-4 col-xs-12">
     <div class = "login-box center-block">
-      <% if logged_in? %>
-        
-        <%= link_to "#{current_user.name}さんの Mypage", user_path(current_user), class: 'btn btn-danger btn-block' %> 
-      <% else %>
-        <%= render 'sessions/form' %>
-      <% end %>
+      <%= render 'sessions/form' %>
     </div>
   </div>
 </div>

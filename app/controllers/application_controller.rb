@@ -7,10 +7,18 @@ class ApplicationController < ActionController::Base
   
   def require_user_logged_in
     unless logged_in?
-      flash[:danger] = 'コンテンツを見るにはログインしてください'
+      flash[:danger] = 'ログインしてください'
       redirect_to login_url
     end
   end
+  
+  def require_user_name
+    if logged_in? && current_user.name.empty?
+      flash[:danger] = 'お名前（表示名）を設定してください'
+      redirect_to edit_user_url(current_user)
+    end
+  end
+  
   
   def counts(user)
     @count_followings = user.followings.count

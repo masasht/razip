@@ -1,10 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
   
-  validates :name, length: { maximum: 20 }, uniqueness: true
-  validates :email, length: { maximum: 255 },
-                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
-                    uniqueness: { case_sensitive: false }, :allow_blank => true
+  validates :name, length: { maximum: 20 }
   validates :site_url, format: /\A#{URI::regexp(%w(http https))}\z/, :allow_blank => true
 #  has_secure_password
   
@@ -34,12 +31,8 @@ class User < ApplicationRecord
     provider = auth_hash[:provider]
     uid = auth_hash[:uid]
     nickname = auth_hash[:info][:nickname]
-    email = auth_hash[:info][:email]
-    name = auth_hash[:info][:name]
     User.find_or_create_by(provider: provider, uid: uid) do |user|
       user.nickname = nickname
-      user.email = email
-      user.name = name
     end
   end
   

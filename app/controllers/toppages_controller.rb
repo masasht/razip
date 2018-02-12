@@ -1,4 +1,5 @@
 class ToppagesController < ApplicationController
+  before_action :require_user_name, only: [:index]
   
   def index
     @new_machines = Machine.order(created_at: "DESC").page(params[:machine_page]).per(8)
@@ -32,6 +33,9 @@ class ToppagesController < ApplicationController
   end
 
   def privacy
+  end
+  
+  def about
   end
 
 end
