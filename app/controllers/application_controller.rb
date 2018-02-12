@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
   
   def require_user_name
-    if logged_in? && current_user.name.empty?
+    if logged_in? && current_user.name == nil
       flash[:danger] = 'お名前（表示名）を設定してください'
       redirect_to edit_user_url(current_user)
     end
