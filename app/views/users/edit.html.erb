@@ -8,7 +8,7 @@
     <%= form_for(@user) do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       <div class="form-group">
-        <%= f.label :name, 'Name' %>　<small class = "text-muted">表示名</small>
+        <%= f.label :name, 'お名前' %>　<small class = "text-muted">表示名です　※必須</small>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
 
