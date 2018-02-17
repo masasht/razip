@@ -1,7 +1,32 @@
 class MachinesController < ApplicationController
   before_action :require_user_logged_in, only: [:new, :create, :edit, :destroy]
   before_action :correct_user_machine, only: [:edit, :update, :destroy]
-
+  
+  def hello_kit
+#    @kits = Kit.all
+    @kits = Kit.where(maker_id: params[:machine][:maker_id])
+  end
+  
+  def hello_motor
+#    @kits = Kit.all
+    @motors = Motor.where(maker_id: params[:machine][:maker_id])
+  end
+  
+  def hello_esc
+#    @kits = Kit.all
+    @escs = Esc.where(maker_id: params[:machine][:maker_id])
+  end
+  
+  def hello_servo
+#    @kits = Kit.all
+    @servos = Servo.where(maker_id: params[:machine][:maker_id])
+  end
+  
+  def hello_recevier
+#    @kits = Kit.all
+    @receviers = Recevier.where(maker_id: params[:machine][:maker_id])
+  end
+  
   def index
     @search = Machine.search(params[:q])
     @machines = @search.result.page(params[:machine_page]).per(12)
@@ -33,7 +58,7 @@ class MachinesController < ApplicationController
     @machine = current_user.machines.build(machine_params)
     
     unless @machine.machine_name.present?
-      @machine.machine_name = @machine.user.name + "さんの" + @machine.kit.name
+      @machine.machine_name =  ""
     end
     
     if @machine.save

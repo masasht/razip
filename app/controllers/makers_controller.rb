@@ -2,6 +2,8 @@ class MakersController < ApplicationController
   before_action :require_user_logged_in
   before_action :admin_user, only: [:index, :new, :edit, :destroy]
 
+
+  
   def index
     @makers = Maker.all
   end

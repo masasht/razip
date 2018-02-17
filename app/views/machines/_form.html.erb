@@ -4,28 +4,61 @@
       <%= f.label :machine_name, 'マシン名' %><small class = "text-muted">　愛車に名前を付けている場合入力。例：「RaZIP１号」など</small>
       <%= f.text_field :machine_name, class: 'form-control' %>
     </p>
+    
     <p>
-      <%= f.label :kit_id, 'キット名' %><small class = "text-muted">　使用しているキット（シャーシ）を選択。リストにない場合は「その他」</small>
-      <%= f.collection_select :kit_id, Kit.all, :id, :name, {}, {class: 'form-control'} %>
+      <%= f.label :kit_id, 'キット(シャーシ）' %><small class = "text-muted">※必須　リストにない場合は「その他」　</small>
+      <%= f.select :maker_id, options_from_collection_for_select(Maker.where(supply_kit: true), :id, :maker_name),
+      {include_blank: 'メーカー選択'}, {data: {remote: true, url: url_for(action: :hello_kit)}, class: 'form-control form-m'} %>
+      <!-- メーカーを選択するとここに動的にセレクトボックスが描画される -->
+      <div id="kit-select">
+        <small class = "text-info">メーカーを選択するとキットが選べます↑</small>
+      </div>
     </p>
+    
+
     <p>
-      <%= f.label :motor_id, 'モーター' %><small class = "text-muted">　リストにない場合は「その他」</small>
-      <%= f.collection_select :motor_id, Motor.all, :id, :name, {}, {class: 'form-control'} %>
+      <%= f.label :motor_id, 'モーター' %><small class = "text-muted"> ※必須　リストにない場合は「その他」　</small>
+      <%= f.select :maker_id, options_from_collection_for_select(Maker.where(supply_motor: true), :id, :maker_name),
+      {include_blank: 'メーカー選択'}, {data: {remote: true, url: url_for(action: :hello_motor)}, class: 'form-control form-m'} %>
+      <!-- メーカーを選択するとここに動的にセレクトボックスが描画される -->
+      <div id="motor-select">
+        <small class = "text-info">メーカーを選択するとモーターが選べます↑</small>
+      </div>
     </p>
+    
+
     <p>
-      <%= f.label :esc_id, 'ESC（アンプ）' %><small class = "text-muted">　リストにない場合は「その他」</small>
-      <%= f.collection_select :esc_id, Esc.all, :id, :name, {}, {class: 'form-control'} %>
+      <%= f.label :esc_id, 'ESC' %><small class = "text-muted"> ※必須　リストにない場合は「その他」　</small>
+      <%= f.select :maker_id, options_from_collection_for_select(Maker.where(supply_esc: true), :id, :maker_name),
+      {include_blank: 'メーカー選択'}, {data: {remote: true, url: url_for(action: :hello_esc)}, class: 'form-control form-m'} %>
+      <!-- メーカーを選択するとここに動的にセレクトボックスが描画される -->
+      <div id="esc-select">
+        <small class = "text-info">メーカーを選択するとESCが選べます↑</small>
+      </div>
     </p>
+
     <p>
-      <%= f.label :servo_id, 'ステアリングサーボ' %><small class = "text-muted">　リストにない場合は「その他」</small>
-      <%= f.collection_select :servo_id, Servo.all, :id, :name, {}, {class: 'form-control'} %>
-      </p>
-    <p>
-      <%= f.label :recevier_id, 'レシーバー（受信機）' %><small class = "text-muted">　リストにない場合は「その他」</small>
-      <%= f.collection_select :recevier_id, Recevier.all, :id, :name, {}, {class: 'form-control'} %>
+      <%= f.label :servo_id, 'ステアリングサーボ' %><small class = "text-muted"> ※必須　リストにない場合は「その他」　</small>
+      <%= f.select :maker_id, options_from_collection_for_select(Maker.where(supply_servo: true), :id, :maker_name),
+      {include_blank: 'メーカー選択'}, {data: {remote: true, url: url_for(action: :hello_servo)}, class: 'form-control form-m'} %>
+      <!-- メーカーを選択するとここに動的にセレクトボックスが描画される -->
+      <div id="servo-select">
+        <small class = "text-info">メーカーを選択するとサーボが選べます↑</small>
+      </div>
     </p>
+
     <p>
-      <%= f.label :regulation, 'レギュレーション' %><small class = "text-muted">　「谷田部アリーナ17.5ツーリング」や「公園」など</small>
+      <%= f.label :recevier_id, 'レシーバー（受信機）' %><small class = "text-muted"> ※必須　リストにない場合は「その他」　</small>
+      <%= f.select :maker_id, options_from_collection_for_select(Maker.where(supply_recevier: true), :id, :maker_name),
+      {include_blank: 'メーカー選択'}, {data: {remote: true, url: url_for(action: :hello_recevier)}, class: 'form-control form-m'} %>
+      <!-- メーカーを選択するとここに動的にセレクトボックスが描画される -->
+      <div id="recevier-select">
+        <small class = "text-info">メーカーを選択するとレシーバーが選べます↑</small>
+      </div>
+    </p>
+    
+    <p>
+      <%= f.label :regulation, 'レギュレーション' %><small class = "text-muted">　「谷田部アリーナ17.5ツーリング」あるいは「公園」とか</small>
       <%= f.text_field :regulation, class: 'form-control' %>
     </p>
     <p>

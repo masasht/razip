@@ -31,6 +31,12 @@ Rails.application.routes.draw do
       get :fastened
     end
   end
+  match 'hello_kit', to: 'machines#hello_kit', via: [:get, :post]
+  match 'hello_motor', to: 'machines#hello_motor', via: [:get, :post]
+  match 'hello_esc', to: 'machines#hello_esc', via: [:get, :post]
+  match 'hello_servo', to: 'machines#hello_servo', via: [:get, :post]
+  match 'hello_recevier', to: 'machines#hello_recevier', via: [:get, :post]
+
   
   resources :relationships, only: [:create, :destroy]
   resources :clips, only: [:create, :destroy]

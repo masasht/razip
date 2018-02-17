@@ -450,6 +450,13 @@ dl.spec dd {
     margin-left: 16px;
 }
 
+/* Machine-edit-new */
+#kit-select, #motor-select, #esc-select, #servo-select, #recevier-select {
+    height: 38px;
+}
+
+
+
 /* items-show */
 .item-specs dt {
     display: inline-block;

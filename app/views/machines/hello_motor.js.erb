@@ -1,0 +1,4 @@
+// 受け取った@kitsを元にselectボックスを描画する
+$('#motor-select').html(
+  "<%= j(select :machine, :motor_id, options_from_collection_for_select(@motors, :id, :name),{}, class: 'form-control') %>"
+);
