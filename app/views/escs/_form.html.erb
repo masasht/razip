@@ -18,7 +18,7 @@
     Ni-MH：<%= f.text_field :nimh, class: 'form-control' %>
     Ni-Cd：<%= f.text_field :nicd, class: 'form-control' %>
     <p>その他情報<%= f.text_area :information, class: 'form-control', rows: 5 %></p>
-    <%= f.file_field :image %>
+    <%= f.text_area :affiliate %>
   </div>
   <%= f.submit '確定', class: 'btn btn-primary' %>
 <% end %>
