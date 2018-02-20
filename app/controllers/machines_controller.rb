@@ -61,6 +61,26 @@ class MachinesController < ApplicationController
       @machine.machine_name =  ""
     end
     
+    if @machine.kit_id.blank?
+      @machine.kit_id = 1
+    end
+    
+    if @machine.motor_id.blank?
+      @machine.motor_id = 1
+    end
+    
+    if @machine.esc_id.blank?
+      @machine.esc_id = 1
+    end
+    
+    if @machine.servo_id.blank?
+      @machine.servo_id = 1
+    end
+    
+    if @machine.recevier_id.blank?
+      @machine.recevier_id = 1
+    end
+    
     if @machine.save
       flash[:success] = 'マシンを登録しました。'
       redirect_to @machine
