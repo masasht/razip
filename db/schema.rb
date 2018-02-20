@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220064249) do
+ActiveRecord::Schema.define(version: 20180220073210) do
 
   create_table "battery_selections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "battery_type"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(version: 20180220064249) do
     t.integer  "list_price"
     t.string   "brush"
     t.string   "sencor"
-    t.float    "turn",        limit: 24
+    t.string   "turn"
     t.integer  "kv"
     t.string   "rpm"
     t.string   "torque"
