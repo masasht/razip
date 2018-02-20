@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220073210) do
+ActiveRecord::Schema.define(version: 20180220074526) do
 
   create_table "battery_selections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "battery_type"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20180220073210) do
 
   create_table "escs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "image"
+    t.string   "affiliate"
     t.integer  "maker_id"
     t.string   "maker_url"
     t.integer  "list_price"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180220073210) do
 
   create_table "kits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "image"
+    t.string   "affiliate"
     t.integer  "maker_id"
     t.string   "maker_url"
     t.integer  "list_price"
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 20180220073210) do
 
   create_table "motors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "image"
+    t.string   "affiliate"
     t.integer  "maker_id"
     t.string   "maker_url"
     t.integer  "list_price"
@@ -182,7 +182,7 @@ ActiveRecord::Schema.define(version: 20180220073210) do
 
   create_table "receviers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "image"
+    t.string   "affiliate"
     t.integer  "maker_id"
     t.string   "maker_url"
     t.integer  "list_price"
@@ -222,7 +222,7 @@ ActiveRecord::Schema.define(version: 20180220073210) do
 
   create_table "servos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "image"
+    t.string   "affiliate"
     t.integer  "maker_id"
     t.string   "maker_url"
     t.integer  "list_price"

@@ -17,16 +17,6 @@
         <%= f.label :brush, 'ブラシレスorブラシ' %>
         <%= f.collection_select :brush_eq, BrushSelection.all, :motor_type, :motor_type, {include_blank: true}, {class: 'form-m form-control'} %>
       </p>
-      <p>
-        <%= f.label :turn, 'ターン数' %>
-        <%= f.text_field :turn_gteq, {class: 'form-control form-s'} %>以上～
-        <%= f.text_field :turn_lteq, {class: 'form-control form-s'} %>以下
-      </p>
-      <p>
-        <%= f.label :kv, 'kv値' %>
-        <%= f.number_field :kv_gteq, {class: 'form-control form-s'} %>以上～
-        <%= f.number_field :kv_lteq, {class: 'form-control form-s'} %>以下
-      </p>
         <%= f.submit '検索', class: 'btn btn-primary' %>
         <% end %>
   	</div>

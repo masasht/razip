@@ -6,14 +6,14 @@
     <p>定価：<%= f.text_field :list_price, class: 'form-control' %></p>
     <p>モータータイプ<%= f.collection_select :brush, BrushSelection.all, :motor_type, :motor_type, {}, {class: 'form-control'} %></p>
     <p>センサー有無：<%= f.collection_select :sencor , SencorSelection.all, :sensor, :sensor, {}, {class: 'form-control'} %></p>
-
+    <p>ターン数：<%= f.text_field :turn, class: 'form-control' %></p>
     <p>kv値(rpm/V)：<%= f.text_field :kv, class: 'form-control' %></p>
     <p>数回転：<%= f.text_field :rpm, class: 'form-control' %></p>
     <p>トルク：<%= f.text_field :torque, class: 'form-control' %></p>
     <p>動作電圧：<%= f.text_field :voltage, class: 'form-control' %></p>
     <p>最大電流：<%= f.text_field :ampere, class: 'form-control' %></p>
     <p>その他情報<%= f.text_area :information, class: 'form-control', rows: 5 %></p>
-    <%= f.file_field :image %>
+    <%= f.text_area :image %>
   </div>
   <%= f.submit '確定', class: 'btn btn-primary' %>
 <% end %>
