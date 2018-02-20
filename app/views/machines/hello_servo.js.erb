@@ -1,4 +1,4 @@
 // 受け取った@kitsを元にselectボックスを描画する
 $('#servo-select').html(
-  "<%= j(select :machine, :servo_id, options_from_collection_for_select(@servos, :id, :name),{}, class: 'form-control') %>"
+  "<%= j(select :machine, :servo_id, options_from_collection_for_select(@servos.order(:name), :id, :name),{}, class: 'form-control') %>"
 );

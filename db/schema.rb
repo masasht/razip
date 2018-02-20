@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217022912) do
+ActiveRecord::Schema.define(version: 20180220064249) do
 
   create_table "battery_selections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "battery_type"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20180217022912) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "maker_id"
+    t.string   "turn"
     t.index ["esc_id"], name: "index_machines_on_esc_id", using: :btree
     t.index ["kit_id"], name: "index_machines_on_kit_id", using: :btree
     t.index ["motor_id"], name: "index_machines_on_motor_id", using: :btree

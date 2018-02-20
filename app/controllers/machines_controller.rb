@@ -43,7 +43,7 @@ class MachinesController < ApplicationController
     counts_clip(@machine)
     
     unless @machine.machine_name.present?
-      @machine.machine_name = @machine.user.name + "さんの" + @machine.kit.name
+      @machine.machine_name = @machine.kit.name
     end
 
     
@@ -110,7 +110,7 @@ class MachinesController < ApplicationController
   private
 
   def machine_params
-    params.require(:machine).permit(:machine_name, :image, :kit_id, :motor_id, :esc_id, :servo_id, :recevier_id, :regulation, :other, :information)
+    params.require(:machine).permit(:machine_name, :image, :kit_id, :motor_id, :esc_id, :servo_id, :recevier_id, :regulation, :other, :information, :turn)
   end
   
   def correct_user_machine

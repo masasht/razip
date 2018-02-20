@@ -18,7 +18,7 @@
     <dl class = "spec">
       <dt>Owner</dt><dd><%= link_to @machine.user.name, user_path(@machine.user_id) %></dd>
       <dt>Kit(Chassis)</dt><dd><%= link_to @machine.kit.name, kit_path(@machine.kit_id) %></dd>
-      <dt>Motor</dt><dd><%= link_to @machine.motor.name, motor_path(@machine.motor_id) %></dd>
+      <dt>Motor</dt><dd><%= link_to @machine.motor.name, motor_path(@machine.motor_id) %> &#40;<%= @machine.turn %>t&#41;</dd>
       <dt>Esc</dt><dd><%= link_to @machine.esc.name, esc_path(@machine.esc_id) %></dd>
       <dt>Servo</dt><dd><%= link_to @machine.servo.name, servo_path(@machine.servo_id) %></dd>
       <dt>Recevier</dt><dd><%= link_to @machine.recevier.name, recevier_path(@machine.recevier_id) %></dd>
