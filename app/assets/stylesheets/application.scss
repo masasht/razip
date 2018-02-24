@@ -603,3 +603,22 @@ form#new_micropost {
 .form-m {
     width: 260px;
 }
+
+.want-have-button-wrap {
+    margin-bottom: 24px;
+}
+
+.want-have-button-wrap form {
+    display: inline-block;
+}
+
+.btn.btn-primary.btn-want-have {
+    color: #2196f3;
+    background-color: #fff;
+}
+
+.want-have-count-wrap {
+    background-color: #ddd;
+    padding: 12px;
+    margin: 24px;
+}

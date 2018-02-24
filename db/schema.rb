@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220074526) do
+ActiveRecord::Schema.define(version: 20180222135503) do
 
   create_table "battery_selections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "battery_type"
@@ -78,6 +78,17 @@ ActiveRecord::Schema.define(version: 20180220074526) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "kit_ownerships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "type"
+    t.integer  "user_id"
+    t.integer  "kit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kit_id"], name: "index_kit_ownerships_on_kit_id", using: :btree
+    t.index ["user_id", "kit_id", "type"], name: "index_kit_ownerships_on_user_id_and_kit_id_and_type", unique: true, using: :btree
+    t.index ["user_id"], name: "index_kit_ownerships_on_user_id", using: :btree
+  end
+
   create_table "kits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "affiliate"
@@ -90,6 +101,8 @@ ActiveRecord::Schema.define(version: 20180220074526) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "user_id"
+    t.integer  "creator"
+    t.integer  "editor"
     t.index ["maker_id"], name: "index_kits_on_maker_id", using: :btree
     t.index ["user_id"], name: "index_kits_on_user_id", using: :btree
   end
@@ -172,6 +185,24 @@ ActiveRecord::Schema.define(version: 20180220074526) do
     t.integer  "user_id"
     t.index ["maker_id"], name: "index_motors_on_maker_id", using: :btree
     t.index ["user_id"], name: "index_motors_on_user_id", using: :btree
+  end
+
+  create_table "ownerships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "interest"
+    t.integer  "user_id"
+    t.integer  "kit_id"
+    t.integer  "motor_id"
+    t.integer  "esc_id"
+    t.integer  "servo_id"
+    t.integer  "recevier_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["esc_id"], name: "index_ownerships_on_esc_id", using: :btree
+    t.index ["kit_id"], name: "index_ownerships_on_kit_id", using: :btree
+    t.index ["motor_id"], name: "index_ownerships_on_motor_id", using: :btree
+    t.index ["recevier_id"], name: "index_ownerships_on_recevier_id", using: :btree
+    t.index ["servo_id"], name: "index_ownerships_on_servo_id", using: :btree
+    t.index ["user_id"], name: "index_ownerships_on_user_id", using: :btree
   end
 
   create_table "profile_selections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -264,6 +295,8 @@ ActiveRecord::Schema.define(version: 20180220074526) do
   add_foreign_key "clips", "users"
   add_foreign_key "escs", "makers"
   add_foreign_key "escs", "users"
+  add_foreign_key "kit_ownerships", "kits"
+  add_foreign_key "kit_ownerships", "users"
   add_foreign_key "kits", "makers"
   add_foreign_key "kits", "users"
   add_foreign_key "machines", "escs"
@@ -282,6 +315,12 @@ ActiveRecord::Schema.define(version: 20180220074526) do
   add_foreign_key "microposts", "users"
   add_foreign_key "motors", "makers"
   add_foreign_key "motors", "users"
+  add_foreign_key "ownerships", "escs"
+  add_foreign_key "ownerships", "kits"
+  add_foreign_key "ownerships", "motors"
+  add_foreign_key "ownerships", "receviers"
+  add_foreign_key "ownerships", "servos"
+  add_foreign_key "ownerships", "users"
   add_foreign_key "receviers", "makers"
   add_foreign_key "receviers", "users"
   add_foreign_key "relationships", "users"

@@ -2,40 +2,47 @@
   <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
   <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10">
     <h2 class = "on-white"><%= @kit.name %></h2>
+    <% if logged_in?%>
+      <div class = "text-right"><%= link_to 'データ編集', edit_kit_path(@kit), data: { confirm: '即時反映されるので気をつけてください' } %></div>
+    <% end %>
   </div>
   <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
 
   <div class = "blank-area1 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
   <div class = "col-xs-12 col-sm-5 com-md-5 col-lg-5">
     
-
-    
   </div>
   <div class = "col-xs-12 col-sm-5 com-md-5 col-lg-5">
-    <% if logged_in? && current_user.admin? %>
-      <%= link_to 'アイテム編集', edit_kit_path(@kit) %>
-    <% end %>
     <div class = "item-specs">
-    <blockquote>
-        <dl>
-          <dt>メーカー</dt>
-          <dd><%= @kit.maker.maker_name %></dd>
-          <dt>定価</dt>
-          <dd><%= @kit.list_price %><span> 円</span></dd>
-          <dt>カテゴリー</dt>
-          <dd><%= @kit.category %></dd>
-          <dt>駆動形式</dt>
-          <dd><%= @kit.drive_system %></dd>
-        </dl>
-        <cite class = "text-muted small text-right">スペック引用<br><%= link_to "＜#{@kit.maker.maker_name}website＞#{@kit.name}", @kit.maker_url %></p></cite>
-    </blockquote>
+      <blockquote>
+          <dl>
+            <dt>メーカー</dt>
+            <dd><%= @kit.maker.maker_name %></dd>
+            <dt>定価</dt>
+            <dd><%= @kit.list_price %><span> 円</span></dd>
+            <dt>カテゴリー</dt>
+            <dd><%= @kit.category %></dd>
+            <dt>駆動形式</dt>
+            <dd><%= @kit.drive_system %></dd>
+          </dl>
+          <cite class = "text-muted small text-right">スペック引用<br><%= link_to "＜#{@kit.maker.maker_name}website＞#{@kit.name}", @kit.maker_url %></p></cite>
+      </blockquote>
+      <div class = "text-center want-have-count-wrap">
+        <%= render 'ownerships/count_ownership', item: @kit %>
+      </div>
+      <div class = "text-center want-have-button-wrap">
+        <%= render 'ownerships/want_button', {item: @kit, create_ownership: create_ownership_kit_path, destroy_ownership: destroy_ownership_kit_path} %>
+      </div>
     </div>
   </div>
   <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
 
   <div class = "blank-area2 col-sm-1 col-md-1 col-lg-1 hidden-xs"></div>
   <div class = "col-xs-12 col-sm-10 col-md-10 col-lg-10 item-info-area">
-    <div class = "col-xs-12 col-sm-4"><h3 class = "text-center">INFORMATION</h3></div>
+    <div class = "col-xs-12 col-sm-4">
+      <h3 class = "text-center">INFORMATION</h3>
+      <div class = "text-center"><small>Created by<%= @creator.name %> Edited_by<%= @editor.name %></small></div>
+    </div>
     <div class= "col-xs-12 col-sm-8">
         <%= simple_format(@kit.information) %>
     </div>

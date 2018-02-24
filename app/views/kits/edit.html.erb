@@ -1,6 +1,6 @@
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-sm-8 col-xs-12">
+    <aside class="col-sm-offset-2 col-sm-8 col-xs-12">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h2 class="panel-title"><%= @kit.name %> の編集</h2>
@@ -9,7 +9,6 @@
         <%= render 'form',{kit: @kit, makers: @makers} %>
 
       </div>
-      <%= link_to 'このキットを削除する', @kit, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
     </aside>
   </div>
 <% end %>

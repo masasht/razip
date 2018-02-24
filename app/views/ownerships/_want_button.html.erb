@@ -1,0 +1,28 @@
+<% if logged_in? %>
+  <% if current_user.have?(item) %>
+    <%= form_tag(destroy_ownership, method: :delete) do %>
+      <%= hidden_field_tag :interest, 'Have' %>
+      <%= submit_tag '持ってる', class: 'btn btn-primary' %>
+    <% end %>
+    <div class = "text-left">感想などコメント欄から投稿をお願いします！！</div>
+  <% elsif current_user.want?(item) %>
+  　<%= form_tag(create_ownership) do %>
+      <%= hidden_field_tag :interest, 'Have' %>
+      <%= submit_tag '持ってる！', class: 'btn btn-primary btn-want-have' %>
+    <% end %>
+    <%= form_tag(destroy_ownership, method: :delete) do %>
+      <%= hidden_field_tag :interest, 'Want' %>
+      <%= submit_tag 'ほしい', class: 'btn btn-primary' %>
+    <% end %>
+    <div>コメント欄で質問したら回答あるかも？</div>
+  <% else %>
+  　 <%= form_tag(create_ownership) do %>
+      <%= hidden_field_tag :interest, 'Have' %>
+      <%= submit_tag '持ってる！', class: 'btn btn-primary btn-want-have' %>
+    <% end %>
+  　<%= form_tag(create_ownership) do %>
+      <%= hidden_field_tag :interest, 'Want' %>
+      <%= submit_tag 'ほしい！', class: 'btn btn-primary btn-want-have' %>
+    <% end %>
+  <% end %>
+<% end %>

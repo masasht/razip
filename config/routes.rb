@@ -48,6 +48,10 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    member do
+      post :create_ownership
+      delete :destroy_ownership
+    end
   end
   
   resources :motors do
@@ -71,5 +75,7 @@ Rails.application.routes.draw do
     end
   end
   resources :items, only: [:index]
+  
+  resources :ownerships, only: [:create, :destroy]
   
 end

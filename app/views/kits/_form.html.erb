@@ -1,13 +1,16 @@
 <%= form_for(@kit) do |f| %>
   <div class="panel-body">
-    <p>キット名：<%= f.text_field :name, class: 'form-control' %></p>
-    <p>メーカー：<%= f.collection_select :maker_id, @makers, :id, :maker_name, {}, {class: 'form-control'} %></p>
-    <p>メーカーサイト：<%= f.text_field :maker_url, class: 'form-control' %></p>
-    <p>定価：<%= f.number_field :list_price, class: 'form-control' %></p>
-    <p>カテゴリー<%= f.collection_select :category, CategorySelection.all, :category, :category, {}, {class: 'form-control'} %></p>
-    <p>駆動形式：<%= f.collection_select :drive_system, DriveSelection.all, :drive_system, :drive_system, {}, {class: 'form-control'} %></p>
-    <p>その他情報<%= f.text_area :information, class: 'form-control', rows: 5 %></p>
-    <%= f.text_area :affiliate %>
+    <p>キット名（シャーシ名）<small> ※必須（「ホーネット」など）</small><br><%= f.text_field :name, class: 'form-control' %></p>
+    <p>メーカー<small> ※必須（プルダウンメニューから選択してください）</small><br><%= f.collection_select :maker_id, @makers, :id, :maker_name, {}, {class: 'form-control form-m'} %></p>
+    <p>メーカーサイト<small>（https:~~~ コピペしてください）</small><br><%= f.text_field :maker_url, class: 'form-control' %></p>
+    <p>定価<small>（半角数字）</small><br><%= f.number_field :list_price, class: 'form-control form-s' %> 円</p>
+    <p>カテゴリー<small> ※必須（プルダウンメニューから選択してください）</small><br><%= f.collection_select :category, CategorySelection.all, :category, :category, {}, {class: 'form-control'} %></p>
+    <p>駆動形式<small> ※必須s（プルダウンメニューから選択してください）</small><br><%= f.collection_select :drive_system, DriveSelection.all, :drive_system, :drive_system, {}, {class: 'form-control'} %></p>
+    <p>その他情報<small>（その他情報があれば書き込んでください。）</small><br><%= f.text_area :information, class: 'form-control', rows: 5 %></p>
+    
+    <% if current_user.admin? %>
+      <%= f.text_area :affiliate, class: 'form-control', rows: 5 %>
+    <% end %>
   </div>
-  <%= f.submit '確定', class: 'btn btn-primary' %>
+  <%= f.submit '　確定　', data: { confirm: '登録してよろしいですか？' }, class: 'btn btn-primary center-block' %>
 <% end %>

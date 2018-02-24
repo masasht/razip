@@ -1,5 +1,5 @@
 class KitsController < ApplicationController
-  before_action :admin_user, only: [:new, :edit, :destroy]
+  before_action :admin_user, only: [:destroy]
 
   def index
 #    @kits = Kit.all
@@ -18,6 +18,18 @@ class KitsController < ApplicationController
 
   def show
     @kit = Kit.find(params[:id])
+    @col = "kit_id"
+    
+    if @kit.creator.blank?
+      @kit.creator = 1
+    end
+    
+    if @kit.editor.blank?
+      @kit.editor = 1
+    end
+    
+    @creator = User.find_by(id: @kit.creator)
+    @editor = User.find_by(id: @kit.editor)
     @machines = @kit.machines.order(created_at: "DESC").page(params[:machine_page]).per(8)
     
     #　↓ここがきれいじゃない
@@ -32,14 +44,18 @@ class KitsController < ApplicationController
   end
 
   def new
-    @kit = current_user.kits.build
+    @kit = Kit.new
+    @kit.creator = current_user.id
+    @kit.editor = current_user.id
     @makers = Maker.where(supply_kit: true)
   end
   
   def create
     @makers = Maker.where(supply_kit: true)
-    @kit = current_user.kits.build(kit_params)
-
+    @kit = Kit.new(kit_params)
+    @kit.creator = current_user.id
+    @kit.editor = current_user.id
+    
     if @kit.save
       flash[:success] = 'キットを登録しました。'
       redirect_to kit_url(@kit.id)
@@ -51,12 +67,14 @@ class KitsController < ApplicationController
   
   def edit
     @kit = Kit.find(params[:id])
+    @kit.editor = current_user.id
     @makers = Maker.where(supply_kit: true)
     
   end
   
   def update
     @kit = Kit.find(params[:id])
+    @kit.editor = current_user.id
     @makers = Maker.where(supply_kit: true)
     
     if @kit.update(kit_params)
@@ -71,10 +89,39 @@ class KitsController < ApplicationController
   def destroy
   end
   
+  def create_ownership
+    @kit = Kit.find(params[:id])
+    if params[:interest] == 'Want'
+      current_user.want(@kit)
+      flash[:success] = 'Want しました。'
+    elsif params[:interest] == 'Have'
+      current_user.unwant(@kit)
+      current_user.have(@kit)
+      flash[:success] = 'Have しました。'
+    end
+    redirect_back(fallback_location: root_path)
+  end
+  
+  def destroy_ownership
+    @kit = Kit.find(params[:id])
+
+    if params[:interest] == 'Want'
+      current_user.unwant(@kit) 
+      flash[:success] = 'Want を解除しました。'
+    end
+    
+    if params[:interest] == 'Have'
+      current_user.unhave(@kit) 
+      flash[:success] = 'Have を解除しました。'
+    end
+    redirect_back(fallback_location: root_path)
+  end
+    
+  
   private
 
   def kit_params
-    params.require(:kit).permit(:name, :maker_id, :maker_url, :list_price, :category, :drive_system, :information, :user_id, :image,)
+    params.require(:kit).permit(:name, :maker_id, :maker_url, :list_price, :category, :drive_system, :information, :user_id, :affiliate,)
 #    params.require(:kit).permit!
   end
 

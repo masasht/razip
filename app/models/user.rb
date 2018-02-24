@@ -16,13 +16,15 @@ class User < ApplicationRecord
   has_many :fastenings, through: :clips, source: :machine
 
   has_many :makers
-  has_many :kits
-#  has_many :kits ,through: :machines #ユーザのもっているキットを検索
-  has_many :motors
-  has_many :escs
-  has_many :servos
-  has_many :receviers
   has_many :microposts
+  
+  # Have Want用
+  has_many :ownerships
+  has_many :kits, through: :ownerships
+  has_many :motors, through: :ownerships
+  has_many :escs, through: :ownerships
+  has_many :servos, through: :ownerships
+  has_many :receviers, through: :ownerships
   
   
   #引数に関連するユーザーが存在すればそれを返し、存在しまければ新規に作成する
@@ -68,6 +70,99 @@ class User < ApplicationRecord
   def feed_microposts
     Micropost.where(user_id: self.following_ids + [self.id])
   end
+
+  def want?(item)
+#    want_items = self.kits + self.motors + self.escs + self.servos + self.receviers
+#    want_items.include?(item)
+    
+    if item.class.name == "Kit"
+      self.ownerships.find_by(kit_id: item.id, interest: "Want") != nil
+    elsif  item.class.name == "Motor"
+      self.ownerships.find_by(motor_id: item.id, interest: "Want") != nil
+    elsif  item.class.name == "Esc"
+      self.ownerships.find_by(esc_id: item.id, interest: "Want") != nil
+    elsif  item.class.name == "Servo"
+      self.ownerships.find_by(servo_id: item.id, interest: "Want") != nil
+    elsif  item.class.name == "Recevier"
+      self.ownerships.find_by(recevier_id: item.id, interest: "Want") != nil
+    end
+    
+  end
   
+  def want(item)
+    if item.class.name == "Kit"
+      self.ownerships.find_or_create_by(kit_id: item.id, interest: "Want")
+    elsif  item.class.name == "Motor"
+      self.ownerships.find_or_create_by(motor_id: item.id, interest: "Want")
+    elsif  item.class.name == "Esc"
+      self.ownerships.find_or_create_by(esc_id: item.id, interest: "Want")
+    elsif  item.class.name == "Servo"
+      self.ownerships.find_or_create_by(servo_id: item.id, interest: "Want")
+    elsif  item.class.name == "Recevier"
+      self.ownerships.find_or_create_by(recevier_id: item.id, interest: "Want")
+    end
+  end
+  
+  def unwant(item)
+    if item.class.name == "Kit"
+      want = self.ownerships.find_by(kit_id: item.id)
+    elsif  item.class.name == "Motor"
+      want = self.ownerships.find_by(motor_id: item.id)
+    elsif  item.class.name == "Esc"
+      want = self.ownerships.find_by(esc_id: item.id)
+    elsif  item.class.name == "Servo"
+      want = self.ownerships.find_by(servo_id: item.id)
+    elsif  item.class.name == "Recevier"
+      want = self.ownerships.find_by(recevier_id: item.id)
+    end
+    want.destroy if want
+  end
+  
+    def have?(item)
+#    want_items = self.kits + self.motors + self.escs + self.servos + self.receviers
+#    want_items.include?(item)
+    
+    if item.class.name == "Kit"
+      self.ownerships.find_by(kit_id: item.id, interest: "Have") != nil
+    elsif  item.class.name == "Motor"
+      self.ownerships.find_by(motor_id: item.id, interest: "Have") != nil
+    elsif  item.class.name == "Esc"
+      self.ownerships.find_by(esc_id: item.id, interest: "Have") != nil
+    elsif  item.class.name == "Servo"
+      self.ownerships.find_by(servo_id: item.id, interest: "Have") != nil
+    elsif  item.class.name == "Recevier"
+      self.ownerships.find_by(recevier_id: item.id, interest: "Have") != nil
+    end
+    
+  end
+  
+  def have(item)
+    if item.class.name == "Kit"
+      self.ownerships.find_or_create_by(kit_id: item.id, interest: "Have")
+    elsif  item.class.name == "Motor"
+      self.ownerships.find_or_create_by(motor_id: item.id, interest: "Have")
+    elsif  item.class.name == "Esc"
+      self.ownerships.find_or_create_by(esc_id: item.id, interest: "Have")
+    elsif  item.class.name == "Servo"
+      self.ownerships.find_or_create_by(servo_id: item.id, interest: "Have")
+    elsif  item.class.name == "Recevier"
+      self.ownerships.find_or_create_by(recevier_id: item.id, interest: "Have")
+    end
+  end
+  
+  def unhave(item)
+    if item.class.name == "Kit"
+      have = self.ownerships.find_by(kit_id: item.id)
+    elsif  item.class.name == "Motor"
+      have = self.ownerships.find_by(motor_id: item.id)
+    elsif  item.class.name == "Esc"
+      have = self.ownerships.find_by(esc_id: item.id)
+    elsif  item.class.name == "Servo"
+      have = self.ownerships.find_by(servo_id: item.id)
+    elsif  item.class.name == "Recevier"
+      have = self.ownerships.find_by(recevier_id: item.id)
+    end
+    have.destroy if have
+  end
 end
   
